@@ -23,6 +23,5 @@ public class HomeController {
 	public String join(Model model) {
 		return "home/join";
 	}
-	
 
 }

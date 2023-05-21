@@ -11,7 +11,7 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Đăng nhập</title>
 </head>
-<body class="bg-dark">
+<body style="background: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);">
 
 
 
@@ -29,7 +29,8 @@
                     <label for="password">Password:</label>
                     <input type="password" class="form-control form-control-lg	" placeholder="Password" required name="password" id="password">
                 </div>
-                <span >Don't have an account <a class="linkControl" href="/register">Register here</a></span> <br><br>
+                <span><a class="linkControl" href="#">Forgot Password</a></span>
+                <span>Don't have an account? <a class="linkControl" href="register.html">Register here</a></span> <br><br>
                 <input type="submit" value="Login" class="btn btn-primary btn-block">
                 <br>
                 <h3 style="color:red;" th:text="${message}"></h3>

@@ -32,12 +32,58 @@
 	margin-left: -20px;
 }
 .collapse ul.submenu li { padding: 10px 20px; }
+td:first-child{
+	background-color: red;
+	color: white;
+	font-size: 30px;
+}
+button{
+	border-radius: 10%;
+	background-color: black;
+	color: white;
+	margin-left: 15px;
+	cursor: pointer;
+}
+button:hover{
+	transition: 0.3s;
+	background: blueviolet;
+}
+.footer {
+      background-color:#262831;
+      padding:30px 20px;
+      font-size:15px;
+      line-height:24px;
+      color:#737373;
+    }
+    .footer-links {
+      padding-left:0;
+      list-style:none
+    }
+    .footer a{ color:#737373; }
+    .footer .social-icons {
+      text-align:right
+    }
+    .footer .social-icons a {   
+      background-color:#2d2d42
+    }
+    .social-icons li {
+      display:inline-block;
+    }
+    .social-icons a {
+      display:inline-block;
+      line-height:44px;
+      width:44px;
+      height:44px;
+      text-align:center;
+      border-radius:100%;
+    }
 </style>
 </head>
 
 <body>
 <header th:fragment="admin_header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<img src="shipper.png" width="200" height="100">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse">
 				<ul class="mr-auto"></ul>
@@ -45,23 +91,79 @@
 					<li class="topmenu"><a class="nav-link" href="/admin">Home Page</a></li>
 					<li class="topmenu"><a class="nav-link">Manage</a>
 						<ul class="submenu">
-							<li><a class="nav-link" href="/admin/shipper">Shippers</a>
-							<li><a class="nav-link" href="/admin/order">Orders</a>
-							<li><a class="nav-link" href="/admin/user">Users</a>
+							<li><a class="nav-link" href="/admin/shipper">Shippers</a></li>
+							<li><a class="nav-link" href="/admin/order">Orders</a></li>
+							<li><a class="nav-link" href="/admin/user">Users</a></li>
 						</ul>
 									
 					</li>
 					<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Statistic</a></li>
 					<li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Report</a></li>
-					<li class="topmenu"><a class="nav-link" href="/admin/login">Logout</a></li>
+					<li class="topmenu"><a class="nav-link" href="/admin/login">Login</a></li>
 
 				</ul>
 			</div>	
 		</div>
 	</nav>
 </header>
-<div th:fragment="admin_content">
-  <p>Changing contents</p>
+<div th:fragment="admin_content" class="content">
+  <table border="0">
+	<tr>
+		<td width="700" height="400">
+            <p>Để có thể quản lý dịch vụ dễ dàng hơn, hãy đăng nhập hoặc đăng ký!</p>
+			<a href="adminLogin.html"><button>Login</button></a>
+			<a href="adminRegister.html"><button>Register</button></a>
+		</td>
+		<td width="700" height="400">
+			<img src="shipperlogo.png" width="700" height="400">
+		</td>
+	</tr>
+  </table>
 </div>
+<footer class="footer" th:fragment="home_footer">
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-6">
+		  <h3>About</h3><br>
+		  <p class="text-justify">Đây là bài tập đồ án môn OOP của nhóm 6</p>
+		</div>
+		<div class="col-md-3">
+		  <h3>Quick link</h3><br>
+		  <ul class="footer-links">
+			<li><a href="adminUser.html">Users Management</a></li>
+				<li><a href="adminOrder.html">Order Management</a></li>
+				<li><a href="adminShipper.html">Shipper Management</a></li>
+				<li><a href="adminThongKe.html">Statistic</a></li>
+				<li><a href="adminBaoCao.html">Reports</a></li>
+		  </ul>
+		</div>
+		<div class="col-md-3">
+		  <h3>Contact Us!</h3><br>
+		  <ul class="footer-links">
+			<li><span><u>Địa chỉ:</u> Trường Đại học Xây dựng Hà Nội, số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội</span></li>
+			<li><span><u>Điện thoại:</u> (024) 38 696 397</span></li>
+			<li><span><u>Email:</u> dhxaydung@huce.edu.vn</span></li>
+		  </ul>
+		</div>
+	  </div>
+	  <hr>
+	</div>
+
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-8">
+		  <p class="copyright-text">©2023, From Group 6 with luv. All rights reserved</p>
+		</div>
+		<div class="col-md-4">
+		  <ul class="social-icons">
+			<li><a href=""><i class="fab fa-youtube"></i></a></li>
+			<li><a href=""><i class="fab fa-facebook"></i></a></li>
+			<li><a href=""><i class="fab fa-twitter"></i></a></li>
+			<li><a href=""><i class="fab fa-linkedin"></i></a></li>   
+		  </ul>
+		</div>
+	  </div>
+	</div>
+</footer>
 </body>
 </html>
