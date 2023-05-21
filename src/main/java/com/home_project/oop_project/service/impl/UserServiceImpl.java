@@ -2,6 +2,9 @@ package com.home_project.oop_project.service.impl;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.home_project.oop_project.entity.User;
@@ -18,8 +21,12 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<User> getAllUsers() {
-		return userRepository.findAll();
+	public List<User> getAllUsers(String keyword, int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
+		if (keyword != null) {
+            return userRepository.search(keyword);
+        }
+        return userRepository.findAll(pageable).get().toList();
 	}
 
 	@Override

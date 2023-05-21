@@ -1,5 +1,8 @@
 package com.home_project.oop_project.controllers;
 
+import java.util.List;
+
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +27,25 @@ public class UserController {
     }
 
     // handler method to handle list Users and return mode and view
-    @GetMapping(value={"","/"})
-    public String listUsers(Model model) {
-        model.addAttribute("users", userService.getAllUsers());
-        return "admin/adminUser";
+    @GetMapping("/{pageNo}")
+    public String listUsers(Model model, @Param("keyword") String keyword, @PathVariable int pageNo) {
+        pageNo--;
+		int pageSize=10;
+		int totalItems= userService.getAllUsers(keyword, 0,9999).size();
+        int totalPages;
+        if (totalItems!=0){
+			if(totalItems%pageSize==0) {totalPages= totalItems / pageSize;}
+			else {totalPages= totalItems / pageSize + 1;}
+		}
+		else {totalPages=1;}
+		List<User> listUsers = userService.getAllUsers(keyword, pageNo, pageSize);
+		listUsers.size();
+		model.addAttribute("users", listUsers);
+        model.addAttribute("keyword", keyword);
+		model.addAttribute("currentPage", pageNo+1);
+    	model.addAttribute("totalPages", totalPages);
+    	model.addAttribute("totalItems", totalItems);
+        return "admin/adminUser"; 
     }
 
     @GetMapping("/new")
@@ -43,7 +61,7 @@ public class UserController {
     @PostMapping("/add")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:/admin/user";
+        return "redirect:/admin/user/1";
     }
 
     @GetMapping("/edit/{id}")
@@ -67,7 +85,7 @@ public class UserController {
         existingUser.setSdt(user.getSdt());
         // save updated User object
         userService.updateUser(existingUser);
-        return "redirect:/admin/user";
+        return "redirect:/admin/user/1";
     }
 
     // handler method to handle delete User request
@@ -75,6 +93,6 @@ public class UserController {
     @GetMapping("delete/{id}")
     public String deleteUser(@PathVariable Long id) {
         userService.deleteUserById(id);
-        return "redirect:/admin/user";
+        return "redirect:/admin/user/1";
     }
 }

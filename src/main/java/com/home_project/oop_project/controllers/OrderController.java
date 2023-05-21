@@ -2,7 +2,7 @@ package com.home_project.oop_project.controllers;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,9 +25,25 @@ public class OrderController {
 	}
 	
 	// handler method to handle list orders and return mode and view
-	@GetMapping(value={"","/"})
-	public String listOrders(Model model) {
-		 model.addAttribute("orders", orderService.getAllOrders());
+	@GetMapping("/{pageNo}")
+	public String listOrders(Model model, @Param("keyword") String keyword, @PathVariable int pageNo) {
+		pageNo--;
+		int pageSize=10;
+		int totalItems= orderService.getAllOrders(keyword, 0,9999).size();
+		int totalPages;
+		if (totalItems!=0){
+			if(totalItems%pageSize==0) {totalPages= totalItems / pageSize;}
+			else {totalPages= totalItems / pageSize + 1;}
+		}
+		else {totalPages=1;}
+		List<Order> listOrders = orderService.getAllOrders(keyword, pageNo, pageSize);
+		listOrders.size();
+		model.addAttribute("orders", listOrders);
+        model.addAttribute("keyword", keyword);
+		model.addAttribute("currentPage", pageNo+1);
+    	model.addAttribute("totalPages", totalPages);
+    	model.addAttribute("totalItems", totalItems);
+		// model.addAttribute("orders", orderService.getAllOrders(keyword));
 		 return "admin/adminOrder";
 	}
 	
@@ -44,7 +60,7 @@ public class OrderController {
 	@PostMapping("/add")
 	public String saveOrder(@ModelAttribute("order") Order order) {
 		orderService.saveOrder(order);
-		return "redirect:/admin/order";
+		return "redirect:/admin/order/1";
 	}
 	
 	@GetMapping("/edit/{id}")
@@ -69,7 +85,7 @@ public class OrderController {
 		
 		// save updated order object
 		orderService.updateOrder(existingOrder);
-		return "redirect:/admin/order";
+		return "redirect:/admin/order/1";
 	}
 	
 	// handler method to handle delete order request
@@ -77,7 +93,7 @@ public class OrderController {
 	@GetMapping("/delete/{id}")
 	public String deleteOrder(@PathVariable Long id) {
 		orderService.deleteOrderById(id);
-		return "redirect:/admin/order";
+		return "redirect:/admin/order/1";
 	}
 	
 }

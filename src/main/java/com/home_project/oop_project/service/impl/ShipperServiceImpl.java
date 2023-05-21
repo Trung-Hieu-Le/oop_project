@@ -2,6 +2,9 @@ package com.home_project.oop_project.service.impl;
 
 import java.util.List;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.home_project.oop_project.entity.Shipper;
@@ -18,8 +21,12 @@ public class ShipperServiceImpl implements ShipperService{
 	}
 
 	@Override
-	public List<Shipper> getAllShippers() {
-		return shipperRepository.findAll();
+	public List<Shipper> getAllShippers(String keyword, int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
+		if (keyword != null) {
+            return shipperRepository.search(keyword);
+        }
+        return shipperRepository.findAll(pageable).get().toList();
 	}
 
 	@Override
@@ -41,4 +48,6 @@ public class ShipperServiceImpl implements ShipperService{
 	public void deleteShipperById(Long id) {
 		shipperRepository.deleteById(id);	
 	}
+
+	
 }
