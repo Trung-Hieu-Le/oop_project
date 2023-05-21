@@ -13,7 +13,7 @@ import org.springframework.ui.Model;
 public class AdminController {
 	int adminlogcheck = 0;
 
-	@GetMapping("login")
+	@GetMapping("/login")
 	public String adminLogin(Model model) {
 		
 		return "admin/adminLogin";
@@ -24,6 +24,11 @@ public class AdminController {
 			return "admin/adminHome";
 		// else
 		// 	return "redirect:/admin/login";
+	}
+	@GetMapping("/register")
+	public String adminRegister(Model model) {
+			return "admin/adminRegister";
+		
 	}
 	// @GetMapping("admin-login")
 	// public String adminLog(Model model) {

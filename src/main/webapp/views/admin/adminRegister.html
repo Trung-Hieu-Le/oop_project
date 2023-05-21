@@ -9,16 +9,16 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Đăng kí tài khoản</title>
+    <title>Đăng kí tài khoản Admin</title>
 </head>
 <body style="background: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);">
 
 
 
-<div class="container my-5" style="width: 1800px;" ><br>
+<div class="container my-5" style="width: 1800px;"><br>
     
         <div class="jumbotron border col-sm-5 mx-auto">
-            <h2 class="text-center">Register</h2><br>
+            <h2 class="text-center">Admin Register</h2><br>
             <form action="user-login" method="post">
                 <div class="form-group">
                     <label for="fullname">Full Name:</label>
@@ -47,9 +47,9 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Confirm Your Password:</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Confirm Your Password" required name="password" id="password">
+                    <input type="password" class="form-control form-control-lg" placeholder="ConfirmYour Password" required name="password" id="password">
                 </div>
-                <span style="margin-top: 10px">Already have an account? <a class="linkControl" href="/login">Login here</a></span> <br><br>
+                <span style="margin-top: 10px">Already have an account? <a class="linkControl" href="/admin/login">Login here</a></span> <br><br>
                 <input type="submit" value="Register" class="btn btn-primary btn-block">
                 <br>
                 <h3 style="color:red;" th:text="${message}"></h3>
