@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/adminLayout :: admin_head"> 
+<title>Order Management System</title>
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous"> -->
+</head>
+<body>
+	<header th:replace="layouts/adminLayout :: admin_header"></header>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Create New order </h1>
+				<div class = "card-body">
+					<form th:action="@{/admin/order/add}" th:object = "${order}" method="POST">
+						<div class ="form-group">
+							<label> order startPoint </label>
+							<input
+							type = "text"
+							name = "startPoint"
+						   	th:field = "*{startPoint}"
+							class = "form-control"
+							placeholder="Enter order startPoint"
+							/>
+						</div>
+						
+						<div class ="form-group">
+							<label> order endPoint </label>
+							<input
+							type = "text"
+							name = "endPoint"
+							th:field = "*{endPoint}"
+							class = "form-control"
+							placeholder="Enter order endPoint" 
+							/>
+						</div>
+
+						<div class ="form-group">
+							<label> order value </label>
+							<input
+							type = "text"
+							name = "value"
+							th:field = "*{value}"
+							class = "form-control"
+							placeholder="Enter order value" 
+							/>
+						</div>
+
+						<div class ="form-group">
+							<label> order shipperID </label>
+							<input
+							type = "text"
+							name = "shipper_id"
+							th:field = "*{shipperID}"
+							class = "form-control"
+							placeholder="Enter order shipper id" 
+							/>
+						</div>
+
+						<div class ="form-group">
+							<label> order status </label>
+							<input
+							type = "text"
+							name = "status"
+							th:field = "*{status}"
+							class = "form-control"
+							placeholder="Enter order status" 
+							/>
+						</div>
+						
+						
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
