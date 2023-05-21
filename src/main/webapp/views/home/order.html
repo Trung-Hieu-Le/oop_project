@@ -1,17 +1,20 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head th:replace="layouts/homeLayout :: home_head"> 
+  
 </head>
 <body>
-    <!-- <th:block layout:include="layouts/header"/> -->
-    <header th:replace="layouts/homeLayout :: home_header"></header>
-    <div><br>
+  <header th:replace="layouts/homeLayout :: home_header"></header>
+  <div class="container"><br>
+    <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Đặt hàng ngay</h2><br>
             <form action="#" method="post">
                 <div class="form-group">
                     <label for="username">Nơi đặt hàng:</label>
-                    <input type="text" name="username" id="username" placeholder="" required class="form-control form-control-lg">
+                    <input type="text" name="username" id="username" placeholder="Nhập nơi đặt hàng" required class="form-control form-control-lg" >
                 </div>
                 <div class="form-group">
                     <label for="password">Nơi giao hàng:</label>
@@ -19,18 +22,19 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Giá trị đơn hàng:</label>
-                    <input type="text" name="phone" id="phone" placeholder="" required class="form-control form-control-lg">
+                    <input type="text" name="phone" id="phone" placeholder="Giá trị đơn hàng" required class="form-control form-control-lg">
                 </div>
                 <div class="form-group">
                     <label for="note">Ghi chú:</label>
                     <input type="text" name="note" id="note" placeholder="" required class="form-control form-control-lg">
                 </div>
                 <br>
-                <input type="submit" value="Done" class="btn btn-primary btn-block">
+                <input type="submit" value="Done" class="btn btn-warning btn-block">
                 <br>
                 <h3 style="color:red;" th:text="${message}"></h3>
                 <br>
         </div>
+        <!-- Sửa ở đây -->
     </div>
     <footer th:replace="layouts/homeLayout :: home_footer"></footer>
 </body>

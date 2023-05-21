@@ -97,20 +97,14 @@
     </style>    
 </head>
 <body>
-  <header th:replace="layouts/homeLayout :: home_header"></header>
+    <!-- <th:block layout:include="layouts/header"/> -->
+    <header th:replace="layouts/homeLayout :: home_header"></header>
+    
+    <!-- Sửa ở đây -->
+    <div>
+       this is home
+    </div>
 
-<table border="0">
-    <tr>
-        <td><p>Welcome Back, User!</p>
-        <p>Have a nice day!</p></td>
-        <td>
-          <a href="order.html"><button>Order</button></a>
-          <a href="join.html"><button>Join Us</button></a>
-          <a href="about.html"><button>About Us</button></a>
-        </td>
-    </tr>
-</table>   
-<footer th:replace="layouts/homeLayout :: home_footer"></footer>
+    <!-- Sửa ở đây -->
+    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
 </body>
-
-</html>
