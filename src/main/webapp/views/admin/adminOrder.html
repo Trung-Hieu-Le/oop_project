@@ -1,9 +1,64 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head"> 
+<head th:replace="layouts/adminLayout :: admin_head">
+    <meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<title>order</title>
+<style>
+    .collapse { padding: 5px 5px;}
+	.collapse ul {
+		margin: 0; padding: 0px;
+	}
+	.collapse li {
+		padding: 5px;
+		position: relative;
+		list-style: none;
+	}
+	.collapse li:hover { background-color: #818181; }
+	.collapse .topmenu ul {
+		display:none;
+		position: absolute;
+		background-color: #343a40;
+	}
+	.collapse li:hover > ul { display: table; }
+	.collapse ul.submenu {
+		top: 100%;
+		margin-left: -20px;
+	}
+	.collapse ul.submenu li { padding: 10px 20px; }
+</style> 
 </head>
 <body>
-    <header th:replace="layouts/adminLayout :: admin_header"></header>
+    <header th:replace="layouts/adminLayout :: admin_header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<img src="shipper.png" width="200" height="100">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse">
+					<ul class="mr-auto"></ul>
+					<ul class="navbar-nav">
+						<li class="topmenu"><a class="nav-link" href="adminHome.html">Home Page</a></li>
+						<li class="topmenu"><a class="nav-link">Manage</a>
+							<ul class="submenu">
+								<li><a class="nav-link" href="adminShipper.html">Shippers</a></li>
+								<li><a class="nav-link" href="#">Orders</a></li>
+								<li><a class="nav-link" href="adminUser.html">Users</a></li>
+							</ul>
+										
+						</li>
+						<li class="topmenu"><a class="nav-link" href="adminThongKe.html">Statistic</a></li>
+						<li class="topmenu"><a class="nav-link" href="adminBaoCao.html">Report</a></li>
+						<li class="topmenu"><a class="nav-link" href="adminLogin.html">Logout</a></li>
+	            </ul>
+				</div>	
+			</div>
+		</nav>
+    </header>
     <div>
         <h1>This is Orders</h1>
     </div>
