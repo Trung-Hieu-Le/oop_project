@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/adminLayout :: admin_head"> 
+<title>Shipper Management System</title>
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous"> -->
+</head>
+<body>
+	<header th:replace="layouts/adminLayout :: admin_header"></header>
+	<div class = "container">
+		<div class = "row">
+			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class = "text-center"> Create New shipper </h1>
+				<div class = "card-body">
+					<form th:action="@{/admin/shipper/add}" th:object = "${shipper}" method="POST">
+						<div class ="form-group">
+							<label> shipper name </label>
+							<input
+							type = "text"
+							name = "name"
+						   	th:field = "*{name}"
+							class = "form-control"
+							placeholder="Enter shipper name"
+							/>
+						</div>
+
+                        <div class ="form-group">
+							<label> shipper password </label>
+							<input
+							type = "password"
+							name = "password"
+						   	th:field = "*{password}"
+							class = "form-control"
+							placeholder="Enter shipper password"
+							/>
+						</div>
+						
+						<!-- <div class ="form-group">
+							<label> shipper date of birth </label>
+							<input
+							type = "date"
+							name = "ngaySinh"
+						   	th:field = "*{ngaySinh}"
+							class = "form-control"
+							placeholder="Enter shipper date of birth"
+							/>
+						</div> -->
+						
+						<div class ="form-group">
+							<label> shipper address </label>
+							<input
+							type = "text"
+							name = "diaChi"
+						   	th:field = "*{diaChi}"
+							class = "form-control"
+							placeholder="Enter shipper address"
+							/>
+						</div>
+
+						<div class ="form-group">
+							<label> shipper email </label>
+							<input
+							type = "text"
+							name = "email"
+						   	th:field = "*{email}"
+							class = "form-control"
+							placeholder="Enter shipper email"
+							/>
+						</div>
+
+                        <div class ="form-group">
+							<label> shipper phone number </label>
+							<input
+							type = "text"
+							name = "sdt"
+						   	th:field = "*{sdt}"
+							class = "form-control"
+							placeholder="Enter shipper phone number"
+							/>
+						</div>
+
+                        <div class ="form-group">
+							<label> shipper identity number </label>
+							<input
+							type = "text"
+							name = "cccd"
+						   	th:field = "*{cccd}"
+							class = "form-control"
+							placeholder="Enter shipper cccd"
+							/>
+						</div>
+
+						<div class = "box-footer">
+							<button type="submit" class = "btn btn-primary">
+								Submit
+							</button>
+						</div>
+					</form>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

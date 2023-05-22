@@ -14,6 +14,17 @@
   
   <title>Trang chủ</title>
   <style>
+    html{
+      height: 100%;
+      box-sizing: border-box;
+    }
+    body{
+      position: relative;
+      margin: 0;
+      min-height: 100%;
+      box-sizing: inherit;
+      padding-bottom: 25rem;
+    }
     /* Header */
     .header {
       overflow: hidden;
@@ -43,9 +54,10 @@
       font-size:15px;
       line-height:24px;
       color:#737373;
-      height: 320px;
-      
-      
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
     }
     .footer-links {
       padding-left:0;
@@ -68,7 +80,7 @@
       height:44px;
       text-align:center;
       border-radius:100%;
-   
+    }
     
 
   </style>
@@ -76,7 +88,7 @@
 
 <body>
   <header class="header" th:fragment="home_header">
-    <img class="logo" src="1.jpg">
+    <img src="shipper.png" width="200" height="100">
     <div class="header-right">
       <a href="/">Home</a>
       <a href="about">About</a>

@@ -2,89 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head th:fragment="home_head">
-  <meta charset="UTF-8">
-  <meta name="viewport"
-  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" 
-  integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<head th:replace="layouts/homeLayout :: home_head"> 
   
-  <title>Trang chủ</title>
-  <style>
-    /* Header */
-    .header {
-      overflow: hidden;
-      background-color: #e1e1e1;
-      padding: 10px 10px;
-    }
-    .header a {
-      float: left;
-      color: black;
-      text-align: center;
-      padding: 12px;
-      text-decoration: none;
-      font-size: 18px; 
-      line-height: 25px;
-      border-radius: 5px;
-    }
-    .header a:hover {
-      background-color: #02aaf8;
-      color: black;
-    }
-    .header-right { float: right; }
-
-    /* Footer */
-    .footer {
-      background-color:#262831;
-      padding:30px 20px;
-      font-size:15px;
-      line-height:24px;
-      color:#737373;
-      height: 320px;
-      
-      
-    }
-    .footer-links {
-      padding-left:0;
-      list-style:none
-    }
-    .footer a{ color:#737373; }
-    .footer .social-icons {
-      text-align:right
-    }
-    .footer .social-icons a {   
-      background-color:#2d2d42
-    }
-    .social-icons li {
-      display:inline-block;
-    }
-    .social-icons a {
-      display:inline-block;
-      line-height:44px;
-      width:44px;
-      height:44px;
-      text-align:center;
-      border-radius:100%;
-   
-    
-
-  </style>
 </head>
 <body>
-  <header class="header" th:fragment="home_header">
-    <img class="logo" >
-    <div class="header-right">
-      <a href="/">Home</a>
-      <a href="about">About</a>
-      <a href="order">Order</a>
-      <a href="join">Join us</a>
-      <a href="login">Sign out</a>
-    </div>
-  </header>
+  <header th:replace="layouts/homeLayout :: home_header"></header>
   <div class="container"><br>
+    <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Đặt hàng ngay</h2><br>
             <form action="#" method="post">
@@ -110,51 +34,9 @@
                 <h3 style="color:red;" th:text="${message}"></h3>
                 <br>
         </div>
+        <!-- Sửa ở đây -->
     </div>
-  <footer class="footer" th:fragment="home_footer" >
-        <div  class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h3>About</h3><br>
-              <p class="text-justify">Đây là bài tập đồ án môn OOP của nhóm 6</p>
-            </div>
-            <div class="col-md-3">
-              <h3>Quick link</h3><br>
-              <ul class="footer-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="about">About Us</a></li>
-                <li><a href="order">Order</a></li>
-                <li><a href="join">Join Us</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <h3>Contact Us!</h3><br>
-              <ul class="footer-links">
-                <li><span><u>Địa chỉ:</u> Trường Đại học Xây dựng Hà Nội, số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội</span></li>
-                <li><span><u>Điện thoại:</u> (024) 38 696 397</span></li>
-                <li><span><u>Email:</u> dhxaydung@huce.edu.vn</span></li>
-              </ul>
-            </div>
-          </div>
-          <hr>
-        </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <p class="copyright-text">©2023, From Group 6 with luv. All rights reserved</p>
-            </div>
-            <div class="col-md-4">
-              <ul class="social-icons">
-                <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                <li><a href=""><i class="fab fa-linkedin"></i></a></li>   
-              </ul>
-            </div>
-          </div>
-        </div>
-  </footer>
+    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
 </body>
 
 </html>
