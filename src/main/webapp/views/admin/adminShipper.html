@@ -4,9 +4,71 @@
 </head>
 <body>
     <header th:replace="layouts/adminLayout :: admin_header"></header>
-    <div>
-        <h1>This is Shippers</h1>
-    </div>
+    <div class ="container">
+		<div class = "row">
+			<h1> List shippers </h1>
+		</div>
+		
+		<div class = "row">
+			<div class = "col-3">
+				<a th:href = "@{/admin/shipper/new}" class = "btn btn-primary btn-sm mb-3" style="width: 100px;"> Add shipper</a>
+			</div>
+			<div class="col-6-100">
+				<form th:action="@{/admin/shipper/1}">
+					Filter: <input type="text" name="keyword" id="keyword" style="width: 60%;position: relative;" th:value="${keyword}" required />
+					<a type="button" value="btnClear" id="btnClear" style="position: relative;right:20px" onclick="clearSearch()">x</a>
+					<input type="submit" value="Search"/>
+				</form>
+			</div>
+		</div>
+		<table class = "table table-striped table-bordered">
+			<thead class = "table-dark">
+				<tr>
+					<th>name</th>
+					<th>dia chi</th>
+					<th>sdt</th>
+					<th>cccd</th>
+					<th> Actions </th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr th:each = "shipper: ${shippers}">
+					<td th:text = "${shipper.name}"></td>
+					<td th:text = "${shipper.diaChi}"></td>
+					<td th:text = "${shipper.sdt}"></td>
+					<td th:text = "${shipper.cccd}"></td>
+					<td>
+						<a th:href = "@{/admin/shipper/edit/{id}(id=${shipper.id})}"
+						 class = "btn btn-primary">Update</a>
+						
+						<a th:href = "@{/admin/shipper/delete/{id}(id=${shipper.id})}"
+						 class = "btn btn-danger">Delete</a>
+						 
+					</td>
+				</tr>
+			</tbody>
+		
+		</table>
+		
+		<a th:if="${currentPage > 1}" th:href="@{/admin/shipper/1}">First</a>
+		<span th:unless="${currentPage > 1}">First</span>
+		<a th:if="${currentPage > 1}" th:href="@{/admin/shipper/{id} (id=${currentPage-1})}">Previous</a>
+		<span th:unless="${currentPage > 1}">Previous</span>
+		<span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a th:if="${currentPage != i}" th:href="@{/admin/shipper/{id} (id=${i})}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+		<a th:if="${currentPage < totalPages}" th:href="@{/admin/shipper/{id} (id=${currentPage+1})}">Next</a>
+		<span th:unless="${currentPage < totalPages}">Next</span>
+		<a th:if="${currentPage < totalPages}" th:href="@{/admin/shipper/{id} (id=${totalPages})}">Last</a>
+		<span th:unless="${currentPage < totalPages}">Last</span>
+	</div>
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "[[@{/admin/shipper/1}]]";
+		}
+	</script>
 </body>
-
 </html>

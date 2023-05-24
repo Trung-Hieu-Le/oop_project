@@ -6,6 +6,8 @@
     <!-- <th:block layout:include="layouts/header"/> -->
     <header th:replace="layouts/homeLayout :: home_header"></header>
     <div><br>
+
+        <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Tham gia ngay với chúng tôi</h2><br>
             <form action="user-login" method="post">
@@ -35,6 +37,8 @@
                 <h3 style="color:red;" th:text="${message}"></h3>
                 <br>
         </div>
+        
+        <!-- Sửa ở đây -->
     </div>
     <footer th:replace="layouts/homeLayout :: home_footer"></footer>
 </body>

@@ -14,6 +14,17 @@
   
   <title>Trang chủ</title>
   <style>
+    html{
+      height: 100%;
+      box-sizing: border-box;
+    }
+    body{
+      position: relative;
+      margin: 0;
+      min-height: 100%;
+      box-sizing: inherit;
+      padding-bottom: 25rem;
+    }
     /* Header */
     header {
       overflow: hidden;
@@ -59,6 +70,10 @@ button:hover{
       font-size:15px;
       line-height:24px;
       color:#737373;
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
     }
     .footer-links {
       padding-left:0;
@@ -82,6 +97,8 @@ button:hover{
       text-align:center;
       border-radius:100%;
     }
+    
+
   </style>
 </head>
 
@@ -96,24 +113,9 @@ button:hover{
       <a href="userLogin.html">Sign in</a>
     </div>
   </header>
-  
-  <div class="content">
-    <table border="0">
-    <tr>
-      <td width="700" height="400">
-              <p>Để có thể có một trải nghiệm tốt hơn, hãy đăng nhập hoặc đăng ký!</p>
-        <a href="userLogin.html"><button>Login</button></a>
-        <a href="register.html"><button>Register</button></a>
-      </td>
-      <td width="700" height="400">
-        <img src="shipperlogo.png" width="700" height="400">
-      </td>
-    </tr>
-    </table>
-  </div>
-
-  <footer class="footer" th:fragment="home_footer">
-        <div class="container">
+  <div></div>
+  <footer class="footer" th:fragment="home_footer" >
+        <div  class="container">
           <div class="row">
             <div class="col-md-6">
               <h3>About</h3><br>

@@ -98,70 +98,13 @@
 </head>
 <body>
     <!-- <th:block layout:include="layouts/header"/> -->
-<header th:replace="layouts/homeLayout :: home_header">
-    <img src="shipper.png" width="200" height="100">
-    <div class="header-right">
-      <a href="#">Home</a>
-      <a href="about.html">About</a>
-      <a href="order.html">Order</a>
-      <a href="join.html">Join us</a>
-      <a href="userLogin.html">Sign out</a>
+    <header th:replace="layouts/homeLayout :: home_header"></header>
+    
+    <!-- Sửa ở đây -->
+    <div>
+       this is home
     </div>
-</header>
-<table border="0">
-    <tr>
-        <td><p>Welcome Back, User!</p>
-        <p>Have a nice day!</p></td>
-        <td>
-          <a href="order.html"><button>Order</button></a>
-          <a href="join.html"><button>Join Us</button></a>
-          <a href="about.html"><button>About Us</button></a>
-        </td>
-    </tr>
-</table>   
-<footer th:replace="layouts/homeLayout :: home_footer">
-        <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <h3>About</h3><br>
-                <p class="text-justify">Đây là bài tập đồ án môn OOP của nhóm 6</p>
-              </div>
-              <div class="col-md-3">
-                <h3>Quick link</h3><br>
-                <ul class="footer-links">
-                  <li><a href="about.html">About Us</a></li>
-                  <li><a href="order.html">Order</a></li>
-                  <li><a href="join.html">Join Us</a></li>
-                </ul>
-              </div>
-              <div class="col-md-3">
-                <h3>Contact Us!</h3><br>
-                <ul class="footer-links">
-                  <li><span><u>Địa chỉ:</u> Trường Đại học Xây dựng Hà Nội, số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội</span></li>
-                  <li><span><u>Điện thoại:</u> (024) 38 696 397</span></li>
-                  <li><span><u>Email:</u> dhxaydung@huce.edu.vn</span></li>
-                </ul>
-              </div>
-            </div>
-            <hr>
-          </div>
-  
-          <div class="container">
-            <div class="row">
-              <div class="col-md-8">
-                <p class="copyright-text">©2023, From Group 6 with luv. All rights reserved</p>
-              </div>
-              <div class="col-md-4">
-                <ul class="social-icons">
-                  <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                  <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                  <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                  <li><a href=""><i class="fab fa-linkedin"></i></a></li>   
-                </ul>
-              </div>
-            </div>
-          </div>
-    </footer>
-</body>
 
-</html>
+    <!-- Sửa ở đây -->
+    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
+</body>

@@ -1,18 +1,19 @@
 package com.home_project.oop_project.controllers;
 
-import java.sql.*;
-import java.util.Map;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-	@GetMapping("login")
+	int adminlogcheck = 0;
+
+	@GetMapping("/login")
 	public String adminLogin(Model model) {
 		
 		return "admin/adminLogin";
@@ -22,7 +23,12 @@ public class AdminController {
 		// if(adminlogcheck!=0)
 			return "admin/adminHome";
 		// else
-			// return "redirect:/admin/login";
+		// 	return "redirect:/admin/login";
+	}
+	@GetMapping("/register")
+	public String adminRegister(Model model) {
+			return "admin/adminRegister";
+		
 	}
 	// @GetMapping("admin-login")
 	// public String adminLog(Model model) {
@@ -42,23 +48,6 @@ public class AdminController {
 	// 	}
 	// }
 
-	@GetMapping("shipper")
-	public String adminShipper(Model model) {
-		
-		return "admin/adminShipper";
-	}
-
-	@GetMapping("order")
-	public String adminOrder(Model model) {
-		
-		return "admin/adminOrder";
-	}
-
-	@GetMapping("user")
-	public String adminUser(Model model) {
-		
-		return "admin/adminUser";
-	}
 
 	@GetMapping("thong-ke")
 	public String adminThongKe(Model model) {
@@ -66,10 +55,5 @@ public class AdminController {
 		return "admin/adminThongKe";
 	}
 
-	@GetMapping("bao-cao")
-	public String adminBaoCao(Model model) {
-		
-		return "admin/adminBaoCao";
-	}
 	
 }
