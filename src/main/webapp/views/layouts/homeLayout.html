@@ -48,7 +48,7 @@
     .header-right { float: right; }
     /*content*/
 td:first-child{
-	background-color: blue;
+	background: linear-gradient(to left, #fceabb, #f8b500);
 	color: white;
 	font-size: 30px;
 }
@@ -113,7 +113,20 @@ button:hover{
       <a href="login">Sign in</a>
     </div>
   </header>
-  <div></div>
+  <div>
+    <table border="0">
+      <tr>
+        <td width="700" height="400">
+                <p>Để có 1 trải nghiệm tốt hơn khi sử dụng, hãy đăng nhập hoặc đăng ký!</p>
+          <a href="/admin/login"><button>Login</button></a>
+          <a href="/admin/register"><button>Register</button></a>
+        </td>
+        <td width="700" height="400">
+          <img src="shipperlogo.png" width="700" height="400">
+        </td>
+      </tr>
+      </table>
+  </div>
   <footer class="footer" th:fragment="home_footer" >
         <div  class="container">
           <div class="row">

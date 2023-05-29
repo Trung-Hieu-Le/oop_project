@@ -32,7 +32,11 @@
 	margin-left: -20px;
 }
 .collapse ul.submenu li { padding: 10px 20px; }
-
+td:first-child{
+	background: #56ccf2;
+	font-size: 30px;
+	color: white;
+}
 button{
 	border-radius: 10%;
 	background-color: black;
@@ -95,7 +99,7 @@ button:hover{
 					</li>
 					<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Thống kê</a></li>
 					<!-- <li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Report</a></li> -->
-					<li class="topmenu"><a class="nav-link" href="/admin/login">Logout</a></li>
+					<li class="topmenu"><a class="nav-link" href="/admin/login">Login</a></li>
 
 				</ul>
 			</div>	
@@ -107,8 +111,8 @@ button:hover{
 	<tr>
 		<td width="700" height="400">
             <p>Để có thể quản lý dịch vụ dễ dàng hơn, hãy đăng nhập hoặc đăng ký!</p>
-			<a href="adminLogin.html"><button>Login</button></a>
-			<a href="adminRegister.html"><button>Register</button></a>
+			<a href="/admin/login"><button>Login</button></a>
+			<a href="/admin/register"><button>Register</button></a>
 		</td>
 		<td width="700" height="400">
 			<img src="shipperlogo.png" width="700" height="400">
@@ -116,7 +120,7 @@ button:hover{
 	</tr>
   </table>
 </div>
-<footer class="footer" th:fragment="home_footer">
+<footer class="footer" th:fragment="admin_footer">
 	<div class="container">
 	  <div class="row">
 		<div class="col-md-6">
@@ -126,11 +130,11 @@ button:hover{
 		<div class="col-md-3">
 		  <h3>Quick link</h3><br>
 		  <ul class="footer-links">
-			<li><a href="adminUser.html">Users Management</a></li>
-				<li><a href="adminOrder.html">Order Management</a></li>
-				<li><a href="adminShipper.html">Shipper Management</a></li>
-				<li><a href="adminThongKe.html">Statistic</a></li>
-				<li><a href="adminBaoCao.html">Reports</a></li>
+			<li><a href="/admin/users">Users Management</a></li>
+				<li><a href="/admin/order">Order Management</a></li>
+				<li><a href="/admin/shipper">Shipper Management</a></li>
+				<li><a href="/admin/thongke">Statistic</a></li>
+				<li><a href="/admin/baocao">Reports</a></li>
 		  </ul>
 		</div>
 		<div class="col-md-3">

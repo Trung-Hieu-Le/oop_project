@@ -35,7 +35,7 @@
       .header-right { float: right; }
       /*container*/
       td:first-child{
-          background-color: red;
+          background: linear-gradient(to right, #da4453, #89216b);
           color: white;
           font-size: 50px;
           width: 620px;
@@ -44,7 +44,7 @@
           padding-left: 10px;
       }
       td:last-child{
-          background-color: blue;
+          background: linear-gradient(to right, #1f4037, #99f2c8);
           color: white;
           font-size: 30px;
           width: 620px;
@@ -58,7 +58,7 @@
         height: 50px;
         background-color: black;
         color: white;
-        margin-top: 10px; 
+        margin-top: 20px; 
       }
       button:hover{
          transform: scale(1.1);
@@ -101,9 +101,17 @@
     <header th:replace="layouts/homeLayout :: home_header"></header>
     
     <!-- Sửa ở đây -->
-    <div>
-       this is home
-    </div>
+    <table border="0">
+      <tr>
+        <td><p>Welcome Back, User!</p>
+        <p>Have a nice day!</p></td>
+        <td>
+          <a href="order"><button>Order</button></a>
+          <a href="about"><button>About us</button></a>
+          <a href="join"><button>Join with us</button></a>
+        </td>
+      </tr>
+    </table>
 
     <!-- Sửa ở đây -->
     <footer th:replace="layouts/homeLayout :: home_footer"></footer>

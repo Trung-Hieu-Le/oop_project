@@ -11,27 +11,6 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <title>Home</title>
 <style>
-	.collapse { padding: 5px 5px;}
-	.collapse ul {
-		margin: 0; padding: 0px;
-	}
-	.collapse li {
-		padding: 5px;
-		position: relative;
-		list-style: none;
-	}
-	.collapse li:hover { background-color: #818181; }
-	.collapse .topmenu ul {
-		display:none;
-		position: absolute;
-		background-color: #343a40;
-	}
-	.collapse li:hover > ul { display: table; }
-	.collapse ul.submenu {
-		top: 100%;
-		margin-left: -20px;
-	}
-	.collapse ul.submenu li { padding: 10px 20px; }
 	td:first-child{
         background: linear-gradient(45deg, #21b83f, #212eb8);
 		color: white;
@@ -62,43 +41,25 @@
          transform: scale(1.1);
          transition: 0.7s;
       }
-	footer {
-		  background-color:#262831;
-		  padding:30px 20px;
-		  font-size:15px;
-		  line-height:24px;
-		  color:#737373;
-		}
-	.footer-links {
-		  padding-left:0;
-		  list-style:none
-	}
-	footer a{ color:#737373; }
-	footer .social-icons {
-		  text-align:right
-		}
-		footer .social-icons a {   
-		  background-color:#2d2d42
-		}
-		.social-icons li {
-		  display:inline-block;
-		}
-		.social-icons a {
-		  display:inline-block;
-		  line-height:44px;
-		  width:44px;
-		  height:44px;
-		  text-align:center;
-		  border-radius:100%;
-		}
+	
 	</style>
 </head>
 <body>
     <header th:replace="layouts/adminLayout :: admin_header"></header>
 	<!-- Sửa ở đây -->
-	<div class="text-center">
-		<h1>Welcome Back, Admin</h1><hr>
-	</div>
+	<table border="0">
+		<tr>
+			<td><p>Welcome Back, Admin</p></td>
+			<td>
+				<a href="/admin/order"><button>Order</button></a>
+                <a href="/admin/shipper"><button>Shipper</button></a>
+                <a href="/admin/user"><button>Users</button></a>
+                <a href="/admin/thongke"><button>Statistics</button></a>
+                <a href="/admin/baocao"><button>Report</button></a>
+			</td>
+		</tr>
+	</table>
+    <footer th:replace="layouts/adminLayout :: admin_footer"></footer>
 	<!-- Sửa ở đây -->
 </body>
 </html>
