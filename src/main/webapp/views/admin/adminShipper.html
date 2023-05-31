@@ -67,6 +67,7 @@
 		<span th:unless="${currentPage < totalPages}">Last</span>
 
 	</div>
+	<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
 	<script type="text/javascript">
 		function clearSearch() {
 			window.location = "[[@{/admin/shipper/1}]]";

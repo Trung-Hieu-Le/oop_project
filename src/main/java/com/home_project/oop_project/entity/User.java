@@ -1,5 +1,7 @@
 package com.home_project.oop_project.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,6 +27,7 @@ public class User {
 	private String email;
 
     @Column(name = "sdt")
+    @Value("0")
 	private long sdt;
 
     public User(){}

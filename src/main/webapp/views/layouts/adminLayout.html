@@ -11,6 +11,17 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <title>Trang chủ Admin</title>
 <style>
+	html{
+      height: 100%;
+      box-sizing: border-box;
+    }
+    body{
+      position: relative;
+      margin: 0;
+      min-height: 100%;
+      box-sizing: inherit;
+      padding-bottom: 15rem;
+    }
 .collapse { padding: 5px 5px;}
 .collapse ul {
 	margin: 0; padding: 0px;
@@ -29,6 +40,40 @@
 .collapse li:hover > ul { display: table; }
 
 .collapse ul.dropdown-menu li { padding: 10px 30px; }
+/* Footer */
+.footer {
+      background-color:#262831;
+      padding:30px 20px;
+      font-size:15px;
+      line-height:24px;
+      color:#737373;
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+    .footer-links {
+      padding-left:0;
+      list-style:none
+    }
+    .footer a{ color:#737373; }
+    .footer .social-icons {
+      text-align:right
+    }
+    .footer .social-icons a {   
+      background-color:#2d2d42
+    }
+    .social-icons li {
+      display:inline-block;
+    }
+    .social-icons a {
+      display:inline-block;
+      line-height:44px;
+      width:44px;
+      height:44px;
+      text-align:center;
+      border-radius:100%;
+    }
 </style>
 </head>
 
@@ -57,6 +102,23 @@
 		</div>
 	</nav>
 </header>
+<footer class="footer" th:fragment="admin_footer" >
+	<div class="container">
+	  <div class="row">
+		<div class="col-md-8">
+		  <p class="copyright-text">©2023, From Group 6 with luv. All rights reserved</p>
+		</div>
+		<div class="col-md-4">
+		  <ul class="social-icons">
+			<li><a href=""><i class="fab fa-youtube"></i></a></li>
+			<li><a href=""><i class="fab fa-facebook"></i></a></li>
+			<li><a href=""><i class="fab fa-twitter"></i></a></li>
+			<li><a href=""><i class="fab fa-linkedin"></i></a></li>   
+		  </ul>
+		</div>
+	  </div>
+	</div>
+</footer>
 <div th:fragment="admin_content">
   <p>Changing contents</p>
 </div>
