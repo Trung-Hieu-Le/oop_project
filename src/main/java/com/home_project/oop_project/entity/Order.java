@@ -17,7 +17,10 @@ public class Order {
 	@Column(name = "value")
 	private long value;
 
-	@Column(name = "shipper_id", nullable = false)
+	@Column(name = "customer_name")
+	private String customerName;
+
+	@Column(name = "shipper_id")
 	private long shipperID;
 
 	@Column(name = "status")
@@ -25,11 +28,12 @@ public class Order {
 	
 	public Order(){}
 
-	public Order(String startPoint, String endPoint, long value, long shipperID, String status) {
+	public Order(String startPoint, String endPoint, long value, String customerName, long shipperID, String status) {
 		super();
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
 		this.value = value;
+		this.customerName = customerName;
 		this.shipperID = shipperID;
 		this.status = status;
 	}
@@ -64,6 +68,14 @@ public class Order {
 
 	public void setValue(long value) {
 		this.value = value;
+	}
+
+	public String getCustomerName() {
+		return customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
 	}
 
 	public long getShipperID() {

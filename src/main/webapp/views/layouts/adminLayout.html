@@ -27,11 +27,8 @@
 	background-color: #343a40;
 }
 .collapse li:hover > ul { display: table; }
-.collapse ul.submenu {
-	top: 100%;
-	margin-left: -20px;
-}
-.collapse ul.submenu li { padding: 10px 20px; }
+
+.collapse ul.dropdown-menu li { padding: 10px 30px; }
 </style>
 </head>
 
@@ -44,7 +41,7 @@
 				<ul class="navbar-nav">
 					<li class="topmenu"><a class="nav-link" href="/admin">Home Page</a></li>
 					<li class="topmenu"><a class="nav-link">Manage</a>
-						<ul class="submenu">
+						<ul class="dropdown-menu" style="margin-left: -30px; ">
 							<li><a class="nav-link" href="/admin/shipper/1">Shippers</a>
 							<li><a class="nav-link" href="/admin/order/1">Orders</a>
 							<li><a class="nav-link" href="/admin/user/1">Users</a>
@@ -52,7 +49,7 @@
 									
 					</li>
 					<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Thống kê</a></li>
-					<!-- <li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Report</a></li> -->
+					<li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Báo cáo</a></li>
 					<li class="topmenu"><a class="nav-link" href="/admin/login">Logout</a></li>
 
 				</ul>

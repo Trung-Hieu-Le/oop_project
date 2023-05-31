@@ -1,6 +1,9 @@
 package com.home_project.oop_project.entity;
 
 import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,13 +13,14 @@ public class Shipper {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "fullname")
+	private String fullName;
 	
-	@Column(name = "password")
-	private String password;
+	// @Column(name = "password")
+	// private String password;
 
     @Column(name = "ngay_sinh")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
 
     @Column(name = "dia_chi")
@@ -33,9 +37,8 @@ public class Shipper {
 
     public Shipper(){}
 
-    public Shipper(String name, String password, Date ngaySinh, String diaChi, String email, long sdt, long cccd) {
-        this.name = name;
-        this.password = password;
+    public Shipper(String fullName, Date ngaySinh, String diaChi, String email, long sdt, long cccd) {
+        this.fullName = fullName;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
         this.email = email;
@@ -51,20 +54,12 @@ public class Shipper {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public Date getNgaySinh() {

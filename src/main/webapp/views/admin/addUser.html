@@ -16,13 +16,24 @@
 				<div class = "card-body">
 					<form th:action="@{/admin/user/add}" th:object = "${user}" method="POST">
 						<div class ="form-group">
-							<label> user name </label>
+							<label> user fullname </label>
 							<input
 							type = "text"
-							name = "name"
-						   	th:field = "*{name}"
+							name = "fullName"
+						   	th:field = "*{fullName}"
 							class = "form-control"
-							placeholder="Enter user name"
+							placeholder="Enter user fullname"
+							/>
+						</div>
+
+						<div class ="form-group">
+							<label> user username </label>
+							<input
+							type = "text"
+							name = "userName"
+						   	th:field = "*{userName}"
+							class = "form-control"
+							placeholder="Enter user username"
 							/>
 						</div>
 

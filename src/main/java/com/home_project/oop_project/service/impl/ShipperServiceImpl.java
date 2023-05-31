@@ -21,12 +21,25 @@ public class ShipperServiceImpl implements ShipperService{
 	}
 
 	@Override
+	public List<Shipper> getAllShippers() {
+        return shipperRepository.findAll();
+	}
+
+	@Override
 	public List<Shipper> getAllShippers(String keyword, int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
 		if (keyword != null) {
-            return shipperRepository.search(keyword);
+            return shipperRepository.search(keyword, pageNo*pageSize, pageSize);
         }
         return shipperRepository.findAll(pageable).get().toList();
+	}
+
+	@Override
+	public int getTotalItems(String keyword){
+		if (keyword !=null){
+			return shipperRepository.getTotalItemsSearched(keyword);
+		}
+		return shipperRepository.getTotalItems();
 	}
 
 	@Override

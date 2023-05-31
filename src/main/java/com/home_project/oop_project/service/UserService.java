@@ -5,8 +5,13 @@ import java.util.List;
 import com.home_project.oop_project.entity.User;
 
 public interface UserService {
+
+	List<User> getAllUsers();
+
     List<User> getAllUsers(String keyword, int pageNo, int pageSize);
 	
+	int getTotalItems(String keyword);
+
 	User saveUser(User user);
 	
 	User getUserById(Long id);

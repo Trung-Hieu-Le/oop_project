@@ -11,24 +11,48 @@
     <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Đặt hàng ngay</h2><br>
-            <form action="#" method="post">
-                <div class="form-group">
-                    <label for="username">Nơi đặt hàng:</label>
-                    <input type="text" name="username" id="username" placeholder="Nhập nơi đặt hàng" required class="form-control form-control-lg" >
+            <form action="/order/add" method="post">
+                <div class ="form-group">
+                    <label> order startPoint </label>
+                    <input
+                    type = "text"
+                    name = "startPoint"
+                    class = "form-control"
+                    placeholder="Enter order startPoint"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="password">Nơi giao hàng:</label>
-                    <input type="text" class="form-control form-control-lg	" placeholder="" required name="password" id="password">
+                
+                <div class ="form-group">
+                    <label> order endPoint </label>
+                    <input
+                    type = "text"
+                    name = "endPoint"
+                    class = "form-control"
+                    placeholder="Enter order endPoint" 
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="phone">Giá trị đơn hàng:</label>
-                    <input type="text" name="phone" id="phone" placeholder="Giá trị đơn hàng" required class="form-control form-control-lg">
+
+                <div class ="form-group">
+                    <label> order value </label>
+                    <input
+                    type = "text"
+                    name = "value"
+                    class = "form-control"
+                    value="0"
+                    placeholder="Enter order value" 
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="note">Ghi chú:</label>
-                    <input type="text" name="note" id="note" placeholder="" required class="form-control form-control-lg">
+
+                <div class ="form-group">
+                    <label> tên người nhận </label>
+                    <input
+                    type = "text"
+                    name = "customerName"
+                    class = "form-control"
+                    placeholder="Enter tên người nhận" 
+                    />
                 </div>
-                <br>
+
                 <input type="submit" value="Done" class="btn btn-warning btn-block">
                 <br>
                 <h3 style="color:red;" th:text="${message}"></h3>

@@ -16,17 +16,17 @@
 			<div class = "card-body">
 				<form th:action="@{/admin/shipper/update/{id} (id=${shipper.id})}" th:object = "${shipper}" method="POST">
 					<div class ="form-group">
-                        <label> shipper name </label>
+                        <label> shipper fullname </label>
                         <input
                         type = "text"
-                        name = "name"
-                           th:field = "*{name}"
+                        name = "fullName"
+                           th:field = "*{fullName}"
                         class = "form-control"
-                        placeholder="Enter shipper name"
+                        placeholder="Enter shipper fullname"
                         />
                     </div>
 
-                    <div class ="form-group">
+                    <!-- <div class ="form-group">
                         <label> shipper password </label>
                         <input
                         type = "password"
@@ -35,9 +35,9 @@
                         class = "form-control"
                         placeholder="Enter shipper password"
                         />
-                    </div>
+                    </div> -->
                     
-                    <!-- <div class ="form-group">
+                    <div class ="form-group">
                         <label> shipper date of birth </label>
                         <input
                         type = "date"
@@ -46,7 +46,7 @@
                         class = "form-control"
                         placeholder="Enter shipper date of birth"
                         />
-                    </div> -->
+                    </div>
                     
                     <div class ="form-group">
                         <label> shipper address </label>
