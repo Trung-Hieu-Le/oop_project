@@ -50,7 +50,7 @@ public class AdminController {
 		return "admin/adminLogin";
 	}
 	@RequestMapping(value = "admin-login", method = RequestMethod.POST)
-	public String adminLogin( @RequestParam("name") String username, @RequestParam("password") String pass,Model model) {
+	public String adminLogin( @RequestParam("name") String name, @RequestParam("password") String pass,Model model) {
 		
 		// if(username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
 		// 	adminlogcheck=1;
@@ -65,14 +65,15 @@ public class AdminController {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
 			Statement stmt = con.createStatement();
-			ResultSet rst = stmt.executeQuery("select * from admins where name = '"+username+"' and password = '"+ pass+"' ;");
+			ResultSet rst = stmt.executeQuery("select * from admins where name = '"+name+"' and password = '"+ pass+"' ;");
 			if(rst.next()) {
-				usernameforclass = rst.getString(2);
+				// usernameforclass = rst.getString(2);
+				adminlogcheck=1;
 				return "redirect:/admin";
 				}
 			else {
 				model.addAttribute("message", "Invalid Username or Password");
-				return "home/adminLogin";
+				return "admin/adminLogin";
 			}
 			
 		}
