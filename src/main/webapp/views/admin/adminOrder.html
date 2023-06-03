@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head">
+<head th:replace="~{layouts/adminLayout :: admin_head}">
 </head>
 <body>
-	<header th:replace="layouts/adminLayout :: admin_header"></header>
+	<header th:replace="~{layouts/adminLayout :: admin_header}"></header>
 	<div class="container">
 		<div class="row">
 			<h1> List orders </h1>
@@ -67,7 +67,7 @@
 		<span th:unless="${currentPage < totalPages}">Last</span>
 
 	</div>
-	<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
+	<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 	<script type="text/javascript">
 		function clearSearch() {
 			window.location = "[[@{/admin/order/1}]]";

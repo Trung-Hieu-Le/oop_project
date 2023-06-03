@@ -22,6 +22,8 @@ import com.home_project.oop_project.service.UserService;
 @Controller
 @RequestMapping("/admin/order")
 public class OrderController {
+
+	@Autowired
     private OrderService orderService;
 	@Autowired
 	private UserService userService;
@@ -98,6 +100,7 @@ public class OrderController {
 		existingOrder.setEndPoint(order.getEndPoint());
 		existingOrder.setValue(order.getValue());
 		existingOrder.setCustomerName(order.getCustomerName());
+		existingOrder.setCreatedAt(order.getCreatedAt());
 		existingOrder.setShipperID(order.getShipperID());
 		existingOrder.setStatus(order.getStatus());
 		

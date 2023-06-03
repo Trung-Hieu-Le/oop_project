@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/homeLayout :: home_head"> 
+<head th:replace="~{layouts/homeLayout :: home_head}"> 
 <title>A bout </title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 </head>
 <body>
     <!-- <th:block layout:include="layouts/header"/> -->
-    <header th:replace="layouts/homeLayout :: home_header"></header>
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
     <div>
         <div class="container" style="margin-top:30px">
             <div class="row">
@@ -67,5 +67,5 @@
                 <p>Hình ảnh mọi người đi ăn cùng nhau không gian vô cùng trật và chờ đợi cụng khá lâu vậy thay vì đó bạn có thể ở nhà và oder cho mình nững phần ăn mà không phải mệt mỏi đứng xếp hàng ngồi chờ đợi</p>
             </div>
     </div>
-    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
 </body>

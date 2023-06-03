@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/homeLayout :: home_head"> 
+<head th:replace="~{layouts/homeLayout :: home_head}"> 
 </head>
 <body>
     <!-- <th:block layout:include="layouts/header"/> -->
-    <header th:replace="layouts/homeLayout :: home_header"></header>
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
     <div><br>
 
         <!-- Sửa ở đây -->
@@ -79,7 +79,7 @@
         
         <!-- Sửa ở đây -->
     </div>
-    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
 </body>
 
 </html>

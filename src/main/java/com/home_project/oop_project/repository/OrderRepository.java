@@ -41,8 +41,20 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public List<Object> reportByValue();
 
     @Query(
-        value="SELECT * FROM orders where date between '?2-?1-01' and '?2-?1-31'",
+        value="SELECT * FROM orders where created_at between ?1 and ?2",
         nativeQuery =true
     )
-    public List<Object> reportByMonth();
+    public List<Order> reportInMonth(String startDate, String endDate);
+
+    @Query(
+        value="SELECT count(*) FROM orders where created_at between ?1 and ?2",
+        nativeQuery =true
+    )
+    public int reportCountInMonth(String startDate, String endDate);
+
+    @Query(
+        value="select status,count(id) from orders where created_at between ?1 and ?2 group by status",
+        nativeQuery=true
+    )
+    public List<Object> reportByStatusInMonth(String startDate, String endDate);
 }

@@ -53,8 +53,18 @@ public class OrderServiceImpl implements OrderService{
 	}
 
 	@Override
-	public List<Object> getReportByMonth() {
-		return orderRepository.reportByMonth();
+	public List<Order> getReportInMonth(String startDate, String endDate) {
+		return orderRepository.reportInMonth(startDate, endDate);
+	}
+
+	@Override
+	public int getReportCountInMonth(String startDate, String endDate) {
+		return orderRepository.reportCountInMonth(startDate, endDate);
+	}
+
+	@Override
+	public List<Object> getReportByStatusInMonth(String startDate, String endDate) {
+		return orderRepository.reportByStatusInMonth(startDate, endDate);
 	}
 
 	@Override

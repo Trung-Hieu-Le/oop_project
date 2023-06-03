@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/homeLayout :: home_head">
+<head th:replace="~{layouts/homeLayout :: home_head}">
     <meta charset="UTF-8">
     <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- <th:block layout:include="layouts/header"/> -->
-    <header th:replace="layouts/homeLayout :: home_header"></header>
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
     
     <!-- Sửa ở đây -->
     <div>
@@ -21,5 +21,5 @@
     </div>
 
     <!-- Sửa ở đây -->
-    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
 </body>

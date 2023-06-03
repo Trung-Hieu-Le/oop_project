@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head">
+<head th:replace="~{layouts/adminLayout :: admin_head}">
 	<title>Order Management System</title>
 	<!-- <link rel="stylesheet"
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -8,7 +8,7 @@
         crossorigin="anonymous"> -->
 </head>
 <body>
-<header th:replace="layouts/adminLayout :: admin_header"></header>
+<header th:replace="~{layouts/adminLayout :: admin_header}"></header>
 <div class = "container">
 	<div class = "row">
 		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
@@ -49,13 +49,24 @@
 					</div>
 
 					<div class ="form-group">
-						<label> tên người nhận </label>
+						<label> Tên người nhận </label>
 						<input
 						type = "text"
 						name = "customerName"
 						th:field = "*{customerName}"
 						class = "form-control"
 						placeholder="Enter tên người nhận" 
+						/>
+					</div>
+					
+					<div class ="form-group">
+						<label> Ngày đặt hàng </label>
+						<input
+						type = "date"
+						name = "createdAt"
+						   th:field = "*{createdAt}"
+						class = "form-control"
+						placeholder="Enter Ngày đặt hàng"
 						/>
 					</div>
 
@@ -72,10 +83,11 @@
 					<div class ="form-group">
 						<label> order status </label>
 						<select name = "status" class = "form-control" th:field = "*{status}">
-							<option value="Đang chờ xử lí">Đang chờ xử lí</option>
-							<option value="Đang vận chuyển">Đang vận chuyển</option>
+							<option value="Chờ xử lí">Chờ xử lí</option>
+							<option value="Chưa giao hàng">Chưa giao hàng</option>
+							<option value="Đang giao hàng">Đang giao hàng</option>
 							<option value="Đã giao hàng">Đã giao hàng</option>
-							<option value="Đã hủy">Đã hủy</option>
+							<option value="Hủy đơn hàng">Hủy đơn hàng</option>
 						</select>
 					</div>
 
@@ -91,6 +103,6 @@
 		</div>
 	</div>
 </div>
-<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
+<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 </body>
 </html>

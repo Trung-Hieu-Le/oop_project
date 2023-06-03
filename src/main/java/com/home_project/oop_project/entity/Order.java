@@ -1,4 +1,8 @@
 package com.home_project.oop_project.entity;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,10 +29,14 @@ public class Order {
 
 	@Column(name = "status")
 	private String status;
+
+	@Column(name = "created_at")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date createdAt;
 	
 	public Order(){}
 
-	public Order(String startPoint, String endPoint, long value, String customerName, long shipperID, String status) {
+	public Order(String startPoint, String endPoint, long value, String customerName, long shipperID, String status, Date createdAt) {
 		super();
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
@@ -36,6 +44,7 @@ public class Order {
 		this.customerName = customerName;
 		this.shipperID = shipperID;
 		this.status = status;
+		this.createdAt = createdAt;
 	}
 
 	public Long getId() {
@@ -93,4 +102,14 @@ public class Order {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	
 }

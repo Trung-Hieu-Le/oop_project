@@ -1,70 +1,98 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="layouts/adminLayout :: admin_head">
+<head th:replace="~{layouts/adminLayout :: admin_head}">
 </head>
 
 <body>
-    <header th:replace="layouts/adminLayout :: admin_header"></header>
+    <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <div class="container">
-        <h1 class="text-center ">Báo cáo</h1>
-        <div class="row ">
-
+        <div class="row justify-content-center mt-5">
             <form th:action="@{/admin/bao-cao}">
-                Báo cáo :
-                <input type="text" name="month" id="month_input" style="width: 160px;position: relative;"
-                th:value="${month_input}" required />
-                <input type="text" name="year" id="year_input" style="width: 160px;position: relative;"
-                th:value="${month_input}" required />
-                <a type="button" value="btnClear" id="btnClear" onclick="clearSearch()">
-                    <button class="btn-danger">Clear</button>
-                </a>
-                <input type="submit" style="background-color: aqua;" value="Search" />
+                <div class="row">
+                    <span class="col-3 pt-1 text-center">Báo cáo tháng:</span>
+                    <div class="col">
+                        <div class="row">
+                            <select name="month" id="month" class="col-3 form-control"
+                                style="width: 160px;margin-right: 5px;" required>
+                                <option th:each="i : ${#numbers.sequence(1, 12)}" th:value="${i}" th:text="${i}"
+                                    th:selected="(${i}==*{month})"></option>
+                            </select>
+                            <select name="year" id="year" class="col-3 form-control"
+                                style="width: 160px;margin-right: 5px;" required>
+                                <option th:each="i : ${#numbers.sequence(2020, currentYear )}" th:value="${i}" th:text="${i}"
+                                    th:selected="(${i}==*{year})"></option>
+                            </select>
+                            <a class="col-2 btn btn-danger text-white mr-1" type="button" value="btnClear" id="btnClear" onclick="clearSearch()" >
+                                Xóa
+                            </a>
+                            <input class="col-3 btn btn-primary btn-block" type="submit" value="Tìm kiếm" />
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
         <div class="container bg-light mt-5">
-            <p>Từ ngày đến ngày</p>
-            <p>Số đơn hàng: </p>
-            <p>Số khách hàng: </p>
+            <div class="container" style="padding: 5% 3% 5% 3%;">
+            <h1 class="text-center mb-5">Báo cáo tháng [[${month}]] năm [[${year}]]</h1>
+            <p class="text-align-justify"> &emsp; &emsp; &emsp;Báo cáo doanh thu vận chuyển các đơn hàng là bằng chứng xác thực nhất phản ánh tình trạng kinh doanh của doanh nghiệp. 
+                Từ đó đưa ra các chiến lược và định hướng kinh doanh trong các tháng, quý, năm tới.<br/>
+                &emsp; &emsp; &emsp;Trong tháng vừa qua, chúng ta đã và đang phấn đấu đạt được chỉ tiêu đề ra trong kì họp trước. 
+                Doanh thu của tháng vẫn đang cho thấy đà tăng trưởng và tiềm năng phát triển của dự án. <br/> 
+                &emsp; &emsp; &emsp;Dưới đây là một số con số thông kê trong tháng này:
+            </p>
+            <p>Số đơn hàng mới tạo được: [[${totalOrderInMonth}]]</p>
+            <p>Tổng số khách hàng: [[${totalUser}]]</p>
+            <p>Tổng số shipper: [[${totalShipper}]]</p>
+
             <div>
-                Tỉ lệ đơn hàng
+                Tỉ lệ đơn vận chuyển tháng [[${month}]]/[[${year}]] được minh họa bởi đồ thị bên dưới:
+                <div style="width: 60%;margin: auto;">
+                    <canvas id="statusChart" style="width:100%;"></canvas>
+                </div>
             </div>
-            
+
             <table class="table table-striped table-bordered">
-            <thead class="table-dark">
-                <tr>
-                    <th>startPoint</th>
-                    <th>endPoint</th>
-                    <th>value</th>
-                    <th> status</th>
-                    <th> Actions </th>
-                </tr>
-            </thead>
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nơi nhận hàng</th>
+                        <th>Nơi giao hàng</th>
+                        <th>Giá trị đơn hàng</th>
+                        <th>Ngày đặt hàng</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <tr th:each="order: ${orders}">
-                    <td th:text="${order.startPoint}"></td>
-                    <td th:text="${order.endPoint}"></td>
-                    <td th:text="${order.value}"></td>
-                    <td th:text="${order.status}"></td>
-                    <td>
-                        <a th:href="@{/admin/order/edit/{id}(id=${order.id})}" class="btn btn-primary">Update</a>
-                        
-                        <a th:href="@{/admin/order/delete/{id}(id=${order.id})}" class="btn btn-danger">Delete</a>
-                        
-                    </td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr th:each="order: ${orderByMonth}">
+                        <td th:text="${order.id}"></td>
+                        <td th:text="${order.startPoint}"></td>
+                        <td th:text="${order.endPoint}"></td>
+                        <td th:text="${order.value}"></td>
+                        <td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${order.status}"></td>
+                    </tr>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
     </div>
     </div>
-    <footer th:replace="layouts/adminLayout :: admin_footer"></footer>
-    <script type="text/javascript">
-        function clearSearch() {
-            window.location = "[[@{/admin/bao-cao}]]";
-        }
-    </script>
+    <footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
+    <th:block layout:fragment="script">
+        <script type="text/javascript">
+            function clearSearch() {
+                window.location = "[[@{/admin/bao-cao}]]";
+            }
+        </script>
+        <script th:inline="javascript">
+            var orderStatusCount = [[${ orderStatusCount }]];
+        </script>
+        <script type="text/javascript" th:src="@{/js/order_status.js}"></script>
+
+    </th:block>
 </body>
 
 </html>

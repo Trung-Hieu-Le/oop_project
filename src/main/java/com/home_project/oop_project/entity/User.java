@@ -14,7 +14,7 @@ public class User {
 	@Column(name = "fullname")
 	private String fullName;
 	
-    @Column(name = "username")
+    @Column(name = "username", unique = true)
 	private String userName;
 
 	@Column(name = "password")
@@ -27,12 +27,11 @@ public class User {
 	private String email;
 
     @Column(name = "sdt")
-    @Value("0")
-	private long sdt;
+	private String sdt;
 
     public User(){}
     
-    public User(String fullName, String userName, String password, String diaChi, String email, long sdt) {
+    public User(String fullName, String userName, String password, String diaChi, String email, String sdt) {
         this.fullName = fullName;
         this.userName = userName;
         this.password = password;
@@ -89,11 +88,11 @@ public class User {
         this.email = email;
     }
 
-    public long getSdt() {
+    public String getSdt() {
         return sdt;
     }
 
-    public void setSdt(long sdt) {
+    public void setSdt(String sdt) {
         this.sdt = sdt;
     }
 

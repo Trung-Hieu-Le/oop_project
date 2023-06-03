@@ -2,11 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head th:replace="layouts/homeLayout :: home_head"> 
+<head th:replace="~{layouts/homeLayout :: home_head}"> 
   
 </head>
 <body>
-  <header th:replace="layouts/homeLayout :: home_header"></header>
+  <header th:replace="~{layouts/homeLayout :: home_header}"></header>
   <div class="container"><br>
     <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
@@ -60,7 +60,7 @@
         </div>
         <!-- Sửa ở đây -->
     </div>
-    <footer th:replace="layouts/homeLayout :: home_footer"></footer>
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
 </body>
 
 </html>

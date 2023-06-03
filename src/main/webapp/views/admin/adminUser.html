@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head"> 
+<head th:replace="~{layouts/adminLayout :: admin_head}"> 
 </head>
 <body>
-    <header th:replace="layouts/adminLayout :: admin_header"></header>
+    <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
     <div class ="container">
 		<div class = "row">
 			<h1> List users </h1>
@@ -70,6 +70,6 @@
 			window.location = "[[@{/admin/user/1}]]";
 		}
 	</script>
-	<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
+	<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 </body>
 </html>

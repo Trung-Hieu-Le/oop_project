@@ -2,13 +2,17 @@ package com.home_project.oop_project.controllers.admin;
 
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.home_project.oop_project.service.OrderService;
-import com.home_project.oop_project.service.ShipperService;
-import com.home_project.oop_project.service.UserService;
+import com.home_project.oop_project.entity.Admin;
+import com.home_project.oop_project.service.AdminService;
+
+import java.sql.*;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,14 +22,10 @@ import org.springframework.ui.Model;
 @RequestMapping("/admin")
 public class AdminController {
 	@Autowired
-	private OrderService orderService;
-	@Autowired
-	private ShipperService shipperService;
-	@Autowired
-	private UserService userService;
-
+	private AdminService adminService;
 
 	int adminlogcheck = 0;
+	String usernameforclass = "";
 
 	@GetMapping("/login")
 	public String adminLogin(Model model) {
@@ -50,34 +50,52 @@ public class AdminController {
 		return "admin/adminLogin";
 	}
 	@RequestMapping(value = "admin-login", method = RequestMethod.POST)
-	public String adminLogin( @RequestParam("username") String username, @RequestParam("password") String pass,Model model) {
+	public String adminLogin( @RequestParam("name") String username, @RequestParam("password") String pass,Model model) {
 		
-		if(username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
-			adminlogcheck=1;
-			return "redirect:/admin";
+		// if(username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
+		// 	adminlogcheck=1;
+		// 	return "redirect:/admin";
+		// 	}
+		// else {
+		// 	model.addAttribute("message", "Invalid Username or Password");
+		// 	return "admin/adminLogin";
+		// }
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
+			Statement stmt = con.createStatement();
+			ResultSet rst = stmt.executeQuery("select * from admins where name = '"+username+"' and password = '"+ pass+"' ;");
+			if(rst.next()) {
+				usernameforclass = rst.getString(2);
+				return "redirect:/admin";
+				}
+			else {
+				model.addAttribute("message", "Invalid Username or Password");
+				return "home/adminLogin";
 			}
-		else {
-			model.addAttribute("message", "Invalid Username or Password");
-			return "admin/adminLogin";
+			
 		}
+		catch(Exception e)
+		{
+			System.out.println("Exception:"+e);
+		}
+		return "home/adminLogin";
 	}
 
-
-	@GetMapping("thong-ke")
-	public String adminThongKe(Model model) {
-		model.addAttribute("totalShipper", shipperService.getTotalItems(null));
-		model.addAttribute("totalOrder", orderService.getTotalItems(null));
-		model.addAttribute("totalUser", userService.getTotalItems(null));
-		model.addAttribute("orderStatusCount", orderService.getReportByStatus());
-		model.addAttribute("orderShipperCount", orderService.getReportByShipper());
-		model.addAttribute("orderValueAndCount", orderService.getReportByValue());
-
-		return "admin/adminThongKe";
+	@PostMapping("/admin-register")
+	public String newAdminRegister(@ModelAttribute("admin") Admin admin)
+	{
+		try
+		{
+			adminService.saveAdmin(admin);
+			
+		}
+		catch(Exception e)
+		{
+			System.out.println("Exception:"+e);
+		}
+		return "redirect:/admin";
 	}
 
-	@GetMapping("bao-cao")
-	public String adminBaoCao(Model model) {
-		
-		return "admin/adminBaoCao";
-	}
 }

@@ -10,6 +10,11 @@ import com.home_project.oop_project.service.AdminService;
 public class AdminServiceImpl implements AdminService{
     private AdminRepository adminRepository;
 
+    public AdminServiceImpl(AdminRepository adminRepository) {
+		super();
+		this.adminRepository = adminRepository;
+	}
+
     @Override
     public Admin saveAdmin(Admin admin) {
         return adminRepository.save(admin);

@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head">
+<head th:replace="~{layouts/adminLayout :: admin_head}">
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -12,12 +12,12 @@
 
 </head>
 <body>
-    <header th:replace="layouts/adminLayout :: admin_header"></header>
+    <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
 	<!-- Sửa ở đây -->
 	<div class="text-center">
 		<h1>Welcome Back, Admin</h1><hr>
 	</div>
 	<!-- Sửa ở đây -->
-	<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
+	<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 </body>
 </html>

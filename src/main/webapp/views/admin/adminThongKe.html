@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layouts/adminLayout :: admin_head"> 
+
+<head th:replace="~{layouts/adminLayout :: admin_head}">
 </head>
+
 <body>
-    <header th:replace="layouts/adminLayout :: admin_header"></header>
+    <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
 
     <h1 class="text-center ">Thống kê</h1>
-    <hr/>
+    <hr />
     <div class="row text-center mb-5" style="width: 85%;margin: auto;">
         <div class="col bg-info mr-3 pt-3 pb-3">
             Số lượng shipper
-            <hr/>
+            <hr />
             [[${totalShipper}]]
         </div>
         <div class="col bg-warning ml-3 mr-3 pt-3 pb-3">
             Số lượng đơn hàng
-            <hr/>
+            <hr />
             [[${totalOrder}]]
         </div>
         <div class="col bg-secondary bg-opacity-50 ml-3 pt-3 pb-3">
             Số lượng khách hàng
-            <hr/>
+            <hr />
             [[${totalUser}]]
         </div>
     </div>
@@ -32,19 +34,17 @@
     <div style="width: 70%;margin: auto; margin-top: 100px;">
         <canvas id="shipperChart" style="width:100%;"></canvas>
     </div>
-    <div class="row" style="margin-top: 150px;">
-        <div class="col" style="width: 35%;margin: auto;">
-            <canvas id="valueOrderChart" style="width:100%;"></canvas>
-        </div>
-        <div class="col" style="width: 35%;margin: auto;">
-            <canvas id="numberOrderChart" style="width:100%;"></canvas>
-        </div>
+    <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
+        <canvas id="valueOrderChart" style="width:100%;"></canvas>
+    </div>
+    <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
+        <canvas id="numberOrderChart" style="width:100%;"></canvas>
     </div>
     <th:block layout:fragment="script">
         <script th:inline="javascript">
-            var orderStatusCount = [[${orderStatusCount}]]
-            var orderShipperCount = [[${orderShipperCount}]]
-            var orderValueAndCount = [[${orderValueAndCount}]]
+            var orderStatusCount = [[${ orderStatusCount }]]
+            var orderShipperCount = [[${ orderShipperCount }]]
+            var orderValueAndCount = [[${ orderValueAndCount }]]
         </script>
         <script type="text/javascript" th:src="@{/js/order_status.js}"></script>
         <script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>
@@ -52,6 +52,7 @@
 
 
     </th:block>
-    <footer th:replace="layouts/adminLayout :: admin_footer"></footer>
+    <footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 </body>
+
 </html>

@@ -15,7 +15,11 @@ public interface OrderService {
 
 	List<Object> getReportByValue();
 
-	List<Object> getReportByMonth();
+	List<Order> getReportInMonth(String startDate, String endDate);
+
+	int getReportCountInMonth(String startDate, String endDate);
+
+	List<Object> getReportByStatusInMonth(String startDate, String endDate);
 
 	Order saveOrder(Order order);
 	

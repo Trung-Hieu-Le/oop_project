@@ -9,14 +9,23 @@ new Chart("valueOrderChart", {
     datasets: [{
       fill: false,
       lineTension: 0,
+      borderColor: 'red',
       backgroundColor: 'red',
       data: y1Values
     }]
   },
   options: {
-    legend: {display: false},
+    legend: { display: false },
+    title: {
+      display: true,
+      text: "Số đơn hàng của từng khách hàng"
+    },
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }],
     }
   }
 });
@@ -28,14 +37,23 @@ new Chart("numberOrderChart", {
     datasets: [{
       fill: false,
       lineTension: 0,
+      borderColor: 'red',
       backgroundColor: 'red',
       data: y2Values
     }]
   },
   options: {
-    legend: {display: false},
+    legend: { display: false },
+    title: {
+      display: true,
+      text: "Tổng giá trị các đơn hàng của từng khách hàng"
+    },
     scales: {
-      yAxes: [{ticks: {min: 6, max:16}}],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }],
     }
   }
 });
