@@ -36,6 +36,12 @@ td:first-child{
 	background: #56ccf2;
 	font-size: 30px;
 	color: white;
+	width: 50%;
+	height: 500px;
+}
+td:last-child{
+	width: 50%;
+	height: 500px;
 }
 button{
 	border-radius: 10%;
@@ -83,7 +89,7 @@ button:hover{
 <body>
 <header th:fragment="admin_header">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<img src="shipper.png" width="200" height="100">
+		<img src="/images/shipper.png" width="200" height="100">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse">
 				<ul class="mr-auto"></ul>
@@ -109,13 +115,13 @@ button:hover{
 <div th:fragment="admin_content" class="content">
   <table border="0">
 	<tr>
-		<td width="700" height="400">
+		<td>
             <p>Để có thể quản lý dịch vụ dễ dàng hơn, hãy đăng nhập hoặc đăng ký!</p>
 			<a href="/admin/login"><button>Login</button></a>
 			<a href="/admin/register"><button>Register</button></a>
 		</td>
-		<td width="700" height="400">
-			<img src="shipperlogo.png" width="700" height="400">
+		<td>
+			<img src="/images/shipperlogo.png" width="700" height="400">
 		</td>
 	</tr>
   </table>
