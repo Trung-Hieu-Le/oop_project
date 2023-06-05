@@ -10,26 +10,65 @@
         <!-- Sửa ở đây -->
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Tham gia ngay với chúng tôi</h2><br>
-            <form action="user-login" method="post">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" name="username" id="username" placeholder="" required class="form-control form-control-lg">
+            <form action="/shipper/add" method="post">
+                <div class ="form-group">
+                    <label> shipper fullname </label>
+                    <input
+                    type = "text"
+                    name = "fullName"
+                    class = "form-control"
+                    placeholder="Enter shipper fullname"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone number:</label>
-                    <input type="text" name="phone" id="phone" placeholder="" required class="form-control form-control-lg">
+                
+                <div class ="form-group">
+                    <label> shipper date of birth </label>
+                    <input
+                    type = "date"
+                    name = "ngaySinh"
+                    class = "form-control"
+                    placeholder="Enter shipper date of birth"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="card">Identity card:</label>
-                    <input type="text" name="card" id="card" placeholder="" required class="form-control form-control-lg">
+                
+                <div class ="form-group">
+                    <label> shipper address </label>
+                    <input
+                    type = "text"
+                    name = "diaChi"
+                    class = "form-control"
+                    placeholder="Enter shipper address"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" name="email" id="email" placeholder="" required class="form-control form-control-lg">
+
+                <div class ="form-group">
+                    <label> shipper email </label>
+                    <input
+                    type = "text"
+                    name = "email"
+                    class = "form-control"
+                    placeholder="Enter shipper email"
+                    />
                 </div>
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <textarea class="form-control form-control-lg" rows="3" placeholder="" name="address"></textarea>
+
+                <div class ="form-group">
+                    <label> shipper phone number </label>
+                    <input
+                    type = "text"
+                    name = "sdt"
+                    class = "form-control"
+                    placeholder="Enter shipper phone number"
+                    />
+                </div>
+
+                <div class ="form-group">
+                    <label> shipper identity number </label>
+                    <input
+                    type = "text"
+                    name = "cccd"
+                    class = "form-control"
+                    placeholder="Enter shipper cccd"
+                    />
                 </div>
                 <br>
                 <input type="submit" value="Submit" class="btn btn-primary btn-block">

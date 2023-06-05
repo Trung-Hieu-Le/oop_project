@@ -1,5 +1,7 @@
 package com.home_project.oop_project.entity;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -9,9 +11,12 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "name")
-	private String name;
+	@Column(name = "fullname")
+	private String fullName;
 	
+    @Column(name = "username")
+	private String userName;
+
 	@Column(name = "password")
 	private String password;
 
@@ -22,12 +27,14 @@ public class User {
 	private String email;
 
     @Column(name = "sdt")
+    @Value("0")
 	private long sdt;
 
     public User(){}
     
-    public User(String name, String password, String diaChi, String email, long sdt) {
-        this.name = name;
+    public User(String fullName, String userName, String password, String diaChi, String email, long sdt) {
+        this.fullName = fullName;
+        this.userName = userName;
         this.password = password;
         this.diaChi = diaChi;
         this.email = email;
@@ -42,12 +49,20 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

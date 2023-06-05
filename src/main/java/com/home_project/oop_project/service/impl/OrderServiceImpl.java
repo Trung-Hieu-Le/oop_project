@@ -24,9 +24,37 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> getAllOrders(String keyword, int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
 		if (keyword != null) {
-            return orderRepository.search(keyword);
+            return orderRepository.search(keyword, pageNo*pageSize, pageSize);
         }
         return orderRepository.findAll(pageable).get().toList();
+	}
+
+	@Override
+	public int getTotalItems(String keyword){
+		if (keyword !=null){
+			return orderRepository.getTotalItemsSearched(keyword);
+		}
+		return orderRepository.getTotalItems();
+	}
+
+	@Override
+	public List<Object> getReportByStatus() {
+		return orderRepository.reportByStatus();
+	}
+
+	@Override
+	public List<Object> getReportByShipper() {
+		return orderRepository.reportByShipper();
+	}
+
+	@Override
+	public List<Object> getReportByValue() {
+		return orderRepository.reportByValue();
+	}
+
+	@Override
+	public List<Object> getReportByMonth() {
+		return orderRepository.reportByMonth();
 	}
 
 	@Override

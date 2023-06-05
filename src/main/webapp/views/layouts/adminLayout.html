@@ -11,6 +11,17 @@
 	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 <title>Trang chủ Admin</title>
 <style>
+	html{
+      height: 100%;
+      box-sizing: border-box;
+    }
+    body{
+      position: relative;
+      margin: 0;
+      min-height: 100%;
+      box-sizing: inherit;
+      padding-bottom: 15rem;
+    }
 .collapse { padding: 5px 5px;}
 .collapse ul {
 	margin: 0; padding: 0px;
@@ -60,6 +71,10 @@ button:hover{
       font-size:15px;
       line-height:24px;
       color:#737373;
+      position: absolute;
+      right: 0;
+      left: 0;
+      bottom: 0;
     }
     .footer-links {
       padding-left:0;
@@ -96,7 +111,7 @@ button:hover{
 				<ul class="navbar-nav">
 					<li class="topmenu"><a class="nav-link" href="/admin">Home Page</a></li>
 					<li class="topmenu"><a class="nav-link">Manage</a>
-						<ul class="submenu">
+						<ul class="dropdown-menu" style="margin-left: -30px; ">
 							<li><a class="nav-link" href="/admin/shipper/1">Shippers</a>
 							<li><a class="nav-link" href="/admin/order/1">Orders</a>
 							<li><a class="nav-link" href="/admin/user/1">Users</a>
@@ -106,6 +121,8 @@ button:hover{
 					<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Thống kê</a></li>
 					<!-- <li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Report</a></li> -->
 					<li class="topmenu"><a class="nav-link" href="/admin/login">Login</a></li>
+					<li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Báo cáo</a></li>
+					<li class="topmenu"><a class="nav-link" href="/admin/login">Logout</a></li>
 
 				</ul>
 			</div>	

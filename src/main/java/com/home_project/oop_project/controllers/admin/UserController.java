@@ -1,4 +1,4 @@
-package com.home_project.oop_project.controllers;
+package com.home_project.oop_project.controllers.admin;
 
 import java.util.List;
 
@@ -29,20 +29,19 @@ public class UserController {
     // handler method to handle list Users and return mode and view
     @GetMapping("/{pageNo}")
     public String listUsers(Model model, @Param("keyword") String keyword, @PathVariable int pageNo) {
-        pageNo--;
 		int pageSize=10;
-		int totalItems= userService.getAllUsers(keyword, 0,9999).size();
+        int totalItems= userService.getTotalItems(keyword);
         int totalPages;
         if (totalItems!=0){
 			if(totalItems%pageSize==0) {totalPages= totalItems / pageSize;}
 			else {totalPages= totalItems / pageSize + 1;}
 		}
 		else {totalPages=1;}
-		List<User> listUsers = userService.getAllUsers(keyword, pageNo, pageSize);
+		List<User> listUsers = userService.getAllUsers(keyword, pageNo-1, pageSize);
 		listUsers.size();
 		model.addAttribute("users", listUsers);
         model.addAttribute("keyword", keyword);
-		model.addAttribute("currentPage", pageNo+1);
+		model.addAttribute("currentPage", pageNo);
     	model.addAttribute("totalPages", totalPages);
     	model.addAttribute("totalItems", totalItems);
         return "admin/adminUser"; 
@@ -78,7 +77,8 @@ public class UserController {
         // get User from database by id
         User existingUser = userService.getUserById(id);
         existingUser.setId(id);
-        existingUser.setName(user.getName());
+        existingUser.setFullName(user.getFullName());
+        existingUser.setUserName(user.getUserName());
         existingUser.setPassword(user.getPassword());
         existingUser.setDiaChi(user.getDiaChi());
         existingUser.setEmail(user.getEmail());

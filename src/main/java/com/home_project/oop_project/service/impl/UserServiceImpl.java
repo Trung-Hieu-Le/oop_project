@@ -21,12 +21,25 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public List<User> getAllUsers() {
+        return userRepository.findAll();
+	}
+
+	@Override
 	public List<User> getAllUsers(String keyword, int pageNo, int pageSize) {
 		Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by("id").descending());
 		if (keyword != null) {
-            return userRepository.search(keyword);
+            return userRepository.search(keyword, pageNo*pageSize, pageSize);
         }
         return userRepository.findAll(pageable).get().toList();
+	}
+
+	@Override
+	public int getTotalItems(String keyword){
+		if (keyword !=null){
+			return userRepository.getTotalItemsSearched(keyword);
+		}
+		return userRepository.getTotalItems();
 	}
 
 	@Override

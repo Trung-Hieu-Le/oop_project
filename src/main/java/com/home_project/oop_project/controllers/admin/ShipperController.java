@@ -1,4 +1,4 @@
-package com.home_project.oop_project.controllers;
+package com.home_project.oop_project.controllers.admin;
 
 import java.util.List;
 
@@ -27,20 +27,19 @@ public class ShipperController {
     // handler method to handle list Shippers and return mode and view
     @GetMapping("/{pageNo}")
     public String listShippers(Model model, @Param("keyword") String keyword, @PathVariable int pageNo) {
-        pageNo--;
 		int pageSize=10;
-		int totalItems= shipperService.getAllShippers(keyword, 0,9999).size();
-		int totalPages;
+        int totalItems= shipperService.getTotalItems(keyword);
+        int totalPages;
         if (totalItems!=0){
 			if(totalItems%pageSize==0) {totalPages= totalItems / pageSize;}
 			else {totalPages= totalItems / pageSize + 1;}
 		}
 		else {totalPages=1;}
-		List<Shipper> listShippers = shipperService.getAllShippers(keyword, pageNo, pageSize);
+		List<Shipper> listShippers = shipperService.getAllShippers(keyword, pageNo-1, pageSize);
 		listShippers.size();
 		model.addAttribute("shippers", listShippers);
         model.addAttribute("keyword", keyword);
-		model.addAttribute("currentPage", pageNo+1);
+		model.addAttribute("currentPage", pageNo);
     	model.addAttribute("totalPages", totalPages);
     	model.addAttribute("totalItems", totalItems);        
         return "admin/adminShipper";
@@ -76,8 +75,7 @@ public class ShipperController {
         // get Shipper from database by id
         Shipper existingShipper = shipperService.getShipperById(id);
         existingShipper.setId(id);
-        existingShipper.setName(shipper.getName());
-        existingShipper.setPassword(shipper.getPassword());
+        existingShipper.setFullName(shipper.getFullName());
         existingShipper.setNgaySinh(shipper.getNgaySinh());
         existingShipper.setDiaChi(shipper.getDiaChi());
         existingShipper.setEmail(shipper.getEmail());

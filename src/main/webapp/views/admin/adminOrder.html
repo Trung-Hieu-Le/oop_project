@@ -13,7 +13,7 @@
 			<div class="col-3">
 				<a th:href="@{/admin/order/new}" class="btn btn-primary btn-sm mb-3" style="width: 90px;"> Add order</a>
 			</div>
-			<div class="col-6-100">
+			<div class="col-9">
 				<form th:action="@{/admin/order/1}">
 					Filter: <input type="text" name="keyword" id="keyword" style="width: 60%;position: relative;"
 						th:value="${keyword}" required />
@@ -51,21 +51,23 @@
 
 		</table>
 		
-		<a th:if="${currentPage > 1}" th:href="@{/admin/order/1}">First</a>
+		<a th:if="${currentPage > 1}" th:href="@{'/admin/order/1' +${keyword != null ? '?keyword=' + keyword : ''}}">First</a>
 		<span th:unless="${currentPage > 1}">First</span>
-		<a th:if="${currentPage > 1}" th:href="@{/admin/order/{id} (id=${currentPage-1})}">Previous</a>
+		<a th:if="${currentPage > 1}" th:href="@{'/admin/order/' + ${currentPage-1} +${keyword != null ? '?keyword=' + keyword : ''}}">Previous</a>
 		<span th:unless="${currentPage > 1}">Previous</span>
 		<span th:each="i: ${#numbers.sequence(1, totalPages)}">
-			<a th:if="${currentPage != i}" th:href="@{/admin/order/{id} (id=${i})}">[[${i}]]</a>
+			<!-- <a th:if="${currentPage != i}" th:href="@{/admin/order/{id} (id=${i})}">[[${i}]]</a> -->
+			<a th:if="${currentPage != i}" th:href="@{'/admin/order/' + ${i} +${keyword != null ? '?keyword=' + keyword : ''}}">[[${i}]]</a>
 			<span th:unless="${currentPage != i}">[[${i}]]</span>
 			&nbsp;
 		</span>
-		<a th:if="${currentPage < totalPages}" th:href="@{/admin/order/{id} (id=${currentPage+1})}">Next</a>
+		<a th:if="${currentPage < totalPages}" th:href="@{'/admin/order/' + ${currentPage+1} +${keyword != null ? '?keyword=' + keyword : ''}}">Next</a>
 		<span th:unless="${currentPage < totalPages}">Next</span>
-		<a th:if="${currentPage < totalPages}" th:href="@{/admin/order/{id} (id=${totalPages})}">Last</a>
+		<a th:if="${currentPage < totalPages}" th:href="@{'/admin/order/' + ${totalPages}+${keyword != null ? '?keyword=' + keyword : ''}}">Last</a>
 		<span th:unless="${currentPage < totalPages}">Last</span>
 
 	</div>
+	<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
 	<script type="text/javascript">
 		function clearSearch() {
 			window.location = "[[@{/admin/order/1}]]";

@@ -49,25 +49,34 @@
 					</div>
 
 					<div class ="form-group">
-						<label> order shipperID </label>
+						<label> tên người nhận </label>
 						<input
-								type = "text"
-								name = "shipper_id"
-								th:field = "*{shipperID}"
-								class = "form-control"
-								placeholder="Enter order shipper id"
+						type = "text"
+						name = "customerName"
+						th:field = "*{customerName}"
+						class = "form-control"
+						placeholder="Enter tên người nhận" 
 						/>
 					</div>
 
 					<div class ="form-group">
+						<label> order shipperID </label>
+							<select name = "customer_id" class = "form-control" th:field = "*{shipperID}">
+								<option th:each="shipper: ${listShippers}"
+										th:value="${shipper.id}"
+										th:text="${shipper.fullName}">
+								</option>
+							</select>
+					</div>
+
+					<div class ="form-group">
 						<label> order status </label>
-						<input
-								type = "text"
-								name = "status"
-								th:field = "*{status}"
-								class = "form-control"
-								placeholder="Enter order status"
-						/>
+						<select name = "status" class = "form-control" th:field = "*{status}">
+							<option value="Đang chờ xử lí">Đang chờ xử lí</option>
+							<option value="Đang vận chuyển">Đang vận chuyển</option>
+							<option value="Đã giao hàng">Đã giao hàng</option>
+							<option value="Đã hủy">Đã hủy</option>
+						</select>
 					</div>
 
 
@@ -82,5 +91,6 @@
 		</div>
 	</div>
 </div>
+<footer th:replace="layouts/adminLayout :: admin_footer"></footer>
 </body>
 </html>
