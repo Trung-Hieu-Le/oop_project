@@ -12,7 +12,7 @@
         <title>Đăng nhập</title>
         <style>
             body {  
-                background-image: white;
+                background: linear-gradient(to right, #ff00cc, #333399);
                 padding: 20px;
             }
             .frame{
@@ -70,7 +70,7 @@
                     </div>
                     <div class=" col-md-6 content" id="box">
                         <div class="title d-none d-sm-block">
-                            <h4> WELL COME!</h4><hr> 
+                            <h4> WELCOME!</h4><hr> 
                         </div>
                         <form class="row" action="user-login" method="post" id="login_form" >
                             <div class="form-group"> 
@@ -96,7 +96,8 @@
                             </div>
                         </form>
                         <div class="form-group" style="text-align: center;">
-                            <span >Don't have an account <a class="linkControl" href="/register">Register here</a>  </spa > 
+                            <span >Don't have an account? <a class="linkControl" href="/register">Register here</a></span><br>
+                            <a href="" class="linkControl">Forgot Password?</a> 
                         </div>
 
                         <h5 style="color:red; text-align: center;" th:text="${message}"></h5>
@@ -108,16 +109,6 @@
                     
                 </div>
 					
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" class="form-control form-control-lg	" placeholder="Password" required name="password" id="password">
-                </div>
-                <!-- <span><a class="linkControl" href="#">Forgot Password</a></span> -->
-                <span>Don't have an account? <a class="linkControl" href="register">Register here</a></span> <br><br>
-                <input type="submit" value="Login" class="btn btn-primary btn-block">
-                <br>
-                <h3 style="color:red;" th:text="${message}"></h3>
-                <br>
         </div>
     </body>
 </html>
