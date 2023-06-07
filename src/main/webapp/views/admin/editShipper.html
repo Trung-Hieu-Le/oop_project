@@ -12,11 +12,11 @@
 <div class = "container">
 	<div class = "row">
 		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-			<h1 class = "text-center"> Update shipper </h1>
+			<h1 class = "text-center">Cập nhập shipper </h1>
 			<div class = "card-body">
 				<form th:action="@{/admin/shipper/update/{id} (id=${shipper.id})}" th:object = "${shipper}" method="POST">
 					<div class ="form-group">
-                        <label> shipper fullname </label>
+                        <label> Họ và tên </label>
                         <input
                         type = "text"
                         name = "fullName"
@@ -38,7 +38,7 @@
                     </div> -->
                     
                     <div class ="form-group">
-                        <label> shipper date of birth </label>
+                        <label> Ngày sinh </label>
                         <input
                         type = "date"
                         name = "ngaySinh"
@@ -49,7 +49,7 @@
                     </div>
                     
                     <div class ="form-group">
-                        <label> shipper address </label>
+                        <label> Địa chỉ</label>
                         <input
                         type = "text"
                         name = "diaChi"
@@ -60,7 +60,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> shipper email </label>
+                        <label> Email </label>
                         <input
                         type = "text"
                         name = "email"
@@ -71,7 +71,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> shipper phone number </label>
+                        <label> Số điện thoại </label>
                         <input
                         type = "text"
                         name = "sdt"
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> shipper identity number </label>
+                        <label> CCCD </label>
                         <input
                         type = "text"
                         name = "cccd"
@@ -94,7 +94,7 @@
 
 					<div class = "box-footer">
 						<button type="submit" class = "btn btn-primary">
-							Submit
+							Hoàn thành
 						</button>
 					</div>
 				</form>
