@@ -1,23 +1,218 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{layouts/adminLayout :: admin_head}">
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 
+<head th:replace="~{layouts/adminLayout :: admin_head}">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
 </head>
-<body>
-    <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
-	<!-- Sửa ở đây -->
+
+<body class="bg-light">
+	<header th:replace="~{layouts/adminLayout :: admin_header}"></header>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
 	<div class="text-center">
-		<h1>Welcome Back, Admin</h1><hr>
+		<h1>Welcome Back, [[${adminName}]]</h1>
+		<hr>
 	</div>
-	<!-- Sửa ở đây -->
+	<div class="row text-center mb-5" style="width: 85%;margin: auto;">
+		<div class="col bg-success mr-3 pt-3 pb-3">
+			Số lượng shipper
+			<hr />
+			[[${totalShipper}]]
+		</div>
+		<div class="col bg-info ml-3 mr-3 pt-3 pb-3">
+			Số lượng đơn hàng
+			<hr />
+			[[${totalOrder}]]
+		</div>
+		<div class="col bg-warning bg-opacity-50 ml-3 pt-3 pb-3">
+			Số lượng khách hàng
+			<hr />
+			[[${totalUser}]]
+		</div>
+	</div>
+	<div class="row m-auto">
+		<div class="col-md-5">
+			<div style="margin: auto; padding-left: 50px;">
+				<canvas id="statusChart" style="width:100%;"></canvas>
+			</div>
+		</div>
+		<div class="col-md-7">
+			<div style="margin: auto; width: 70%;">
+				<canvas id="shipperChart" style="width:100%;"></canvas>
+			</div>
+		</div>
+	</div>
+	
+	<div class="row m-auto" style="height: 70px;"></div>
+	
+	<div class="row m-auto">
+		<div class="col-md-7">
+			<div class="row bg-white" style="width: 80%; margin: auto; padding-top: 10px;">
+				<h4 class="col-9">Order gần đây</h4>
+				<a class="col-3" href="/admin/order/1">
+					<h5 class="float-right">Xem tất cả ></h5>
+				</a>
+			</div>
+			<table class="table table-striped table-bordered" style="margin: auto; width: 80%;">
+				<thead class="table-light">
+					<tr>
+						<th>startPoint</th>
+						<th>endPoint</th>
+						<th>value</th>
+						<th> status</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="order: ${listOrders}">
+						<td th:text="${order.startPoint}"></td>
+						<td th:text="${order.endPoint}"></td>
+						<td th:text="${order.value}"></td>
+						<td th:text="${order.status}"></td>
+
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+		<div class="col-md-5">
+			<div class="row bg-white" style="width: 80%; margin: auto; padding-top: 10px;">
+				<h4 class="col-6">Danh sách Shipper</h4>
+				<a class="col-6" href="/admin/shipper/1">
+					<h5 class="float-right">Xem tất cả ></h5>
+				</a>
+			</div>
+			<table class="table table-striped table-bordered" style="margin: auto; width: 80%;">
+				<thead class="table-light">
+					<tr>
+						<th>Tên</th>
+						<th>Địa chỉ</th>
+						<th>SĐT</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr th:each="order: ${listShippers}">
+						<td th:text="${order.fullName}"></td>
+						<td th:text="${order.diaChi}"></td>
+						<td th:text="${order.sdt}"></td>
+
+					</tr>
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+
+	<div class="row m-auto" style="height: 70px;"></div>
+
+	<div class="row m-auto">
+		<div class="col-xl-4">
+			<div class="card w-75 m-auto p-3">
+				<div class="card-block text-center">
+					<p class="m-b-10 align-content-center">Số lượt xem</p>
+					<h4 class="m-t-15">8.62k Lượt xem</h4>
+					<p class="m-b-10">Trên các nền tảng mạng xã hội</p>
+					<button class="btn btn-primary btn-sm btn-round">Trang cá nhân</button>
+				</div>
+			</div>
+			<br />
+			<div class="card w-75 m-auto p-3">
+				<div class="card-block text-center">
+					<p class="m-b-10 align-content-center">Số bài viết</p>
+					<h4 class="m-t-15">167 bài viết</h4>
+					<p class="m-b-10">Trên các nền tảng mạng xã hội</p>
+					<button class="btn btn-success btn-sm btn-round">Danh sách bài viết</button>
+				</div>
+			</div>
+		</div>
+		<div class="col-xl-8">
+			<div class="card social-network" style="width: 95%;">
+				<div class="card-header">
+					<h5>Các trang mạng xã hội</h5>
+				</div>
+				<div class="card-block p-2">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-3">
+									<i class="fab fa-solid fa-youtube" style="color: red; font-size: 70px;"></i>
+								</div>
+								<div class="col-9">
+									<p class="row f-w-400">Views: 545,721</p>
+									<p class="row f-w-400">Likes: 545,721</p>
+									<p class="row f-w-400">Shares: 545,721</p>
+									<p class="row f-w-400">Subscribes: 545,721</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-3">
+									<i class="fab fa-solid fa-facebook" style="color: dodgerblue; font-size: 70px;"></i>
+								</div>
+								<div class="col-9">
+									<p class="row f-w-400">Views: 545,721</p>
+									<p class="row f-w-400">Likes: 545,721</p>
+									<p class="row f-w-400">Shares: 545,721</p>
+									<p class="row f-w-400">Subscribes: 545,721</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-3">
+									<i class="fab fa-solid fa-twitter" style="color: lightskyblue; font-size: 70px;"></i>
+								</div>
+								<div class="col-9">
+									<p class="row f-w-400">Views: 545,721</p>
+									<p class="row f-w-400">Follows: 545,721</p>
+									<p class="row f-w-400">Tweets: 545,721</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-3">
+									<i class="fab fa-solid fa-linkedin" style="color: turquoise; font-size: 70px;"></i>
+								</div>
+								<div class="col-9">
+									<p class="row f-w-400">Views: 545,721</p>
+									<p class="row f-w-400">Follows: 545,721</p>
+									<p class="row f-w-400">Tweets: 545,721</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="row m-auto" style="height: 70px;"></div>
+
 	<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
+	<th:block layout:fragment="script">
+		<script th:inline="javascript">
+			var orderStatusCount = [[${ orderStatusCount }]]
+			var orderShipperCount = [[${ orderShipperCount }]]
+			var orderValueAndCount = [[${ orderValueAndCount }]]
+		</script>
+		<script type="text/javascript" th:src="@{/js/order_status.js}"></script>
+		<script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>
+		<script type="text/javascript" th:src="@{/js/order_value.js}"></script>
+
+	</th:block>
 </body>
+
 </html>

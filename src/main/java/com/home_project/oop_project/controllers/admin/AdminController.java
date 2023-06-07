@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.home_project.oop_project.entity.Admin;
 import com.home_project.oop_project.service.AdminService;
+import com.home_project.oop_project.service.OrderService;
+import com.home_project.oop_project.service.ShipperService;
+import com.home_project.oop_project.service.UserService;
 
 import java.sql.*;
 
@@ -23,6 +26,12 @@ import org.springframework.ui.Model;
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
+	@Autowired
+	private OrderService orderService;
+	@Autowired
+	private ShipperService shipperService;
+	@Autowired
+	private UserService userService;
 
 	int adminlogcheck = 0;
 	String usernameforclass = "";
@@ -34,8 +43,17 @@ public class AdminController {
 	}
 	@GetMapping("")
 	public String adminHome(Model model) {
-		if(adminlogcheck!=0)
+		if(usernameforclass != ""){
+			model.addAttribute("adminName",usernameforclass);
+			model.addAttribute("totalShipper", shipperService.getTotalItems(null));
+			model.addAttribute("totalOrder", orderService.getTotalItems(null));
+			model.addAttribute("totalUser", userService.getTotalItems(null));
+			model.addAttribute("listOrders", orderService.getAllOrders(null, 0, 10));
+			model.addAttribute("listShippers", shipperService.getAllShippers(null, 0, 10));
+			model.addAttribute("orderStatusCount", orderService.getReportByStatus());
+			model.addAttribute("orderShipperCount", orderService.getReportByShipper());
 			return "admin/adminHome";
+		}
 		else
 			return "redirect:/admin/login";
 	}
@@ -51,15 +69,7 @@ public class AdminController {
 	}
 	@RequestMapping(value = "admin-login", method = RequestMethod.POST)
 	public String adminLogin( @RequestParam("name") String name, @RequestParam("password") String pass,Model model) {
-		
-		// if(username.equalsIgnoreCase("admin") && pass.equalsIgnoreCase("123")) {
-		// 	adminlogcheck=1;
-		// 	return "redirect:/admin";
-		// 	}
-		// else {
-		// 	model.addAttribute("message", "Invalid Username or Password");
-		// 	return "admin/adminLogin";
-		// }
+
 		try
 		{
 			Class.forName("com.mysql.jdbc.Driver");
@@ -68,7 +78,7 @@ public class AdminController {
 			ResultSet rst = stmt.executeQuery("select * from admins where name = '"+name+"' and password = '"+ pass+"' ;");
 			if(rst.next()) {
 				// usernameforclass = rst.getString(2);
-				adminlogcheck=1;
+				usernameforclass = name;
 				return "redirect:/admin";
 				}
 			else {
@@ -81,7 +91,7 @@ public class AdminController {
 		{
 			System.out.println("Exception:"+e);
 		}
-		return "home/adminLogin";
+		return "admin/adminLogin";
 	}
 
 	@PostMapping("/admin-register")
