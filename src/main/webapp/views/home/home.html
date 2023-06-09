@@ -1,23 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layouts/homeLayout :: home_head}">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" 
-    integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    
 </head>
 <body>
     <!-- <th:block layout:include="layouts/header"/> -->
     <header th:replace="~{layouts/homeLayout :: home_header}"></header>
     
     <!-- Sửa ở đây -->
-    <div>
-       this is home
+    <div class="bigpic">
+        <div class="container bg-light w-25" style="opacity: 50%;">
+            <span style="font-size: 80px;">S-Shipper</span>
+            <br/>
+            <span style="font-size: 50px;">Phục vụ 24/7</span>
+        </div>
+    </div>
+    <div class="row text-center mt-5 mb-3">
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-01.png') }}" alt="banner1"
+              style="width:100px; position:relative; padding-top:20px">
+          </div>
+          <h4 class="vsc-text">Cơ sở vật chất <br /> hiện đại</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-02.png') }}" alt="banner2"
+              style="width:150px; position:relative;">
+          </div>
+          <h4 class="vsc-text">Phương pháp đào tạo <br /> 100% thực tế</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-03.png') }}" alt="banner3"
+              style="width:150px; position:relative; padding-left:15px">
+          </div>
+          <h4 class="vsc-text">Thành tích & <br /> giải thưởng</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-04.png') }}" alt="banner4"
+              style="width:150px; position:relative">
+          </div>
+          <h4 class="vsc-text">Bảo hành khóa học <br /> trọn đời</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-05.png') }}" alt="banner5"
+              style="width:150px; position:relative; padding-top:10px; padding-right:10px">
+          </div>
+          <h4 class="vsc-text">Chứng nhận có giá trị <br /> toàn quốc</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-06.png') }}" alt="banner6"
+              style="width:150px; position:relative; padding-left:25px; padding-top:10px">
+          </div>
+          <h4 class="vsc-text">Giới thiệu việc làm <br /> cho học viên</h4>
+        </div>
+      </div>
+    <div class="mt-5">
+        <div class="row text-center mb-5" style="width: 85%;margin: auto;">
+            <div class="col bg-light mr-3 pt-3 pb-3">
+                Số lượng shipper
+                <hr />
+                125+
+            </div>
+            <div class="col bg-light ml-3 mr-3 pt-3 pb-3">
+                Số lượng đơn hàng
+                <hr />
+                140,000+
+            </div>
+            <div class="col bg-light bg-opacity-50 ml-3 pt-3 pb-3">
+                Số lượng khách hàng
+                <hr />
+                1,450+
+            </div>
+        </div>
     </div>
 
     <!-- Sửa ở đây -->
