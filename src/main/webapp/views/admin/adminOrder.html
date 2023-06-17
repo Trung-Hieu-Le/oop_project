@@ -11,7 +11,7 @@
 
 		<div class="row">
 			<div class="col-3">
-				<a th:href="@{/admin/order/new}" class="btn btn-primary btn-sm mb-3" style="width: 90px;">Thêm đơn hàng</a>
+				<a th:href="@{/admin/order/new}" class="btn btn-primary btn-sm mb-3" style="width: 90px;">Thêm</a>
 			</div>
 			<div class="col-9">
 				<form th:action="@{/admin/order/1}">
@@ -28,7 +28,8 @@
 				<tr>
 					<th>Điểm lấy hàng</th>
 					<th>Điểm giao hàng</th>
-					<th>Giá trị đơn hàng</th>
+					<th>Tên đơn hàng</th>
+					<th>Ngày đặt hàng</th>
 					<th>Trạng thái</th>
 					<th> Hành động </th>
 				</tr>
@@ -38,7 +39,8 @@
 				<tr th:each="order: ${orders}">
 					<td th:text="${order.startPoint}"></td>
 					<td th:text="${order.endPoint}"></td>
-					<td th:text="${order.value}"></td>
+					<td th:text="${order.goodName}"></td>
+					<td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy')}"></td>
 					<td th:text="${order.status}"></td>
 					<td>
 						<a th:href="@{/admin/order/edit/{id}(id=${order.id})}" class="btn btn-primary">Cập nhập</a>

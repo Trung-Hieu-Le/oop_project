@@ -35,16 +35,16 @@
         <canvas id="shipperChart" style="width:100%;"></canvas>
     </div>
     <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
-        <canvas id="valueOrderChart" style="width:100%;"></canvas>
+        <canvas id="userChart" style="width:100%;"></canvas>
     </div>
-    <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
+    <!-- <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
         <canvas id="numberOrderChart" style="width:100%;"></canvas>
-    </div>
+    </div> -->
     <th:block layout:fragment="script">
         <script th:inline="javascript">
             var orderStatusCount = [[${ orderStatusCount }]]
             var orderShipperCount = [[${ orderShipperCount }]]
-            var orderValueAndCount = [[${ orderValueAndCount }]]
+            var orderUserCount = [[${ orderUserCount }]]
         </script>
         <script type="text/javascript" th:src="@{/js/order_status.js}"></script>
         <script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>

@@ -59,9 +59,9 @@
                         <th>ID</th>
                         <th>Điểm đặt hàng </th>
                         <th>Điểm giao hàng</th>
-                        <th>Giá trị</th>
+                        <th>Tên đơn hàng</th>
+                        <th>Ngày đặt hàng</th>
                         <th>Trạng thái</th>
-                        <th>Hành động</th>
                     </tr>
                 </thead>
 
@@ -70,8 +70,8 @@
                         <td th:text="${order.id}"></td>
                         <td th:text="${order.startPoint}"></td>
                         <td th:text="${order.endPoint}"></td>
-                        <td th:text="${order.value}"></td>
-                        <td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${order.goodName}"></td>
+                        <td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy')}"></td>
                         <td th:text="${order.status}"></td>
                     </tr>
                 </tbody>

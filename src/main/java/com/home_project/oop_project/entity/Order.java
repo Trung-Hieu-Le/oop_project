@@ -18,11 +18,20 @@ public class Order {
 	@Column(name = "end_point", nullable = false)
 	private String endPoint;
 	
-	@Column(name = "value")
-	private long value;
+	@Column(name = "goodName")
+	private String goodName;
+
+	@Column(name = "goodType")
+	private String goodType;
+
+	@Column(name = "goodWeight")
+	private String goodWeight;
 
 	@Column(name = "customer_name")
 	private String customerName;
+
+	@Column(name = "user_id")
+	private long userID;
 
 	@Column(name = "shipper_id")
 	private long shipperID;
@@ -33,18 +42,25 @@ public class Order {
 	@Column(name = "created_at")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date createdAt;
+
+	@Column(name = "ghi_chu")
+	private String ghiChu;
 	
 	public Order(){}
 
-	public Order(String startPoint, String endPoint, long value, String customerName, long shipperID, String status, Date createdAt) {
+	public Order(String startPoint, String endPoint, String goodName, String goodType, String goodWeight, String customerName, long userID, long shipperID, String status, Date createdAt, String ghiChu) {
 		super();
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
-		this.value = value;
+		this.goodName = goodName;
+		this.goodType = goodType;
+		this.goodWeight = goodWeight;
 		this.customerName = customerName;
+		this.userID = userID;
 		this.shipperID = shipperID;
 		this.status = status;
 		this.createdAt = createdAt;
+		this.ghiChu = ghiChu;
 	}
 
 	public Long getId() {
@@ -71,12 +87,12 @@ public class Order {
 		this.endPoint = endPoint;
 	}
 
-	public long getValue() {
-		return value;
+	public String getGoodWeight() {
+		return goodWeight;
 	}
 
-	public void setValue(long value) {
-		this.value = value;
+	public void setGoodWeight(String goodWeight) {
+		this.goodWeight = goodWeight;
 	}
 
 	public String getCustomerName() {
@@ -87,6 +103,14 @@ public class Order {
 		this.customerName = customerName;
 	}
 
+	public long getUserID() {
+		return userID;
+	}
+
+	public void setUserID(long userID) {
+		this.userID = userID;
+	}
+	
 	public long getShipperID() {
 		return shipperID;
 	}
@@ -110,6 +134,32 @@ public class Order {
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
+
+	public String getGoodName() {
+		return goodName;
+	}
+
+	public void setGoodName(String goodName) {
+		this.goodName = goodName;
+	}
+
+	public String getGoodType() {
+		return goodType;
+	}
+
+	public void setGoodType(String goodType) {
+		this.goodType = goodType;
+	}
+
+	public String getGhiChu() {
+		return ghiChu;
+	}
+
+	public void setGhiChu(String ghiChu) {
+		this.ghiChu = ghiChu;
+	}
+
+	
 
 	
 }

@@ -1,5 +1,7 @@
 package com.home_project.oop_project.controllers.admin;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,7 +76,11 @@ public class OrderController {
 	
 	@PostMapping("/add")
 	public String saveOrder(@ModelAttribute("order") Order order) {
-		orderService.saveOrder(order);
+		// orderService.saveOrder(order);
+		Date currentDate = Calendar.getInstance().getTime();
+		Order order0 = new Order(order.getStartPoint(), order.getEndPoint(), order.getGoodName(), order.getGoodType(), order.getGoodWeight(),
+		 order.getCustomerName(),order.getUserID(), order.getShipperID(), order.getStatus(), currentDate, order.getGhiChu());
+		orderService.saveOrder(order0);
 		return "redirect:/admin/order/1";
 	}
 	
@@ -89,27 +95,28 @@ public class OrderController {
 	}
 
 	@PostMapping("/update/{id}")
-	public String updateOrder(@PathVariable Long id,
-			@ModelAttribute("order") Order order,
-			Model model) {
+	public String updateOrder(@PathVariable Long id, @ModelAttribute("order") Order order, Model model) {
 		
-		// get order from database by id
+		// Date currentDate = Calendar.getInstance().getTime();
 		Order existingOrder = orderService.getOrderById(id);
 		existingOrder.setId(id);
 		existingOrder.setStartPoint(order.getStartPoint());
 		existingOrder.setEndPoint(order.getEndPoint());
-		existingOrder.setValue(order.getValue());
 		existingOrder.setCustomerName(order.getCustomerName());
-		existingOrder.setCreatedAt(order.getCreatedAt());
+		existingOrder.setUserID(order.getUserID());
 		existingOrder.setShipperID(order.getShipperID());
+		// existingOrder.setCreatedAt(currentDate);
+		existingOrder.setGoodName(order.getGoodName());
+		existingOrder.setGoodType(order.getGoodType());
+		existingOrder.setGoodWeight(order.getGoodWeight());
 		existingOrder.setStatus(order.getStatus());
+		existingOrder.setGhiChu(order.getGhiChu());
 		
 		// save updated order object
 		orderService.updateOrder(existingOrder);
 		return "redirect:/admin/order/1";
 	}
 	
-	// handler method to handle delete order request
 	
 	@GetMapping("/delete/{id}")
 	public String deleteOrder(@PathVariable Long id) {

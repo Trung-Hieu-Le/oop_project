@@ -16,46 +16,47 @@
 				<div class = "card-body">
 					<form th:action="@{/admin/user/add}" th:object = "${user}" method="POST">
 						<div class ="form-group">
-							<label> Tên đầy đủ người dùng </label>
-							<input
-							type = "text"
-							name = "fullName"
-						   	th:field = "*{fullName}"
-							class = "form-control"
-							placeholder="Enter user fullname"
-							/>
+							<label> Tên đầy đủ của người dùng* </label>
+							<input type="text" name="fullName" th:field="*{fullName}" class="form-control"
+								placeholder="Nhập tên đầy đủ của người dùng" required title="Không nhập chữ số và các kí tự đặc biệt"
+								pattern="[A-Za-z._%+-]" />
 						</div>
 
 						<div class ="form-group">
-							<label> Tên được sử dụng </label>
+							<label> Tên hiển thị của người dùng* </label>
 							<input
 							type = "text"
 							name = "userName"
 						   	th:field = "*{userName}"
 							class = "form-control"
-							placeholder="Enter user username"
+							placeholder="Nhập tên hiển thị của người dùng"
+							required
 							/>
 						</div>
 
                         <div class ="form-group">
-							<label> Mật khẩu </label>
+							<label> Mật khẩu* </label>
 							<input
 							type = "password"
 							name = "password"
 						   	th:field = "*{password}"
 							class = "form-control"
-							placeholder="Enter user password"
+							placeholder="Nhập mật khẩu người dùng"
+							required
+
 							/>
 						</div>
 						
                         <div class ="form-group">
-							<label> Số điện thoại ngừi dùng </label>
+							<label> Số điện thoại người dùng* </label>
 							<input
 							type = "text"
 							name = "sdt"
 						   	th:field = "*{sdt}"
 							class = "form-control"
-							placeholder="Enter user phone number"
+							placeholder="Nhập số điện thoại người dùng"
+							required title="Chỉ nhập chữ số"
+							pattern="[0-9]+"
 							/>
 						</div>
 
@@ -66,18 +67,20 @@
 							name = "email"
 							   th:field = "*{email}"
 							class = "form-control"
-							placeholder="Enter user email"
+							placeholder="Nhập email người dùng"
+							pattern="[a-z0-9._%+-]+@[a-z0-9.-]$"
 							/>
 						</div>
 
 						<div class ="form-group">
-							<label> Địa chỉ người dùng </label>
+							<label> Địa chỉ người dùng* </label>
 							<input
 							type = "text"
 							name = "diaChi"
 						   	th:field = "*{diaChi}"
 							class = "form-control"
-							placeholder="Enter user address"
+							placeholder="Nhập địa chỉ người dùng"
+							required
 							/>
 						</div>
 

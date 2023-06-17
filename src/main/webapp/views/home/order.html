@@ -12,33 +12,32 @@
         <div class="jumbotron col-sm-5 mx-auto">
             <h2 class="text-center">Đặt hàng ngay</h2><br>
             <form action="/order/add" method="post">
+                <div class="row">
+                    <div class="col">
+
                 <div class ="form-group">
-                    <label> Địa chỉ đặt hàng </label>
+                    <label>Điểm đặt hàng* </label>
+                    <br/><input type="checkbox" name="startPoint" value="tại nhà riêng" id="startAtHome">Địa chỉ nhà của bạn?<br>
                     <input
                     type = "text"
+                    id="startAway"
                     name = "startPoint"
                     class = "form-control"
-                    placeholder="Enter order startPoint"
+                    placeholder="Nhập điểm đặt hàng"
+                    required
                     />
                 </div>
                 
                 <div class ="form-group">
-                    <label> Địa chỉ giao hàng </label>
+                    <label>Điểm giao hàng* </label>
+                    <br/><input type="checkbox" name="endPoint" value="tại nhà riêng" id="endAtHome">Địa chỉ nhà của bạn?<br>
                     <input
                     type = "text"
+                    id="endAway"
                     name = "endPoint"
                     class = "form-control"
-                    placeholder="Enter order endPoint" 
-                    />
-                </div>
-
-                <div class ="form-group">
-                    <label> Giá trị đơn hàng </label>
-                    <input
-                    type = "text"
-                    name = "value"
-                    class = "form-control"
-                    placeholder="Enter order value" 
+                    placeholder="Nhập điểm giao hàng" 
+                    required
                     />
                 </div>
 
@@ -48,11 +47,58 @@
                     type = "text"
                     name = "customerName"
                     class = "form-control"
-                    placeholder="Enter tên người nhận" 
+                    placeholder="Nhập tên người nhận" 
                     />
                 </div>
 
-                <input type="submit" value="Done" class="btn btn-warning btn-block">
+                </div>
+                <div class="col">
+                    <div class ="form-group">
+                        <label>Tên đơn hàng* </label>
+                        <input
+                        type = "text"
+                        name = "goodName"
+                        class = "form-control"
+                        placeholder="Nhập tên đơn hàng" required
+                        />
+                    </div>
+    
+                    <div class ="form-group">
+                        <label>Phân loại đơn hàng* </label>
+                        <select name = "goodType" class = "form-control" required>
+                            <option value="Thực phẩm">Thực phẩm</option>
+                            <option value="Quần áo">Quần áo</option>
+                            <option value="Điện tử">Điện tử</option>
+                            <option value="Dễ vỡ">Dễ vỡ</option>
+                            <option value="Khác">Khác</option>
+                        </select>
+                    </div>
+    
+                    <div class ="form-group">
+                        <label>Trọng lượng đơn hàng* </label>
+                        <select name = "goodWeight" class = "form-control" required>
+                            <option value="Dưới 1kg">Dưới 1kg</option>
+                            <option value="1kg-2kg">1kg - 2kg</option>
+                            <option value="2kg-5kg">2kg - 5kg</option>
+                            <option value="5kg-10kg">5kg - 10kg</option>
+                            <option value="Trên 10kg">Trên 10kg</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+                <div class ="form-group">
+                    <label>Ghi chú </label>
+                    <input
+                    type = "text"
+                    name = "ghiChu"
+                    class = "form-control"
+                    placeholder="Nhập ghi chú (nếu có)" 
+                    
+                    />
+                </div>
+
+                <input type="submit" value="Done" class="btn btn-primary btn-block">
                 <br>
                 <h3 style="color:red;" th:text="${message}"></h3>
                 <br>
@@ -60,6 +106,22 @@
         <!-- Sửa ở đây -->
     </div>
     <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
+    <script>
+        document.getElementById('startAtHome').onclick = function() {
+            document.getElementById("endAtHome").checked = false;
+            document.getElementById("startAway").disabled = this.checked;
+            document.getElementById("endAway").disabled = false;
+
+
+        }
+        document.getElementById('endAtHome').onclick = function(){
+            document.getElementById("startAtHome").checked = false;
+            document.getElementById("endAway").disabled = this.checked;
+            document.getElementById("startAway").disabled = false;
+
+
+        }
+    </script>
 </body>
 
 </html>

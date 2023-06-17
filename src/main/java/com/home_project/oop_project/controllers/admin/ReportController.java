@@ -31,7 +31,7 @@ public class ReportController {
 		model.addAttribute("totalUser", userService.getTotalItems(null));
 		model.addAttribute("orderStatusCount", orderService.getReportByStatus());
 		model.addAttribute("orderShipperCount", orderService.getReportByShipper());
-		model.addAttribute("orderValueAndCount", orderService.getReportByValue());
+		model.addAttribute("orderUserCount", orderService.getReportByValue());
 
 		return "admin/adminThongKe";
 	}

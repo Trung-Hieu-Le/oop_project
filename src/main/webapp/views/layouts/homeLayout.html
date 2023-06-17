@@ -93,7 +93,7 @@
       background-repeat: no-repeat, repeat;
       background-size: cover;
     }
-
+    .nav-link:hover > ul { display: table; }
   </style>
 </head>
 
@@ -105,7 +105,17 @@
       <a href="about">Giới thiệu</a>
       <a href="order">Đặt hàng</a>
       <a href="join">Xin tuyển</a>
-      <a href="login">Đăng xuất</a>
+      <a class="nav-link">Tài khoản</a>
+        <ul class="dropdown-menu" style="margin-left: -30px; display:none;
+        position: absolute;
+        background-color: #343a40;">
+          <li><a class="nav-link" href="">Sửa thông tin</a>
+          <li><a class="nav-link" href="">Đổi mật khẩu</a>
+          <li><a class="nav-link" href="login">Đăng xuất</a>
+        </ul>
+              
+      
+      <!-- <a href="login">Đăng xuất</a> -->
     </div>
   </header>
   <div></div>

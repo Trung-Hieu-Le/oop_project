@@ -16,13 +16,15 @@
 			<div class = "card-body">
 				<form th:action="@{/admin/shipper/update/{id} (id=${shipper.id})}" th:object = "${shipper}" method="POST">
 					<div class ="form-group">
-                        <label> Họ và tên </label>
+                        <label> Họ và tên shipper*</label>
                         <input
                         type = "text"
                         name = "fullName"
                            th:field = "*{fullName}"
                         class = "form-control"
-                        placeholder="Enter shipper fullname"
+                        placeholder="Nhập họ và tên của shipper"
+                        required title="Không nhập chữ số và các kí tự đặc biệt"
+						pattern="[A-Za-z._%+-]"
                         />
                     </div>
 
@@ -44,18 +46,18 @@
                         name = "ngaySinh"
                            th:field = "*{ngaySinh}"
                         class = "form-control"
-                        placeholder="Enter shipper date of birth"
                         />
                     </div>
                     
                     <div class ="form-group">
-                        <label> Địa chỉ</label>
+                        <label> Địa chỉ của shipper*</label>
                         <input
                         type = "text"
                         name = "diaChi"
                            th:field = "*{diaChi}"
                         class = "form-control"
-                        placeholder="Enter shipper address"
+                        placeholder="Nhập địa chỉ của shipper"
+                        required
                         />
                     </div>
 
@@ -66,29 +68,33 @@
                         name = "email"
                            th:field = "*{email}"
                         class = "form-control"
-                        placeholder="Enter shipper email"
+                        placeholder="Nhập email của shipper"
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]$"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> Số điện thoại </label>
+                        <label> Số điện thoại shipper*</label>
                         <input
                         type = "text"
                         name = "sdt"
-                           th:field = "*{sdt}"
+                        th:field = "*{sdt}"
                         class = "form-control"
-                        placeholder="Enter shipper phone number"
+                        placeholder="Nhập số điện thoại của shipper"
+                        required title="Chỉ nhập chữ số"
+						pattern="[0-9]+"
                         />
                     </div>
 
                     <div class ="form-group">
-                        <label> CCCD </label>
+                        <label> CCCD của shipper</label>
                         <input
                         type = "text"
                         name = "cccd"
                            th:field = "*{cccd}"
                         class = "form-control"
-                        placeholder="Enter shipper cccd"
+                        placeholder="Nhập CCCD của shipper"
+                        pattern="[0-9]+" title="Chỉ nhập chữ số"
                         />
                     </div>
 

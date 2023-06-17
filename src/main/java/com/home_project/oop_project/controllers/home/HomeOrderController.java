@@ -1,5 +1,8 @@
 package com.home_project.oop_project.controllers.home;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +25,10 @@ public class HomeOrderController {
 
 	@PostMapping("/order/add")
 	public String saveOrder(@ModelAttribute("order") Order order) {
-		orderService.saveOrder(order);
+		Date currentDate = Calendar.getInstance().getTime();
+		Order order0 = new Order(order.getStartPoint(), order.getEndPoint(), order.getGoodName(), order.getGoodType(), order.getGoodWeight(),
+		 order.getCustomerName(),0, 0, "Chờ xử lí", currentDate, order.getGhiChu());
+		orderService.saveOrder(order0);
 		return "redirect:/order";
 	}
 }

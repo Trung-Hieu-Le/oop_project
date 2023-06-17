@@ -35,7 +35,7 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public List<Object> reportByShipper();
 
     @Query(
-        value="SELECT DISTINCT end_point, count(id), SUM(value) FROM orders group by end_point",
+        value="SELECT DISTINCT users.username, count(orders.id) FROM orders join users on orders.user_id= users.id group by users.username",
         nativeQuery =true
     )
     public List<Object> reportByValue();
