@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header th:replace="~{layouts/adminLayout :: admin_header}"></header>
-	<div class = "container">
+	<div class = "container"><br/>
 		<div class = "row">
 			<div class ="col-lg-8 col-md-8 col-sm-8 container justify-content-center card">
 				<h1 class = "text-center"> Tạo đơn hàng mới </h1>
@@ -17,7 +17,7 @@
 					<form th:action="@{/admin/order/add}" th:object = "${order}" method="POST">
 						<div class="row">
 						<div class ="form-group col">
-							<label>Điểm đặt hàng* </label>
+							<label>Điểm đặt hàng <span style="color: red;">(*)</span> </label>
 							<input
 							type = "text"
 							name = "startPoint"
@@ -29,7 +29,7 @@
 						</div>
 						
 						<div class ="form-group col">
-							<label>Điểm giao hàng* </label>
+							<label>Điểm giao hàng <span style="color: red;">(*)</span> </label>
 							<input
 							type = "text"
 							name = "endPoint"
@@ -42,7 +42,7 @@
 					</div>
 					<div class="row">
 						<div class ="form-group col-4">
-							<label>Tên đơn hàng* </label>
+							<label>Tên đơn hàng <span style="color: red;">(*)</span> </label>
 							<input
 							type = "text"
 							name = "goodName"
@@ -53,7 +53,7 @@
 						</div>
 
 						<div class ="form-group col-4">
-							<label>Phân loại đơn hàng* </label>
+							<label>Phân loại đơn hàng <span style="color: red;">(*)</span> </label>
 							<select name = "goodType" class = "form-control" th:field = "*{goodType}" required>
 								<option value="Thực phẩm">Thực phẩm</option>
 								<option value="Quần áo">Quần áo</option>
@@ -64,7 +64,7 @@
 						</div>
 
 						<div class ="form-group col-4">
-							<label>Trọng lượng đơn hàng* </label>
+							<label>Trọng lượng đơn hàng <span style="color: red;">(*)</span> </label>
 							<select name = "goodWeight" class = "form-control" th:field = "*{goodWeight}" required>
 								<option value="Dưới 1kg">Dưới 1kg</option>
 								<option value="1kg-2kg">1kg - 2kg</option>
@@ -87,8 +87,8 @@
 						</div>
 
 						<div class ="form-group col">
-							<label> Chọn người đặt hàng* </label>
-							<select name = "user_id" class = "form-control" th:field = "*{userID}">
+							<label> Chọn người đặt hàng <span style="color: red;">(*)</span> </label>
+							<select name = "user" class = "form-control" th:field = "*{user}">
 								<option th:each="user: ${listUsers}"
 										th:value="${user.id}"
 										th:text="${user.userName}">
@@ -97,8 +97,8 @@
 						</div>
 
 						<div class ="form-group col">
-							<label> Chọn shipper* </label>
-							<select name = "shipper_id" class = "form-control" th:field = "*{shipperID}">
+							<label> Chọn shipper <span style="color: red;">(*)</span> </label>
+							<select name = "shipper" class = "form-control" th:field = "*{shipper}">
 								<option th:each="shipper: ${listShippers}"
 										th:value="${shipper.id}"
 										th:text="${shipper.fullName}">
@@ -108,7 +108,7 @@
 					</div>
 					<div class="row">
 						<div class ="form-group col-4">
-							<label> Trạng thái đơn hàng* </label>
+							<label> Trạng thái đơn hàng <span style="color: red;">(*)</span> </label>
 							<!-- <input
 							type = "text"
 							name = "status"

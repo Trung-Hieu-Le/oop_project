@@ -6,5 +6,9 @@ public interface AdminService {
     Admin saveAdmin(Admin admin);
 	
 	Admin getAdminById(Long id);
+
+	Admin validationAdmin(String username, String password);
+
+	Admin findAdminByUsername(String username);
 	
 }

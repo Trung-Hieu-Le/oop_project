@@ -8,7 +8,7 @@ import com.home_project.oop_project.entity.Order;
 public interface OrderRepository extends  JpaRepository<Order, Long> {
 
     @Query(
-        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',value) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
+        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
         nativeQuery=true)
     public List<Order> search(String keyword, int offset, int pageSize);
 
@@ -18,7 +18,7 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public int getTotalItems();
 
     @Query(
-        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',value) LIKE %?1%",
+        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1%",
         nativeQuery=true)
     public int getTotalItemsSearched(String keyword);
 

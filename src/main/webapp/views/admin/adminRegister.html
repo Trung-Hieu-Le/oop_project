@@ -11,28 +11,27 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Đăng kí tài khoản Admin</title>
 </head>
-<body style="background: linear-gradient(180deg, #52ACFF 25%, #FFE32C 100%);">
+<body>
 
 
 
 <div class="container my-5" style="width: 1800px;"><br>
     
         <div class="jumbotron border col-sm-5 mx-auto">
-            <h2 class="text-center">Đăng kí</h2><br>
+            <h2 class="text-center">Đăng kí trang Quản trị</h2><br>
             <form action="/admin/admin-register" method="post">
                 <div class="form-group">
-                    <label for="name">Tên đăng nhập:</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Your Username" required class="form-control form-control-lg">
+                    <label for="name">Tên đăng nhập <span style="color: red;">(*)</span></label>
+                    <input type="text" name="name" id="name" placeholder="Tên đăng nhập..." required class="form-control form-control-lg">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mật khẩu:</label>
-                    <input type="password" class="form-control form-control-lg" placeholder="Enter Your Password" required name="password" id="password">
+                    <label for="password">Mật khẩu <span style="color: red;">(*)</span></label>
+                    <input type="password" class="form-control form-control-lg" placeholder="Mật khẩu..." required name="password" id="password">
                 </div>
-                <span style="margin-top: 10px">Already have an account? <a class="linkControl" href="/admin/login">Login here</a></span> <br><br>
-                <input type="submit" value="Register" class="btn btn-primary btn-block">
+                <span style="margin-top: 10px">Đã có tài khoản? <a class="linkControl" href="/admin/login">Đăng nhập ngay</a></span> <br><br>
+                <input type="submit" value="Đăng kí" class="btn btn-primary btn-block">
                 <br>
-                <h3 style="color:red;" th:text="${message}"></h3>
-                <br>
+                <h3 style="color:red;text-align: center;" th:text="${message}"></h3>
         </div>
 
 </div>

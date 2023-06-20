@@ -79,7 +79,7 @@ public class OrderController {
 		// orderService.saveOrder(order);
 		Date currentDate = Calendar.getInstance().getTime();
 		Order order0 = new Order(order.getStartPoint(), order.getEndPoint(), order.getGoodName(), order.getGoodType(), order.getGoodWeight(),
-		 order.getCustomerName(),order.getUserID(), order.getShipperID(), order.getStatus(), currentDate, order.getGhiChu());
+		 order.getCustomerName(),order.getUser(), order.getShipper(), order.getStatus(), currentDate, order.getGhiChu());
 		orderService.saveOrder(order0);
 		return "redirect:/admin/order/1";
 	}
@@ -103,8 +103,8 @@ public class OrderController {
 		existingOrder.setStartPoint(order.getStartPoint());
 		existingOrder.setEndPoint(order.getEndPoint());
 		existingOrder.setCustomerName(order.getCustomerName());
-		existingOrder.setUserID(order.getUserID());
-		existingOrder.setShipperID(order.getShipperID());
+		existingOrder.setUser(order.getUser());
+		existingOrder.setShipper(order.getShipper());
 		// existingOrder.setCreatedAt(currentDate);
 		existingOrder.setGoodName(order.getGoodName());
 		existingOrder.setGoodType(order.getGoodType());

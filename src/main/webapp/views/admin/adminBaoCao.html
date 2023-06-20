@@ -56,7 +56,6 @@
             <table class="table table-striped table-bordered">
                 <thead class="table-dark">
                     <tr>
-                        <th>ID</th>
                         <th>Điểm đặt hàng </th>
                         <th>Điểm giao hàng</th>
                         <th>Tên đơn hàng</th>
@@ -67,11 +66,12 @@
 
                 <tbody>
                     <tr th:each="order: ${orderByMonth}">
-                        <td th:text="${order.id}"></td>
+                        <!-- <td th:text="${order.id}"></td> -->
                         <td th:text="${order.startPoint}"></td>
                         <td th:text="${order.endPoint}"></td>
                         <td th:text="${order.goodName}"></td>
                         <td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy')}"></td>
+                        td
                         <td th:text="${order.status}"></td>
                     </tr>
                 </tbody>

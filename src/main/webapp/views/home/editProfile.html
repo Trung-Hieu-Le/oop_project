@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{layouts/homeLayout :: home_head}">
+</head>
+
+<body>
+    <!-- <th:block layout:include="layouts/header"/> -->
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
+    <div><br>
+
+        <!-- Sửa ở đây -->
+        <div class="jumbotron col-sm-6 mx-auto">
+            <h2 class="text-center">Sửa thông tin cá nhân</h2><br>
+            <form action="/update-profile" method="post">
+               
+                <div class="row">
+                    <div class="form-group col">
+                        <div class="input-group">
+                            <label class="input-label">Họ và tên đầy đủ <span style="color: red;">(*)</span></label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bi bi-person-bounding-box"></i></span>
+                                <input name="fullName" placeholder="Nhập họ và tên đầy đủ..." class="form-control"
+                                    type="text" required title="Không nhập chữ số và các kí tự đặc biệt"
+                                    pattern="[A-Za-z._%+-]" th:field="*{usernameValidated.fullName}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <div class="input-group">
+                            <label class="input-label">Số điện thoại <span style="color: red;">(*)</span></label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                                <input name="sdt" placeholder="Nhập số điện thoại..." class="form-control" type="text"
+                                    required title="Chỉ nhập chữ số" pattern="[0-9]+"
+                                    th:field="*{usernameValidated.sdt}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <div class="input-group">
+                            <label class="input-label">Email</label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                                <input name="email" placeholder="Nhập email..." class="form-control" type="text"
+                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]$" th:field="*{usernameValidated.email}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <div class="input-group">
+                            <label class="input-label">Địa chỉ <span style="color: red;">(*)</span></label>
+                            <div class="input-group input-group-merge">
+                                <span class="input-group-text"><i class="bi bi-geo-alt-fill"></i></span>
+                                <input name="diaChi" placeholder="Nhập địa chỉ..." class="form-control" type="text"
+                                    required th:field="*{usernameValidated.diaChi}">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3 style="color:red;text-align: center;" th:text="${message}"></h3>
+                <input type="submit" value="Hoản thành" class="btn btn-primary btn-block">
+        </div>
+
+        <!-- Sửa ở đây -->
+    </div>
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
+</body>
+
+</html>

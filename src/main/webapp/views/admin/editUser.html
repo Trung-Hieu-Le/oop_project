@@ -9,14 +9,14 @@
 </head>
 <body>
 <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
-<div class = "container">
+<div class = "container"><br/>
 	<div class = "row">
 		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 			<h1 class = "text-center"> Cập nhập người dùng </h1>
 			<div class = "card-body">
 				<form th:action="@{/admin/user/update/{id} (id=${user.id})}" th:object = "${user}" method="POST">
 					<div class ="form-group">
-                        <label> Tên đầy đủ của người dùng* </label>
+                        <label> Tên đầy đủ của người dùng <span style="color: red;">(*)</span> </label>
                         <input
                         type = "text"
                         name = "fullName"
@@ -30,7 +30,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> Tên hiển thị của người dùng* </label>
+                        <label> Tên hiển thị của người dùng <span style="color: red;">(*)</span> </label>
                         <input
                         type = "text"
                         name = "userName"
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> Mật khẩu* </label>
+                        <label> Mật khẩu <span style="color: red;">(*)</span> </label>
                         <input
                         type = "text"
                         name = "password"
@@ -55,7 +55,7 @@
                     </div>
                     
                     <div class ="form-group">
-                        <label> Số điện thoại người dùng* </label>
+                        <label> Số điện thoại người dùng <span style="color: red;">(*)</span> </label>
                         <input
                         type = "text"
                         name = "sdt"
@@ -80,7 +80,7 @@
                     </div>
 
                     <div class ="form-group">
-                        <label> Địa chỉ người dùng* </label>
+                        <label> Địa chỉ người dùng <span style="color: red;">(*)</span></label>
                         <input
                         type = "text"
                         name = "diaChi"

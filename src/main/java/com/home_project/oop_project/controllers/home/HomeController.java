@@ -1,6 +1,6 @@
 package com.home_project.oop_project.controllers.home;
 
-import java.sql.*;
+import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,15 +18,16 @@ import com.home_project.oop_project.service.UserService;
 public class HomeController {
 	@Autowired
 	private UserService userService;
+	
+	private User usernameValidated;
+	public User getUserDetail() {
+		return usernameValidated;
+	}
 
 	@GetMapping(value = {"about"})
 	public String about(Model model) {
 		return "home/about";
 	}
-	
-	int adminlogcheck = 0;
-	String usernameforclass = "";
-	
 	
 	@GetMapping("login")
 	public String userLogin(Model model) {
@@ -34,18 +35,20 @@ public class HomeController {
 	}
 	@GetMapping("/")
 	public String Home(Model model) {
-		if(usernameforclass!=""){
-
-			model.addAttribute("username", usernameforclass);
-			return "home/home";		}
+		if(usernameValidated!=null){
+			model.addAttribute("usernameValidated", usernameValidated);
+			return "home/home";		
+		}
 		else
 			return "redirect:/login";
 			
 	}
 
 	@GetMapping("/register")
-	public String registerUser()
+	public String registerUser(Model model)
 	{
+		List<User> listUsers = userService.getAllUsers();
+		model.addAttribute("listUsers", listUsers);
 		return "home/register";
 	}
 	@GetMapping("user-login")
@@ -58,17 +61,22 @@ public class HomeController {
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
-			Statement stmt = con.createStatement();
-			ResultSet rst = stmt.executeQuery("select * from users where username = '"+username+"' and password = '"+ pass+"' ;");
-			if(rst.next()) {
-				usernameforclass = rst.getString(2);
-				return "redirect:/";
-				}
-			else {
+			// Class.forName("com.mysql.jdbc.Driver");
+			// Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
+			// Statement stmt = con.createStatement();
+			// ResultSet rst = stmt.executeQuery("select * from users where username = '"+username+"' and password = '"+ pass+"' ;");
+			// System.out.println(username);
+			// System.out.println(pass);
+			User user1 = userService.validationUser(username, pass);
+			// System.out.println(user1);
+			if(user1 == null) {
 				model.addAttribute("message", "Invalid Username or Password");
 				return "home/userLogin";
+				
+				}
+			else {
+				usernameValidated = user1;
+				return "redirect:/";
 			}
 			
 		}
@@ -81,12 +89,17 @@ public class HomeController {
 	}
 
 	@PostMapping("/register/add")
-	public String newUseRegister(@ModelAttribute("user") User user)
+	public String newUseRegister(@ModelAttribute("user") User user, Model model)
 	{
 		try
 		{
-			userService.saveUser(user);
-			
+			if (userService.findUserByUsername(user.getUserName()) == null) userService.saveUser(user);
+			else {
+				List<User> listUsers = userService.getAllUsers();
+				model.addAttribute("listUsers", listUsers);
+				model.addAttribute("message", "Tên đăng nhập đã tồn tại");
+				return "home/register";
+			}
 		}
 		catch(Exception e)
 		{

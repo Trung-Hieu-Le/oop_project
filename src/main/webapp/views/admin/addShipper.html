@@ -9,14 +9,14 @@
 </head>
 <body>
 	<header th:replace="~{layouts/adminLayout :: admin_header}"></header>
-	<div class = "container">
+	<div class = "container"><br/>
 		<div class = "row">
 			<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class = "text-center"> Thêm mới Shipper </h1>
 				<div class = "card-body">
 					<form th:action="@{/admin/shipper/add}" th:object = "${shipper}" method="POST">
 						<div class ="form-group">
-							<label> Họ và tên shipper* </label>
+							<label> Họ và tên shipper <span style="color: red;">(*)</span></label>
 							<input
 							type = "text"
 							name = "fullName"
@@ -50,7 +50,7 @@
 						</div>
 						
 						<div class ="form-group">
-							<label> Địa chỉ của shipper* </label>
+							<label> Địa chỉ của shipper <span style="color: red;">(*)</span> </label>
 							<input
 							type = "text"
 							name = "diaChi"
@@ -74,7 +74,7 @@
 						</div>
 
                         <div class ="form-group">
-							<label> Số điện thoại shipper*</label>
+							<label> Số điện thoại shipper <span style="color: red;">(*)</span></label>
 							<input
 							type = "text"
 							name = "sdt"

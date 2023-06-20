@@ -1,120 +1,93 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
-<head th:replace="~{layouts/homeLayout :: home_head}"> 
-  
+<head th:replace="~{layouts/homeLayout :: home_head}">
+
 </head>
+
 <body>
-  <header th:replace="~{layouts/homeLayout :: home_header}"></header>
-  <div class="container"><br>
-    <!-- Sửa ở đây -->
-        <div class="jumbotron col-sm-5 mx-auto">
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
+
+    <div class="container"><br>
+        <!-- Sửa ở đây -->
+
+        <div class="jumbotron col-sm-8 mx-auto">
             <h2 class="text-center">Đặt hàng ngay</h2><br>
             <form action="/order/add" method="post">
                 <div class="row">
-                    <div class="col">
 
-                <div class ="form-group">
-                    <label>Điểm đặt hàng* </label>
-                    <br/><input type="checkbox" name="startPoint" value="tại nhà riêng" id="startAtHome">Địa chỉ nhà của bạn?<br>
-                    <input
-                    type = "text"
-                    id="startAway"
-                    name = "startPoint"
-                    class = "form-control"
-                    placeholder="Nhập điểm đặt hàng"
-                    required
-                    />
-                </div>
-                
-                <div class ="form-group">
-                    <label>Điểm giao hàng* </label>
-                    <br/><input type="checkbox" name="endPoint" value="tại nhà riêng" id="endAtHome">Địa chỉ nhà của bạn?<br>
-                    <input
-                    type = "text"
-                    id="endAway"
-                    name = "endPoint"
-                    class = "form-control"
-                    placeholder="Nhập điểm giao hàng" 
-                    required
-                    />
-                </div>
-
-                <div class ="form-group">
-                    <label> Tên người nhận </label>
-                    <input
-                    type = "text"
-                    name = "customerName"
-                    class = "form-control"
-                    placeholder="Nhập tên người nhận" 
-                    />
-                </div>
-
-                </div>
-                <div class="col">
-                    <div class ="form-group">
-                        <label>Tên đơn hàng* </label>
-                        <input
-                        type = "text"
-                        name = "goodName"
-                        class = "form-control"
-                        placeholder="Nhập tên đơn hàng" required
-                        />
+                    <div class="form-group col">
+                        <label>Điểm đặt hàng <span style="color: red;">(*)</span> </label>
+                        <br /><input type="checkbox" name="startPoint" th:value="${usernameValidated.diaChi}" id="startAtHome">Địa
+                        chỉ nhà của bạn?<br>
+                        <input type="text" id="startAway" name="startPoint" class="form-control"
+                            placeholder="Nhập điểm đặt hàng" required />
                     </div>
-    
-                    <div class ="form-group">
-                        <label>Phân loại đơn hàng* </label>
-                        <select name = "goodType" class = "form-control" required>
-                            <option value="Thực phẩm">Thực phẩm</option>
-                            <option value="Quần áo">Quần áo</option>
-                            <option value="Điện tử">Điện tử</option>
-                            <option value="Dễ vỡ">Dễ vỡ</option>
-                            <option value="Khác">Khác</option>
-                        </select>
-                    </div>
-    
-                    <div class ="form-group">
-                        <label>Trọng lượng đơn hàng* </label>
-                        <select name = "goodWeight" class = "form-control" required>
-                            <option value="Dưới 1kg">Dưới 1kg</option>
-                            <option value="1kg-2kg">1kg - 2kg</option>
-                            <option value="2kg-5kg">2kg - 5kg</option>
-                            <option value="5kg-10kg">5kg - 10kg</option>
-                            <option value="Trên 10kg">Trên 10kg</option>
-                        </select>
+
+                    <div class="form-group col">
+                        <label>Điểm giao hàng <span style="color: red;">(*)</span> </label>
+                        <br /><input type="checkbox" name="endPoint" th:value="${usernameValidated.diaChi}" id="endAtHome">Địa chỉ
+                        nhà của bạn?<br>
+                        <input type="text" id="endAway" name="endPoint" class="form-control"
+                            placeholder="Nhập điểm giao hàng" required />
                     </div>
                 </div>
-            </div>
+                <div class="row">
+                    <div class="form-group col">
+                        <label> Tên người nhận </label>
+                        <input type="text" name="customerName" class="form-control" placeholder="Nhập tên người nhận" />
+                    </div>
 
-                <div class ="form-group">
-                    <label>Ghi chú </label>
-                    <input
-                    type = "text"
-                    name = "ghiChu"
-                    class = "form-control"
-                    placeholder="Nhập ghi chú (nếu có)" 
-                    
-                    />
+                    <div class="form-group col">
+                        <label>Ghi chú </label>
+                        <input type="text" name="ghiChu" class="form-control" placeholder="Nhập ghi chú (nếu có)" />
+                    </div>
+                </div>
+                <hr/>
+                <h4 class="text-center">Chi tiết đơn hàng</h4><br>
+                <div class="form-group">
+                    <label>Tên đơn hàng <span style="color: red;">(*)</span> </label>
+                    <input type="text" name="goodName" class="form-control" placeholder="Nhập tên đơn hàng" required />
                 </div>
 
-                <input type="submit" value="Done" class="btn btn-primary btn-block">
-                <br>
-                <h3 style="color:red;" th:text="${message}"></h3>
-                <br>
+                <div class="form-group">
+                    <label>Phân loại đơn hàng <span style="color: red;">(*)</span> </label>
+                    <select name="goodType" class="form-control" required>
+                        <option value="Thực phẩm">Thực phẩm</option>
+                        <option value="Quần áo">Quần áo</option>
+                        <option value="Điện tử">Điện tử</option>
+                        <option value="Dễ vỡ">Dễ vỡ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Trọng lượng đơn hàng <span style="color: red;">(*)</span> </label>
+                    <select name="goodWeight" class="form-control" required>
+                        <option value="Dưới 1kg">Dưới 1kg</option>
+                        <option value="1kg-2kg">1kg - 2kg</option>
+                        <option value="2kg-5kg">2kg - 5kg</option>
+                        <option value="5kg-10kg">5kg - 10kg</option>
+                        <option value="Trên 10kg">Trên 10kg</option>
+                    </select>
+                </div>
+                <h3 style="color:red;text-align: center;" th:text="${message}"></h3>
+                <input type="submit" value="Đặt hàng" class="btn btn-primary btn-block">
+            </form>
         </div>
         <!-- Sửa ở đây -->
     </div>
     <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
     <script>
-        document.getElementById('startAtHome').onclick = function() {
+        document.getElementById('startAtHome').onclick = function () {
             document.getElementById("endAtHome").checked = false;
             document.getElementById("startAway").disabled = this.checked;
             document.getElementById("endAway").disabled = false;
 
 
         }
-        document.getElementById('endAtHome').onclick = function(){
+        document.getElementById('endAtHome').onclick = function () {
             document.getElementById("startAtHome").checked = false;
             document.getElementById("endAway").disabled = this.checked;
             document.getElementById("startAway").disabled = false;

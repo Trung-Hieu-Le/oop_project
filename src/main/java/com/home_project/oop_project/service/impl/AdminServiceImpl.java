@@ -25,4 +25,16 @@ public class AdminServiceImpl implements AdminService{
         return adminRepository.findById(id).get();
     }
 
+    @Override
+	public Admin validationAdmin(String name, String password) {
+		// throw new UnsupportedOperationException("Unimplemented method 'validationUser'");
+		return adminRepository.validationAdmin(name, password);
+	}
+
+	@Override
+	public Admin findAdminByUsername(String name) {
+		// throw new UnsupportedOperationException("Unimplemented method 'validationUser'");
+		return adminRepository.findAdminByUsername(name);
+	}
+
 }

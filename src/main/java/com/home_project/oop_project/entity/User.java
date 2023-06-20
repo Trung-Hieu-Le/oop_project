@@ -1,6 +1,5 @@
 package com.home_project.oop_project.entity;
 
-import org.springframework.beans.factory.annotation.Value;
 
 import jakarta.persistence.*;
 

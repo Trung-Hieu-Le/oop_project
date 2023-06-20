@@ -30,11 +30,13 @@ public class Order {
 	@Column(name = "customer_name")
 	private String customerName;
 
-	@Column(name = "user_id")
-	private long userID;
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
-	@Column(name = "shipper_id")
-	private long shipperID;
+	@ManyToOne
+	@JoinColumn(name = "shipper_id")
+	private Shipper shipper;
 
 	@Column(name = "status")
 	private String status;
@@ -48,7 +50,7 @@ public class Order {
 	
 	public Order(){}
 
-	public Order(String startPoint, String endPoint, String goodName, String goodType, String goodWeight, String customerName, long userID, long shipperID, String status, Date createdAt, String ghiChu) {
+	public Order(String startPoint, String endPoint, String goodName, String goodType, String goodWeight, String customerName, User user, Shipper shipper, String status, Date createdAt, String ghiChu) {
 		super();
 		this.startPoint = startPoint;
 		this.endPoint = endPoint;
@@ -56,8 +58,8 @@ public class Order {
 		this.goodType = goodType;
 		this.goodWeight = goodWeight;
 		this.customerName = customerName;
-		this.userID = userID;
-		this.shipperID = shipperID;
+		this.user = user;
+		this.shipper = shipper;
 		this.status = status;
 		this.createdAt = createdAt;
 		this.ghiChu = ghiChu;
@@ -103,20 +105,20 @@ public class Order {
 		this.customerName = customerName;
 	}
 
-	public long getUserID() {
-		return userID;
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserID(long userID) {
-		this.userID = userID;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
-	public long getShipperID() {
-		return shipperID;
+	public Shipper getShipper() {
+		return shipper;
 	}
 
-	public void setShipperID(long shipperID) {
-		this.shipperID = shipperID;
+	public void setShipper(Shipper shipper) {
+		this.shipper = shipper;
 	}
 
 	public String getStatus() {

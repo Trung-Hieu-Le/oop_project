@@ -21,4 +21,15 @@ public List<User> search(String keyword, int offset, int pageSize);
         value="SELECT count(id) FROM users WHERE CONCAT(fullname,' ',username, ' ', dia_chi,' ', sdt, ' ',email) LIKE %?1%",
         nativeQuery=true)
     public int getTotalItemsSearched(String keyword);
+
+    @Query(
+        value="SELECT * FROM users WHERE username = ?1 and password = ?2 limit 1",
+        nativeQuery=true)
+    public User validationUser(String username, String password);
+
+
+    @Query(
+        value="SELECT * FROM users WHERE username = ?1 limit 1",
+        nativeQuery=true)
+    public User findUserByUsername(String username);
 }

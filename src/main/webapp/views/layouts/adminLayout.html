@@ -1,127 +1,154 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="admin_head">
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-	integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<title>Trang chủ Admin</title>
-<style>
-	html{
-      height: 100%;
-      box-sizing: border-box;
-    }
-    body{
-      position: relative;
-      margin: 0;
-      min-height: 100%;
-      box-sizing: inherit;
-      padding-bottom: 15rem;
-    }
-.collapse { padding: 5px 5px;}
-.collapse ul {
-	margin: 0; padding: 0px;
-}
-.collapse li {
-	padding: 5px;
-	position: relative;
-	list-style: none;
-}
-.collapse li:hover { background-color: #818181; }
-.collapse .topmenu ul {
-	display:none;
-	position: absolute;
-	background-color: #343a40;
-}
-.collapse li:hover > ul { display: table; }
 
-.collapse ul.dropdown-menu li { padding: 10px 30px; }
-/* Footer */
-.footer {
-      background-color:#262831;
-      padding:30px 20px;
-      font-size:15px;
-      line-height:24px;
-      color:#737373;
-      position: absolute;
-      right: 0;
-      left: 0;
-      bottom: 0;
-    }
-    .footer-links {
-      padding-left:0;
-      list-style:none
-    }
-    .footer a{ color:#737373; }
-    .footer .social-icons {
-      text-align:right
-    }
-    .footer .social-icons a {   
-      background-color:#2d2d42
-    }
-    .social-icons li {
-      display:inline-block;
-    }
-    .social-icons a {
-      display:inline-block;
-      line-height:44px;
-      width:44px;
-      height:44px;
-      text-align:center;
-      border-radius:100%;
-    }
-</style>
+<head th:fragment="admin_head">
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<title>Trang chủ Admin</title>
+	<style>
+		html {
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		body {
+			position: relative;
+			margin: 0;
+			min-height: 100%;
+			box-sizing: inherit;
+			padding-bottom: 15rem;
+		}
+
+		.collapse {
+			padding: 5px 5px;
+		}
+
+		.collapse ul {
+			margin: 0;
+			padding: 0px;
+		}
+
+		.collapse li {
+			padding: 5px;
+			position: relative;
+			list-style: none;
+		}
+
+		.collapse li:hover {
+			background-color: #818181;
+		}
+
+		.collapse .topmenu ul {
+			display: none;
+			position: absolute;
+			background-color: #343a40;
+		}
+
+		.collapse li:hover>ul {
+			display: table;
+		}
+
+		.collapse ul.dropdown-menu li {
+			padding: 10px 10px;
+		}
+
+		/* Footer */
+		.footer {
+			background-color: #262831;
+			padding: 30px 20px;
+			font-size: 15px;
+			line-height: 24px;
+			color: #737373;
+			position: absolute;
+			right: 0;
+			left: 0;
+			bottom: 0;
+		}
+
+		.footer-links {
+			padding-left: 0;
+			list-style: none
+		}
+
+		.footer a {
+			color: #737373;
+		}
+
+		.footer .social-icons {
+			text-align: right
+		}
+
+		.footer .social-icons a {
+			background-color: #2d2d42
+		}
+
+		.social-icons li {
+			display: inline-block;
+		}
+
+		.social-icons a {
+			display: inline-block;
+			line-height: 44px;
+			width: 44px;
+			height: 44px;
+			text-align: center;
+			border-radius: 100%;
+		}
+	</style>
 </head>
 
 <body>
-<header th:fragment="admin_header">
+	<header th:fragment="admin_header">
 		<nav class="navbar navbar-expand navbar-dark bg-dark">
-		<img src="/images/shipperlogo2.png" width=auto height="50">
-		<div class="container-fluid">
-			<div class="collapse navbar-collapse">
-				<ul class="mr-auto"></ul>
-				<ul class="navbar-nav">
-					<li class="topmenu"><a class="nav-link" href="/admin">Trang chủ</a></li>
-					<li class="topmenu"><a class="nav-link">Quản lí</a>
-						<ul class="dropdown-menu" style="margin-left: -30px; ">
-							<li><a class="nav-link" href="/admin/shipper/1">Shippers</a>
-							<li><a class="nav-link" href="/admin/order/1">Orders</a>
-							<li><a class="nav-link" href="/admin/user/1">Users</a>
-						</ul>
-									
-					</li>
-					<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Thống kê</a></li>
-					<li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Báo cáo</a></li>
-					<li class="topmenu"><a class="nav-link" href="/admin/login">Đăng xuất</a></li>
+			<img src="/images/shipperlogo2.png" width=auto height="50">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse">
+					<ul class="mr-auto"></ul>
+					<ul class="navbar-nav">
+						<li class="topmenu"><a class="nav-link" href="/admin">Trang chủ</a></li>
+						<li class="topmenu"><a class="nav-link">Quản lí</a>
+							<ul class="dropdown-menu" style="margin-left: -30px;">
+								<li><a class="nav-link" href="/admin/order/1">Đơn hàng</a>
+								<li><a class="nav-link" href="/admin/shipper/1">Shipper</a>
+								<li><a class="nav-link" href="/admin/user/1">Người dùng</a>
+							</ul>
 
-				</ul>
-			</div>	
+						</li>
+						<li class="topmenu"><a class="nav-link" href="/admin/thong-ke">Thống kê</a></li>
+						<li class="topmenu"><a class="nav-link" href="/admin/bao-cao">Báo cáo</a></li>
+						<li class="topmenu"><a class="nav-link" href="/admin/login">Đăng xuất</a></li>
+
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<footer class="footer" th:fragment="admin_footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<p class="copyright-text">©2023, From Group 6 - HUCE. All rights reserved</p>
+				</div>
+				<div class="col-md-4">
+					<ul class="social-icons">
+						<li><a href=""><i class="fab fa-youtube"></i></a></li>
+						<li><a href=""><i class="fab fa-facebook"></i></a></li>
+						<li><a href=""><i class="fab fa-twitter"></i></a></li>
+						<li><a href=""><i class="fab fa-linkedin"></i></a></li>
+					</ul>
+				</div>
+			</div>
 		</div>
-	</nav>
-</header>
-<footer class="footer" th:fragment="admin_footer" >
-	<div class="container">
-	  <div class="row">
-		<div class="col-md-8">
-		  <p class="copyright-text">©2023, From Group 6 with luv. All rights reserved</p>
-		</div>
-		<div class="col-md-4">
-		  <ul class="social-icons">
-			<li><a href=""><i class="fab fa-youtube"></i></a></li>
-			<li><a href=""><i class="fab fa-facebook"></i></a></li>
-			<li><a href=""><i class="fab fa-twitter"></i></a></li>
-			<li><a href=""><i class="fab fa-linkedin"></i></a></li>   
-		  </ul>
-		</div>
-	  </div>
+	</footer>
+	<div th:fragment="admin_content">
+		<p>Changing contents</p>
 	</div>
-</footer>
-<div th:fragment="admin_content">
-  <p>Changing contents</p>
-</div>
 </body>
+
 </html>
