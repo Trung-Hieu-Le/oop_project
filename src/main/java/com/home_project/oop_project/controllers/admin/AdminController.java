@@ -1,6 +1,5 @@
 package com.home_project.oop_project.controllers.admin;
 
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,8 +12,6 @@ import com.home_project.oop_project.service.AdminService;
 import com.home_project.oop_project.service.OrderService;
 import com.home_project.oop_project.service.ShipperService;
 import com.home_project.oop_project.service.UserService;
-
-import java.sql.*;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,18 +30,20 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 
-	int adminlogcheck = 0;
-	String usernameforclass = "";
+	// int adminlogcheck = 0;
+	// String usernameforclass = "";
+	private Admin adminNameValidated;
 
 	@GetMapping("/login")
 	public String adminLogin(Model model) {
-		
+
 		return "admin/adminLogin";
 	}
+
 	@GetMapping("")
 	public String adminHome(Model model) {
-		if(usernameforclass != ""){
-			model.addAttribute("adminName",usernameforclass);
+		if (adminNameValidated != null) {
+			model.addAttribute("adminNameValidated", adminNameValidated);
 			model.addAttribute("totalShipper", shipperService.getTotalItems(null));
 			model.addAttribute("totalOrder", orderService.getTotalItems(null));
 			model.addAttribute("totalUser", userService.getTotalItems(null));
@@ -53,60 +52,65 @@ public class AdminController {
 			model.addAttribute("orderStatusCount", orderService.getReportByStatus());
 			model.addAttribute("orderShipperCount", orderService.getReportByShipper());
 			return "admin/adminHome";
-		}
-		else
+		} else
 			return "redirect:/admin/login";
 	}
+
 	@GetMapping("/register")
 	public String adminRegister(Model model) {
-			return "admin/adminRegister";
-		
+		return "admin/adminRegister";
+
 	}
+
 	@GetMapping("admin-login")
 	public String adminLog(Model model) {
-		
+
 		return "admin/adminLogin";
 	}
-	@RequestMapping(value = "admin-login", method = RequestMethod.POST)
-	public String adminLogin( @RequestParam("name") String name, @RequestParam("password") String pass,Model model) {
 
-		try
-		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
-			Statement stmt = con.createStatement();
-			ResultSet rst = stmt.executeQuery("select * from admins where name = '"+name+"' and password = '"+ pass+"' ;");
-			if(rst.next()) {
-				// usernameforclass = rst.getString(2);
-				usernameforclass = name;
-				return "redirect:/admin";
-				}
-			else {
-				model.addAttribute("message", "Invalid Username or Password");
+	@RequestMapping(value = "admin-login", method = RequestMethod.POST)
+	public String adminLogin(@RequestParam("name") String name, @RequestParam("password") String pass, Model model) {
+
+		try {
+
+			Admin admin1 = adminService.validationAdmin(name, pass);
+			if (admin1 == null) {
+				model.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không hợp lệ");
 				return "admin/adminLogin";
+
+			} else {
+				adminNameValidated = admin1;
+				return "redirect:/admin";
 			}
-			
-		}
-		catch(Exception e)
-		{
-			System.out.println("Exception:"+e);
+
+		} catch (Exception e) {
+			System.out.println("Exception:" + e);
 		}
 		return "admin/adminLogin";
 	}
 
 	@PostMapping("/admin-register")
-	public String newAdminRegister(@ModelAttribute("admin") Admin admin)
-	{
+	public String newAdminRegister(@ModelAttribute("admin") Admin admin, Model model) {
+		// try {
+		// 	adminService.saveAdmin(admin);
+
+		// } catch (Exception e) {
+		// 	System.out.println("Exception:" + e);
+		// }
+		// return "redirect:/admin";
 		try
 		{
-			adminService.saveAdmin(admin);
-			
+			if (adminService.findAdminByUsername(admin.getName()) == null) adminService.saveAdmin(admin);
+			else {
+				model.addAttribute("message", "Tên đăng nhập đã tồn tại");
+				return "admin/adminRegister";
+			}
 		}
 		catch(Exception e)
 		{
 			System.out.println("Exception:"+e);
 		}
-		return "redirect:/admin";
+		return "redirect:/";
 	}
 
 }

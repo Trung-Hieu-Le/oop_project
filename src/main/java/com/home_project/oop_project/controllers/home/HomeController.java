@@ -49,10 +49,10 @@ public class HomeController {
 	{
 		List<User> listUsers = userService.getAllUsers();
 		model.addAttribute("listUsers", listUsers);
-		return "home/register";
+		return "home/homeRegister";
 	}
 	@GetMapping("user-login")
-	public String adminLog(Model model) {
+	public String userLog(Model model) {
 		
 		return "home/userLogin";  
 	}
@@ -70,7 +70,7 @@ public class HomeController {
 			User user1 = userService.validationUser(username, pass);
 			// System.out.println(user1);
 			if(user1 == null) {
-				model.addAttribute("message", "Invalid Username or Password");
+				model.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không hợp lệ");
 				return "home/userLogin";
 				
 				}
@@ -98,7 +98,7 @@ public class HomeController {
 				List<User> listUsers = userService.getAllUsers();
 				model.addAttribute("listUsers", listUsers);
 				model.addAttribute("message", "Tên đăng nhập đã tồn tại");
-				return "home/register";
+				return "home/homeRegister";
 			}
 		}
 		catch(Exception e)
