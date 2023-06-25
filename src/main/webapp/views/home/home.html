@@ -1,216 +1,91 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
-<head th:replace="~{layouts/adminLayout :: admin_head}">
-	<meta charset="UTF-8">
-	<meta name="viewport"
-		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-		integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <title>Home</title>    
+<head th:replace="~{layouts/homeLayout :: home_head}">
 </head>
+<body>
+    <!-- <th:block layout:include="layouts/header"/> -->
+    <header th:replace="~{layouts/homeLayout :: home_header}"></header>
+    
+    <!-- Sửa ở đây -->
+    <div class="bigpic">
+        <div class="container bg-light w-25" style="opacity: 50%;">
+            <span style="font-size: 80px;">S-Shipper</span>
+            <br/>
+            <span style="font-size: 50px;">Phục vụ 24/7</span>
+        </div>
+    </div>
+    <div class="row text-center mt-5 mb-3">
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-01.png') }}" alt="banner1"
+              style="width:100px; position:relative; padding-top:20px">
+          </div>
+          <h4 class="vsc-text">Cơ sở vật chất <br /> hiện đại</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-02.png') }}" alt="banner2"
+              style="width:150px; position:relative;">
+          </div>
+          <h4 class="vsc-text">Phương pháp đào tạo <br /> 100% thực tế</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-03.png') }}" alt="banner3"
+              style="width:150px; position:relative; padding-left:15px">
+          </div>
+          <h4 class="vsc-text">Thành tích & <br /> giải thưởng</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-04.png') }}" alt="banner4"
+              style="width:150px; position:relative">
+          </div>
+          <h4 class="vsc-text">Bảo hành khóa học <br /> trọn đời</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-05.png') }}" alt="banner5"
+              style="width:150px; position:relative; padding-top:10px; padding-right:10px">
+          </div>
+          <h4 class="vsc-text">Chứng nhận có giá trị <br /> toàn quốc</h4>
+        </div>
+        <div class="col-md-4 col-sm-4 col-xs-6 pb-5">
+          <div
+            style="background-color: #E8E8E8;border-radius: 50%; width:150px; height:150px; margin:auto; margin-bottom:10px">
+            <img src="{{ asset('image/Vì sao chọn rdsic/icon-06.png') }}" alt="banner6"
+              style="width:150px; position:relative; padding-left:25px; padding-top:10px">
+          </div>
+          <h4 class="vsc-text">Giới thiệu việc làm <br /> cho học viên</h4>
+        </div>
+      </div>
+    <div class="mt-5">
+        <div class="row text-center mb-5" style="width: 85%;margin: auto;">
+            <div class="col bg-light mr-3 pt-3 pb-3">
+                Số lượng shipper
+                <hr />
+                125+
+            </div>
+            <div class="col bg-light ml-3 mr-3 pt-3 pb-3">
+                Số lượng đơn hàng
+                <hr />
+                140,000+
+            </div>
+            <div class="col bg-light bg-opacity-50 ml-3 pt-3 pb-3">
+                Số lượng khách hàng
+                <hr />
+                1,450+
+            </div>
+        </div>
+    </div>
 
-<body style="background: linear-gradient(to right, #1f4037, #99f2c8);" >
-	<header th:replace="~{layouts/homeLayout :: home_header}"></header>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-
-	<div class="text-center">
-		<h1>Welcome Back, [[${userName}]]</h1>
-    <h2>Have a nice day!</h2>
-		<hr>
-	</div>
-	<div class="row text-center mb-5" style="width: 85%;margin: auto;">
-		<div class="col bg-info ml-3 mr-3 pt-3 pb-3">
-			Số lượng đơn hàng bạn đã mua
-			<hr />
-			[[${totalOrder}]]
-		</div>
-    <div class="col bg-warning bg-opacity-50 ml-3 pt-3 pb-3">
-			Số lượng đơn hàng bạn đã giao
-			<hr />
-			[[${totalOrder}]]
-		</div>
-	</div>
-	<div class="row m-auto">
-		<div class="col-md-5">
-			<div style="margin: auto; padding-left: 50px;">
-				<canvas id="statusChart" style="width:100%;"></canvas>
-			</div>
-		</div>
-		<div class="col-md-7">
-			<div style="margin: auto; width: 70%;">
-				<canvas id="shipperChart" style="width:100%;"></canvas>
-			</div>
-		</div>
-	</div>
-	
-	<div class="row m-auto" style="height: 70px;"></div>
-	
-	<div class="row m-auto">
-		<div class="col-md-7">
-			<div class="row bg-white" style="width: 80%; margin: auto; padding-top: 10px;">
-				<h4 class="col-9">Order gần đây của bạn</h4>
-				<a class="col-3" href="order">
-					<h5 class="float-right">Xem tất cả ></h5>
-				</a>
-			</div>
-			<table class="table table-striped table-bordered" style="margin: auto; width: 80%;">
-				<thead class="table-light">
-					<tr>
-						<th>startPoint</th>
-						<th>endPoint</th>
-						<th>value</th>
-						<th> status</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr th:each="order: ${listOrders}">
-						<td th:text="${order.startPoint}"></td>
-						<td th:text="${order.endPoint}"></td>
-						<td th:text="${order.value}"></td>
-						<td th:text="${order.status}"></td>
-
-					</tr>
-				</tbody>
-
-			</table>
-		</div>
-		<div class="col-md-5">
-			<div class="row bg-white" style="width: 80%; margin: auto; padding-top: 10px;">
-				<h4 class="col-6">Thông tin cá nhân</h4>
-				<a class="col-6" href="join">
-					<h5 class="float-right">Xem tất cả ></h5>
-				</a>
-			</div>
-			<table class="table table-striped table-bordered" style="margin: auto; width: 80%;">
-				<thead class="table-light">
-					<tr>
-						<th>Tên</th>
-						<th>Địa chỉ</th>
-						<th>SĐT</th>
-					</tr>
-				</thead>
-
-				<tbody>
-					<tr th:each="order: ${listShippers}">
-						<td th:text="${order.fullName}"></td>
-						<td th:text="${order.diaChi}"></td>
-						<td th:text="${order.sdt}"></td>
-
-					</tr>
-				</tbody>
-
-			</table>
-		</div>
-	</div>
-
-	<div class="row m-auto" style="height: 70px;"></div>
-
-	<div class="row m-auto">
-		<div class="col-xl-4">
-			<div class="card w-75 m-auto p-3">
-				<div class="card-block text-center">
-					<p class="m-b-10 align-content-center">Số lượt xem</p>
-					<h4 class="m-t-15">8.62k Lượt xem</h4>
-					<p class="m-b-10">Trên các nền tảng mạng xã hội</p>
-					<button class="btn btn-primary btn-sm btn-round">Trang cá nhân</button>
-				</div>
-			</div>
-			<br />
-			<div class="card w-75 m-auto p-3">
-				<div class="card-block text-center">
-					<p class="m-b-10 align-content-center">Số bài viết</p>
-					<h4 class="m-t-15">167 bài viết</h4>
-					<p class="m-b-10">Trên các nền tảng mạng xã hội</p>
-					<button class="btn btn-success btn-sm btn-round">Danh sách bài viết</button>
-				</div>
-			</div>
-		</div>
-		<div class="col-xl-8">
-			<div class="card social-network" style="width: 95%;">
-				<div class="card-header">
-					<h5>Các trang mạng xã hội</h5>
-				</div>
-				<div class="card-block p-2">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-3">
-									<i class="fab fa-solid fa-youtube" style="color: red; font-size: 70px;"></i>
-								</div>
-								<div class="col-9">
-									<p class="row f-w-400">Views: 545,721</p>
-									<p class="row f-w-400">Likes: 545,721</p>
-									<p class="row f-w-400">Shares: 545,721</p>
-									<p class="row f-w-400">Subscribes: 545,721</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-3">
-									<i class="fab fa-solid fa-facebook" style="color: dodgerblue; font-size: 70px;"></i>
-								</div>
-								<div class="col-9">
-									<p class="row f-w-400">Views: 545,721</p>
-									<p class="row f-w-400">Likes: 545,721</p>
-									<p class="row f-w-400">Shares: 545,721</p>
-									<p class="row f-w-400">Subscribes: 545,721</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-3">
-									<i class="fab fa-solid fa-twitter" style="color: lightskyblue; font-size: 70px;"></i>
-								</div>
-								<div class="col-9">
-									<p class="row f-w-400">Views: 545,721</p>
-									<p class="row f-w-400">Follows: 545,721</p>
-									<p class="row f-w-400">Tweets: 545,721</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-3">
-									<i class="fab fa-solid fa-linkedin" style="color: turquoise; font-size: 70px;"></i>
-								</div>
-								<div class="col-9">
-									<p class="row f-w-400">Views: 545,721</p>
-									<p class="row f-w-400">Follows: 545,721</p>
-									<p class="row f-w-400">Tweets: 545,721</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="row m-auto" style="height: 70px;">
-  </div>
-
-	<footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
-	<th:block layout:fragment="script">
-		<script th:inline="javascript">
-			var orderStatusCount = [[${orderStatusCount}]]
-			var orderShipperCount = [[${orderShipperCount}]]
-			var orderValueAndCount = [[${orderValueAndCount}]]
-		</script>
-		<script type="text/javascript" th:src="@{/js/order_status.js}"></script>
-		<script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>
-		<script type="text/javascript" th:src="@{/js/order_value.js}"></script>
-
-	</th:block>
+    <!-- Sửa ở đây -->
+    <footer th:replace="~{layouts/homeLayout :: home_footer}"></footer>
 </body>
 
 </html>

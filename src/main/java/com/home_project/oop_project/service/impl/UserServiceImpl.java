@@ -35,6 +35,18 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public User validationUser(String username, String password) {
+		// throw new UnsupportedOperationException("Unimplemented method 'validationUser'");
+		return userRepository.validationUser(username, password);
+	}
+
+	@Override
+	public User findUserByUsername(String username) {
+		// throw new UnsupportedOperationException("Unimplemented method 'validationUser'");
+		return userRepository.findUserByUsername(username);
+	}
+
+	@Override
 	public int getTotalItems(String keyword){
 		if (keyword !=null){
 			return userRepository.getTotalItemsSearched(keyword);

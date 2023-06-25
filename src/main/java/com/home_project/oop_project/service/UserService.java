@@ -9,6 +9,10 @@ public interface UserService {
 	List<User> getAllUsers();
 
     List<User> getAllUsers(String keyword, int pageNo, int pageSize);
+
+	User validationUser(String username, String password);
+
+	User findUserByUsername(String username);
 	
 	int getTotalItems(String keyword);
 

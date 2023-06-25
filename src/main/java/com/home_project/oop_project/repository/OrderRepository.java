@@ -8,7 +8,7 @@ import com.home_project.oop_project.entity.Order;
 public interface OrderRepository extends  JpaRepository<Order, Long> {
 
     @Query(
-        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',value) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
+        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
         nativeQuery=true)
     public List<Order> search(String keyword, int offset, int pageSize);
 
@@ -18,7 +18,7 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public int getTotalItems();
 
     @Query(
-        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',value) LIKE %?1%",
+        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1%",
         nativeQuery=true)
     public int getTotalItemsSearched(String keyword);
 
@@ -35,14 +35,26 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public List<Object> reportByShipper();
 
     @Query(
-        value="SELECT DISTINCT end_point, count(id), SUM(value) FROM orders group by end_point",
+        value="SELECT DISTINCT users.username, count(orders.id) FROM orders join users on orders.user_id= users.id group by users.username",
         nativeQuery =true
     )
     public List<Object> reportByValue();
 
     @Query(
-        value="SELECT * FROM orders where date between '?2-?1-01' and '?2-?1-31'",
+        value="SELECT * FROM orders where created_at between ?1 and ?2",
         nativeQuery =true
     )
-    public List<Object> reportByMonth();
+    public List<Order> reportInMonth(String startDate, String endDate);
+
+    @Query(
+        value="SELECT count(*) FROM orders where created_at between ?1 and ?2",
+        nativeQuery =true
+    )
+    public int reportCountInMonth(String startDate, String endDate);
+
+    @Query(
+        value="select status,count(id) from orders where created_at between ?1 and ?2 group by status",
+        nativeQuery=true
+    )
+    public List<Object> reportByStatusInMonth(String startDate, String endDate);
 }

@@ -2,6 +2,7 @@ package com.home_project.oop_project.controllers.admin;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import com.home_project.oop_project.service.ShipperService;
 @Controller
 @RequestMapping("/admin/shipper")
 public class ShipperController {
+    @Autowired
     private ShipperService shipperService;
 
     public ShipperController(ShipperService ShipperService) {

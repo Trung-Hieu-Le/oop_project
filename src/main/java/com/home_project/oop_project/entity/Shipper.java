@@ -16,9 +16,6 @@ public class Shipper {
 	@Column(name = "fullname")
 	private String fullName;
 	
-	// @Column(name = "password")
-	// private String password;
-
     @Column(name = "ngay_sinh")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ngaySinh;
@@ -30,14 +27,14 @@ public class Shipper {
 	private String email;
 
     @Column(name = "sdt")
-	private long sdt;
+	private String sdt;
 
     @Column(name = "cccd")
-	private long cccd;
+	private String cccd;
 
     public Shipper(){}
 
-    public Shipper(String fullName, Date ngaySinh, String diaChi, String email, long sdt, long cccd) {
+    public Shipper(String fullName, Date ngaySinh, String diaChi, String email, String sdt, String cccd) {
         this.fullName = fullName;
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
@@ -86,19 +83,19 @@ public class Shipper {
         this.email = email;
     }
 
-    public long getSdt() {
+    public String getSdt() {
         return sdt;
     }
 
-    public void setSdt(long sdt) {
+    public void setSdt(String sdt) {
         this.sdt = sdt;
     }
 
-    public long getCccd() {
+    public String getCccd() {
         return cccd;
     }
 
-    public void setCccd(long cccd) {
+    public void setCccd(String cccd) {
         this.cccd = cccd;
     }
 
