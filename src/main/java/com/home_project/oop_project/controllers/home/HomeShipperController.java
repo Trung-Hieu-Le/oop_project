@@ -1,5 +1,7 @@
 package com.home_project.oop_project.controllers.home;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,9 @@ public class HomeShipperController {
 
     @GetMapping(value={"join","join/"})
 	public String join(Model model) {
+        LocalDate currentDate = LocalDate.now();
+        model.addAttribute("currentDate", currentDate);
+        System.out.println(currentDate);
 		return "home/join";
 	}
 
