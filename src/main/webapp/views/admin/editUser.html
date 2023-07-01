@@ -12,7 +12,7 @@
 <div class = "container"><br/>
 	<div class = "row">
 		<div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-			<h1 class = "text-center"> Cập nhập người dùng </h1>
+			<h1 class = "text-center"> Cập nhật người dùng </h1>
 			<div class = "card-body">
 				<form th:action="@{/admin/user/update/{id} (id=${user.id})}" th:object = "${user}" method="POST">
 					<div class ="form-group">
@@ -70,12 +70,11 @@
                     <div class ="form-group">
                         <label> Email người dùng </label>
                         <input
-                        type = "text"
+                        type = "email"
                         name = "email"
                            th:field = "*{email}"
                         class = "form-control"
                         placeholder="Nhập email người dùng"
-                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]$"
                         />
                     </div>
 
@@ -91,7 +90,7 @@
                         />
                     </div>
 
-					<div class = "box-footer">
+					<div class = "box-footer d-flex justify-content-center">
 						<button type="submit" class = "btn btn-primary">
 							Hoàn thành
 						</button>

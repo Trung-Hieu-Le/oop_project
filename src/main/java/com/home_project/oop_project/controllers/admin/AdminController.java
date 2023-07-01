@@ -13,13 +13,14 @@ import com.home_project.oop_project.service.OrderService;
 import com.home_project.oop_project.service.ShipperService;
 import com.home_project.oop_project.service.UserService;
 
+import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
 @Controller
-@RequestMapping("/admin")
+@RequestMapping(value={"/admin","/admin/"})
 public class AdminController {
 	@Autowired
 	private AdminService adminService;
@@ -30,11 +31,9 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 
-	// int adminlogcheck = 0;
-	// String usernameforclass = "";
 	private Admin adminNameValidated;
 
-	@GetMapping("/login")
+	@GetMapping(value={"/login","/login/"})
 	public String adminLogin(Model model) {
 
 		return "admin/adminLogin";
@@ -43,20 +42,25 @@ public class AdminController {
 	@GetMapping("")
 	public String adminHome(Model model) {
 		if (adminNameValidated != null) {
+			String day = Integer.toString(Calendar.getInstance().get(Calendar.DATE));
+			String month = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
+			String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+			String currentDate = year + "-" + month + "-" + day;
+
 			model.addAttribute("adminNameValidated", adminNameValidated);
 			model.addAttribute("totalShipper", shipperService.getTotalItems(null));
 			model.addAttribute("totalOrder", orderService.getTotalItems(null));
 			model.addAttribute("totalUser", userService.getTotalItems(null));
 			model.addAttribute("listOrders", orderService.getAllOrders(null, 0, 10));
 			model.addAttribute("listShippers", shipperService.getAllShippers(null, 0, 10));
-			model.addAttribute("orderStatusCount", orderService.getReportByStatus());
-			model.addAttribute("orderShipperCount", orderService.getReportByShipper());
+			model.addAttribute("orderStatusCountToday", orderService.getReportByStatusToday(currentDate));
+			model.addAttribute("orderShipperCountToday", orderService.getReportByShipperToday(currentDate));
 			return "admin/adminHome";
 		} else
 			return "redirect:/admin/login";
 	}
 
-	@GetMapping("/register")
+	@GetMapping(value={"/register","/register/"})
 	public String adminRegister(Model model) {
 		return "admin/adminRegister";
 
@@ -91,26 +95,18 @@ public class AdminController {
 
 	@PostMapping("/admin-register")
 	public String newAdminRegister(@ModelAttribute("admin") Admin admin, Model model) {
-		// try {
-		// 	adminService.saveAdmin(admin);
-
-		// } catch (Exception e) {
-		// 	System.out.println("Exception:" + e);
-		// }
-		// return "redirect:/admin";
-		try
-		{
-			if (adminService.findAdminByUsername(admin.getName()) == null) adminService.saveAdmin(admin);
-			else {
+		try {
+			if (adminService.findAdminByUsername(admin.getName()) == null) {
+				adminService.saveAdmin(admin);
+				return "redirect:/admin";
+			} else {
 				model.addAttribute("message", "Tên đăng nhập đã tồn tại");
 				return "admin/adminRegister";
 			}
+		} catch (Exception e) {
+			System.out.println("Exception:" + e);
 		}
-		catch(Exception e)
-		{
-			System.out.println("Exception:"+e);
-		}
-		return "redirect:/";
+		return "admin/adminRegister";
 	}
 
 }

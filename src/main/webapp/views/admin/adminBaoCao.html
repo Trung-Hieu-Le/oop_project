@@ -40,11 +40,11 @@
                 Từ đó đưa ra các chiến lược và định hướng kinh doanh trong các tháng, quý, năm tới.<br/>
                 &emsp; &emsp; &emsp;Trong tháng vừa qua, chúng ta đã và đang phấn đấu đạt được chỉ tiêu đề ra trong kì họp trước. 
                 Doanh thu của tháng vẫn đang cho thấy đà tăng trưởng và tiềm năng phát triển của dự án. <br/> 
-                &emsp; &emsp; &emsp;Dưới đây là một số con số thông kê trong tháng này:
+                <!-- &emsp; &emsp; &emsp;Dưới đây là một số con số thông kê trong tháng này: -->
             </p>
             <p>Số đơn hàng mới tạo được: [[${totalOrderInMonth}]]</p>
-            <p>Tổng số khách hàng: [[${totalUser}]]</p>
-            <p>Tổng số shipper: [[${totalShipper}]]</p>
+            <!-- <p>Tổng số khách hàng: [[${totalUser}]]</p>
+            <p>Tổng số shipper: [[${totalShipper}]]</p> -->
 
             <div>
                 Tỉ lệ đơn vận chuyển tháng [[${month}]]/[[${year}]] được minh họa bởi đồ thị bên dưới:
@@ -71,7 +71,6 @@
                         <td th:text="${order.endPoint}"></td>
                         <td th:text="${order.goodName}"></td>
                         <td th:text="${#calendars.format(order.createdAt, 'dd-MM-yyyy')}"></td>
-                        td
                         <td th:text="${order.status}"></td>
                     </tr>
                 </tbody>

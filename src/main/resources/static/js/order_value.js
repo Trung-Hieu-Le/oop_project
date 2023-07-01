@@ -17,7 +17,7 @@ new Chart("userChart", {
     legend: { display: false },
     title: {
       display: true,
-      text: "Số đơn hàng của từng khách hàng"
+      text: "Số đơn đặt hàng của tất cả khách hàng"
     },
     scales: {
       yAxes: [{
@@ -28,6 +28,7 @@ new Chart("userChart", {
     }
   }
 });
+
 
 // new Chart("numberOrderChart", {
 //   type: "line",

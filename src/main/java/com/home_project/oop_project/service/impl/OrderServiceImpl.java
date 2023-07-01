@@ -87,6 +87,22 @@ public class OrderServiceImpl implements OrderService{
 		orderRepository.deleteById(id);	
 	}
 
+	@Override
+	public List<Object> getReportByStatusToday(String date) {
+		return orderRepository.reportByStatusToday(date);
+	}
+
+	@Override
+	public List<Object> getReportByShipperToday(String date) {
+		return orderRepository.reportByShipperToday(date);	
+	}
+
+	@Override
+	public List<Object> getReportByValueToday(String date) {
+		return orderRepository.reportByValueToday(date);
+		// throw new UnsupportedOperationException("Unimplemented method 'reportByValueToday'");
+	}
+
 
 
 	

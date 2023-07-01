@@ -1,5 +1,6 @@
 package com.home_project.oop_project.controllers.admin;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,8 @@ public class ShipperController {
 
         // create Shipper object to hold Shipper form data
         Shipper shipper = new Shipper();
+        LocalDate currentDate = LocalDate.now();
+        model.addAttribute("currentDate", currentDate);
         model.addAttribute("shipper", shipper);
         return "admin/addShipper";
 
@@ -65,6 +68,8 @@ public class ShipperController {
 
     @GetMapping("/edit/{id}")
     public String editShipperForm(@PathVariable Long id, Model model) {
+        LocalDate currentDate = LocalDate.now();
+        model.addAttribute("currentDate", currentDate);
         model.addAttribute("shipper", shipperService.getShipperById(id));
         return "admin/editShipper";
     }

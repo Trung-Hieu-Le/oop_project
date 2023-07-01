@@ -19,7 +19,7 @@ public class ProfileController {
     @Autowired
     private HomeController home0;
 
-    @GetMapping("/edit-profile")
+    @GetMapping(value={"/edit-profile","/edit-profile/"})
     public String editProfile(@ModelAttribute("user") User user, Model model) {
         if (home0.getUserDetail() != null) {
             model.addAttribute("usernameValidated", userService.getUserById(home0.getUserDetail().getId()));
@@ -45,7 +45,7 @@ public class ProfileController {
         return "redirect:/";
     }
 
-    @GetMapping("/edit-password")
+    @GetMapping(value={"/edit-password","/edit-password/"})
     public String editPassword( Model model) {
         if (home0.getUserDetail() != null) {
             model.addAttribute("usernameValidated", userService.getUserById(home0.getUserDetail().getId()));
