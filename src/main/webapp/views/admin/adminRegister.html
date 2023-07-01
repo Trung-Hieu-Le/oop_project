@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <title>Đăng kí tài khoản Admin</title>
+    <style>
+        body{
+            background-image: url('/images/background_login.jpg');
+            background-size: cover;
+        }
+    </style>
 </head>
 <body>
 
@@ -29,9 +35,9 @@
                     <input type="password" class="form-control form-control-lg" placeholder="Mật khẩu..." required name="password" id="password">
                 </div>
                 <span style="margin-top: 10px">Đã có tài khoản? <a class="linkControl" href="/admin/login">Đăng nhập ngay</a></span> <br><br>
+                <h6 style="color:red;text-align: center;" th:text="${message}"></h6>
                 <input type="submit" value="Đăng kí" class="btn btn-primary btn-block">
                 <br>
-                <h3 style="color:red;text-align: center;" th:text="${message}"></h3>
         </div>
 
 </div>

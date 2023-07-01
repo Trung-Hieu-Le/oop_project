@@ -40,12 +40,12 @@
 	<div class="row m-auto">
 		<div class="col-md-5">
 			<div style="margin: auto; padding-left: 50px;">
-				<canvas id="statusChart" style="width:100%;"></canvas>
+				<canvas id="statusChartToday"></canvas>
 			</div>
 		</div>
 		<div class="col-md-7">
 			<div style="margin: auto; width: 70%;">
-				<canvas id="shipperChart" style="width:100%;"></canvas>
+				<canvas id="shipperChartToday"></canvas>
 			</div>
 		</div>
 	</div>
@@ -204,13 +204,15 @@
 	<footer th:replace="~{layouts/adminLayout :: admin_footer}"></footer>
 	<th:block layout:fragment="script">
 		<script th:inline="javascript">
-			var orderStatusCount = [[${ orderStatusCount }]]
-			var orderShipperCount = [[${ orderShipperCount }]]
+			var orderStatusCountToday = [[${ orderStatusCountToday }]]
+			var orderShipperCountToday = [[${ orderShipperCountToday }]]
+			// var orderStatusCount = [[${ orderStatusCount }]]
+			// var orderShipperCount = [[${ orderShipperCount }]]
 			// var orderValueAndCount = [[${ orderValueAndCount }]]
 		</script>
-		<script type="text/javascript" th:src="@{/js/order_status.js}"></script>
-		<script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>
-		<script type="text/javascript" th:src="@{/js/order_value.js}"></script>
+		<script type="text/javascript" th:src="@{/js/order_status_today.js}"></script>
+		<script type="text/javascript" th:src="@{/js/order_shipper_today.js}"></script>
+		<!-- <script type="text/javascript" th:src="@{/js/order_value.js}"></script> -->
 
 	</th:block>
 </body>

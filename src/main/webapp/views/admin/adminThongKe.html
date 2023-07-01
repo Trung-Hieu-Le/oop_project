@@ -4,7 +4,7 @@
 <head th:replace="~{layouts/adminLayout :: admin_head}">
 </head>
 
-<body>
+<body class="bg-light">
     <header th:replace="~{layouts/adminLayout :: admin_header}"></header>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
@@ -28,14 +28,31 @@
 			[[${totalUser}]]
 		</div>
     </div>
-    <div style="width: 60%;margin: auto;">
-        <canvas id="statusChart" style="width:100%;"></canvas>
+    <div class="row m-auto">
+        <div class="col-6">
+            <canvas id="statusChartToday" ></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="statusChart"></canvas>
+        </div>
     </div>
-    <div style="width: 70%;margin: auto; margin-top: 100px;">
-        <canvas id="shipperChart" style="width:100%;"></canvas>
+    <br/>
+    <div class="row m-auto">
+        <div class="col-6">
+            <canvas id="shipperChartToday"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="shipperChart"></canvas>
+        </div>
     </div>
-    <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
-        <canvas id="userChart" style="width:100%;"></canvas>
+    <br/>
+    <div class="row m-auto">
+        <div class="col-6">
+            <canvas id="userChartToday"></canvas>
+        </div>
+        <div class="col-6">
+            <canvas id="userChart"></canvas>
+        </div>
     </div>
     <!-- <div class="col" style="width: 70%;margin: auto;margin-top: 100px;">
         <canvas id="numberOrderChart" style="width:100%;"></canvas>
@@ -45,10 +62,16 @@
             var orderStatusCount = [[${ orderStatusCount }]]
             var orderShipperCount = [[${ orderShipperCount }]]
             var orderUserCount = [[${ orderUserCount }]]
+            var orderStatusCountToday = [[${ orderStatusCountToday }]]
+            var orderShipperCountToday = [[${ orderShipperCountToday }]]
+            var orderUserCountToday = [[${ orderUserCountToday }]]
         </script>
         <script type="text/javascript" th:src="@{/js/order_status.js}"></script>
         <script type="text/javascript" th:src="@{/js/order_shipper.js}"></script>
         <script type="text/javascript" th:src="@{/js/order_value.js}"></script>
+        <script type="text/javascript" th:src="@{/js/order_status_today.js}"></script>
+        <script type="text/javascript" th:src="@{/js/order_shipper_today.js}"></script>
+        <script type="text/javascript" th:src="@{/js/order_value_today.js}"></script>
 
 
     </th:block>

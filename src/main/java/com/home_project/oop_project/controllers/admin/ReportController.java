@@ -24,19 +24,27 @@ public class ReportController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("thong-ke")
+	@GetMapping(value={"/thong-ke","/thong-ke/"})
 	public String adminThongKe(Model model) {
+		String day = Integer.toString(Calendar.getInstance().get(Calendar.DATE));
+		String month = Integer.toString(Calendar.getInstance().get(Calendar.MONTH) + 1);
+		String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+		String currentDate = year + "-" + month + "-" + day;
+
 		model.addAttribute("totalShipper", shipperService.getTotalItems(null));
 		model.addAttribute("totalOrder", orderService.getTotalItems(null));
 		model.addAttribute("totalUser", userService.getTotalItems(null));
 		model.addAttribute("orderStatusCount", orderService.getReportByStatus());
 		model.addAttribute("orderShipperCount", orderService.getReportByShipper());
 		model.addAttribute("orderUserCount", orderService.getReportByValue());
+		model.addAttribute("orderStatusCountToday", orderService.getReportByStatusToday(currentDate));
+		model.addAttribute("orderShipperCountToday", orderService.getReportByShipperToday(currentDate));
+		model.addAttribute("orderUserCountToday", orderService.getReportByValueToday(currentDate));
 
 		return "admin/adminThongKe";
 	}
 
-	@GetMapping("bao-cao")
+	@GetMapping(value={"/bao-cao","/bao-cao/"})
 	public String adminBaoCao(Model model, @Param("month") String month, @Param("year") String year) {
 		String startDate, endDate;
 		if (month == null && year == null) {

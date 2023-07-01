@@ -15,6 +15,12 @@ public interface OrderService {
 
 	List<Object> getReportByValue();
 
+	List<Object> getReportByStatusToday(String date);
+
+	List<Object> getReportByShipperToday(String date);
+
+	List<Object> getReportByValueToday(String date);
+
 	List<Order> getReportInMonth(String startDate, String endDate);
 
 	int getReportCountInMonth(String startDate, String endDate);

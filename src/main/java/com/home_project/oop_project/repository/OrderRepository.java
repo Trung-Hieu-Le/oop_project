@@ -8,7 +8,7 @@ import com.home_project.oop_project.entity.Order;
 public interface OrderRepository extends  JpaRepository<Order, Long> {
 
     @Query(
-        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
+        value="SELECT * FROM orders WHERE CONCAT(end_point, ' ', start_point, ' ', created_at, ' ', ghi_chu, ' ', status, ' ',good_name) LIKE %?1% ORDER BY id DESC LIMIT ?2,?3",
         nativeQuery=true)
     public List<Order> search(String keyword, int offset, int pageSize);
 
@@ -18,7 +18,7 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
     public int getTotalItems();
 
     @Query(
-        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', customer_name, ' ', start_point, ' ', status, ' ',good_name) LIKE %?1%",
+        value="SELECT count(id) FROM orders WHERE CONCAT(end_point, ' ', start_point, ' ', created_at, ' ', ghi_chu, ' ', status, ' ',good_name) LIKE %?1%",
         nativeQuery=true)
     public int getTotalItemsSearched(String keyword);
 
@@ -57,4 +57,22 @@ public interface OrderRepository extends  JpaRepository<Order, Long> {
         nativeQuery=true
     )
     public List<Object> reportByStatusInMonth(String startDate, String endDate);
+
+    @Query(
+        value="select status,count(id) from orders where created_at = ?1 group by status",
+        nativeQuery=true
+    )
+    public List<Object> reportByStatusToday(String date);
+
+    @Query(
+        value="select shippers.fullname, count(orders.id) from orders join shippers on orders.shipper_id= shippers.id where created_at = ?1 group by orders.shipper_id",
+        nativeQuery =true
+    )
+    public List<Object> reportByShipperToday(String date);
+
+    @Query(
+        value="SELECT DISTINCT users.username, count(orders.id) FROM orders join users on orders.user_id= users.id where created_at = ?1 group by users.username",
+        nativeQuery =true
+    )
+    public List<Object> reportByValueToday(String date);
 }

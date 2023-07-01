@@ -24,12 +24,12 @@ public class HomeController {
 		return usernameValidated;
 	}
 
-	@GetMapping(value = {"about"})
+	@GetMapping(value = {"about","about/"})
 	public String about(Model model) {
 		return "home/about";
 	}
 	
-	@GetMapping("login")
+	@GetMapping(value = {"login","login/"})
 	public String userLogin(Model model) {
 		return "home/userLogin";
 	}
@@ -44,7 +44,7 @@ public class HomeController {
 			
 	}
 
-	@GetMapping("/register")
+	@GetMapping(value= {"/register","/register/"})
 	public String registerUser(Model model)
 	{
 		List<User> listUsers = userService.getAllUsers();
@@ -58,31 +58,29 @@ public class HomeController {
 	}
 	@RequestMapping(value = "user-login", method = RequestMethod.POST)
 	public String userLogin( @RequestParam("username") String username, @RequestParam("password") String pass,Model model) {
-		
-		try
-		{
+	
+		try {
 			// Class.forName("com.mysql.jdbc.Driver");
-			// Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
+			// Connection con =
+			// DriverManager.getConnection("jdbc:mysql://localhost:3306/springproject","root","");
 			// Statement stmt = con.createStatement();
-			// ResultSet rst = stmt.executeQuery("select * from users where username = '"+username+"' and password = '"+ pass+"' ;");
+			// ResultSet rst = stmt.executeQuery("select * from users where username =
+			// '"+username+"' and password = '"+ pass+"' ;");
 			// System.out.println(username);
 			// System.out.println(pass);
 			User user1 = userService.validationUser(username, pass);
 			// System.out.println(user1);
-			if(user1 == null) {
+			if (user1 == null) {
 				model.addAttribute("message", "Tên đăng nhập hoặc mật khẩu không hợp lệ");
 				return "home/userLogin";
-				
-				}
-			else {
+
+			} else {
 				usernameValidated = user1;
 				return "redirect:/";
 			}
-			
-		}
-		catch(Exception e)
-		{
-			System.out.println("Exception:"+e);
+
+		} catch (Exception e) {
+			System.out.println("Exception:" + e);
 		}
 		return "home/userLogin";
 		
@@ -91,21 +89,20 @@ public class HomeController {
 	@PostMapping("/register/add")
 	public String newUseRegister(@ModelAttribute("user") User user, Model model)
 	{
-		try
-		{
-			if (userService.findUserByUsername(user.getUserName()) == null) userService.saveUser(user);
-			else {
+		try {
+			if (userService.findUserByUsername(user.getUserName()) == null) {
+				userService.saveUser(user);
+				return "redirect:/";
+			} else {
 				List<User> listUsers = userService.getAllUsers();
 				model.addAttribute("listUsers", listUsers);
 				model.addAttribute("message", "Tên đăng nhập đã tồn tại");
 				return "home/homeRegister";
 			}
+		} catch (Exception e) {
+			System.out.println("Exception:" + e);
 		}
-		catch(Exception e)
-		{
-			System.out.println("Exception:"+e);
-		}
-		return "redirect:/";
+		return "home/homeRegister";
 	}
 
 }

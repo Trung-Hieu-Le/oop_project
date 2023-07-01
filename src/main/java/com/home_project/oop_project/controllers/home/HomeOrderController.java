@@ -25,7 +25,7 @@ public class HomeOrderController {
 	@Autowired
 	private HomeController home0;
 
-     @GetMapping("/order")
+     @GetMapping(value={"/order","order/"})
 	public String order(Model model) {
 		
 		if(home0.getUserDetail()!=null){

@@ -15,7 +15,7 @@ public class HomeShipperController {
     @Autowired
 	private ShipperService shipperService;
 
-    @GetMapping("join")
+    @GetMapping(value={"join","join/"})
 	public String join(Model model) {
 		return "home/join";
 	}

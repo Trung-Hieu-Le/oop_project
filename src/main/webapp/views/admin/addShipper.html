@@ -64,13 +64,13 @@
 						<div class ="form-group">
 							<label> shipper email </label>
 							<input
-							type = "text"
+							type = "email"
 							name = "email"
 						   	th:field = "*{email}"
 							class = "form-control"
 							placeholder="Nhập email của shipper"
-							pattern="[a-z0-9._%+-]+@[a-z0-9.-]$"
 							/>
+							<!-- pattern="[a-z0-9._%+-]+@[a-z0-9.-]$" -->
 						</div>
 
                         <div class ="form-group">
@@ -98,7 +98,7 @@
 							/>
 						</div>
 
-						<div class = "box-footer">
+						<div class = "box-footer d-flex justify-content-center">
 							<button type="submit" class = "btn btn-primary">
 								Hoàn thành
 							</button>

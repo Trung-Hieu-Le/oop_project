@@ -5,31 +5,32 @@
 <head th:fragment="home_head">
   <meta charset="UTF-8">
   <meta name="viewport"
-  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" 
-  integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"
+    integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-  integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   <title>Trang chủ</title>
   <style>
-    html{
+    html {
       height: 100%;
       box-sizing: border-box;
     }
-    body{
+
+    body {
       position: relative;
       margin: 0;
       min-height: 100%;
       box-sizing: inherit;
       padding-bottom: 25rem;
     }
+
     /* Header */
-    /* .header {
+     /* .header {
       overflow: hidden;
-      background-color: #e1e1e1;
-      padding: 10px 10px;
+      background-color: #c23131;
     }
     .header a {
       float: left;
@@ -41,169 +42,181 @@
       line-height: 25px;
       border-radius: 5px;
     }
-    .header a:hover {
-      background-color: #02aaf8;
-      color: black;
+     */
+    .collapse {
+      padding: 5px 5px;
     }
-    .header-right { float: right; } */
 
-    .collapse { padding: 5px 5px;}
-.collapse ul {
-	margin: 0; padding: 0px;
-}
-.collapse li {
-	padding: 5px;
-	position: relative;
-	list-style: none;
-}
-.collapse li:hover { background-color: #818181; }
-.collapse .topmenu ul {
-	display:none;
-	position: absolute;
-	background-color: #343a40;
-}
-.collapse li:hover > ul { display: table; }
+    .collapse ul {
+      margin: 0;
+      padding: 0px;
+    }
 
-.collapse ul.dropdown-menu li { padding: 10px 20px; }
+    .collapse li {
+      padding: 5px;
+      position: relative;
+      list-style: none;
+      font-weight: 500;
+
+    }
+
+    .collapse li:hover {
+      background-color: #fc5234;
+      color: aliceblue;
+    }
+
+    .collapse .topmenu ul {
+      display: none;
+      position: absolute;
+
+    }
+
+    .collapse li:hover>ul {
+      display: table;
+    }
+
+    .collapse ul.dropdown-menu li {
+      padding: 10px 10px;
+    }
+
     /* Footer */
     .footer {
-      background-color:#262831;
-      padding:30px 20px;
-      font-size:15px;
-      line-height:24px;
-      color:#737373;
+      background-color: #262831;
+      padding: 30px 20px;
+      font-size: 15px;
+      line-height: 24px;
+      color: #737373;
       position: absolute;
       right: 0;
       left: 0;
       bottom: 0;
     }
+
     .footer-links {
-      padding-left:0;
-      list-style:none
+      padding-left: 0;
+      list-style: none
     }
-    .footer a{ color:#737373; }
+
+    .footer a {
+      color: #737373;
+    }
+
     .footer .social-icons {
-      text-align:right
+      text-align: right
     }
-    .footer .social-icons a {   
-      background-color:#2d2d42
+
+    .footer .social-icons a {
+      background-color: #2d2d42
     }
+
     .social-icons li {
-      display:inline-block;
+      display: inline-block;
     }
+
     .social-icons a {
-      display:inline-block;
-      line-height:44px;
-      width:44px;
-      height:44px;
-      text-align:center;
-      border-radius:100%;
-    }
-    
-    .bigpic{
+      display: inline-block;
+      line-height: 44px;
+      width: 44px;
+      height: 44px;
       text-align: center;
+      border-radius: 100%;
+    }
+
+    .bigpic {
+      /* text-align: center; */
       justify-content: center;
-      color: rgb(255, 0, 51);
+      color: #fc5234;
       padding-top: 12%;
-      background-image: url('/images/cach-dang-ky-lam-shipper-giao-hang-tiet-kiem.jpg');
-      width:100%;
-      height: 550px;
+      background-image: url('/images/homepage_main.jpg');
+      background-color: rgba(46, 25, 0, 0.3);
+      background-blend-mode: multiply;
+      width: 100%;
+      height: 700px;
       background-repeat: no-repeat, repeat;
       background-size: cover;
     }
-    .nav-link:hover > ul { display: table; }
+
+    .nav-link:hover>ul {
+      display: table;
+    }
   </style>
 </head>
 
 <body>
-  <header class="header" th:fragment="home_header">
-    <!-- <img src="/images/shipperlogo2.png" width=auto height="50">
-    <div class="header-right">
-      <a href="/">Trang chủ</a>
-      <a href="about">Giới thiệu</a>
-      <a href="order">Đặt hàng</a>
-      <a href="join">Xin tuyển</a>
-      <a class="nav-link">Tài khoản</a>
-        <ul class="dropdown-menu" style="margin-left: -30px; display:none;
-        position: absolute;
-        background-color: #343a40;">
-          <li><a class="nav-link" href="">Sửa thông tin</a>
-          <li><a class="nav-link" href="">Đổi mật khẩu</a>
-          <li><a class="nav-link" href="login">Đăng xuất</a>
-        </ul>
-              
-      
-      <a href="login">Đăng xuất</a>
-    </div> -->
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
+  <header class="header sticky-top" th:fragment="home_header">
+    <nav class="navbar navbar-expand bg-light">
       <img src="/images/shipperlogo2.png" width=auto height="50">
       <div class="container-fluid">
         <div class="collapse navbar-collapse">
           <ul class="mr-auto"></ul>
           <ul class="navbar-nav">
-            <li class="topmenu"><a class="nav-link" href="/">Trang chủ</a></li>
-            <li class="topmenu"><a class="nav-link" href="/about">Giới thiệu</a></li>
-            <li class="topmenu"><a class="nav-link" href="/order">Đặt hàng</a></li>
-            <li class="topmenu"><a class="nav-link" href="/join">Ứng tuyển</a></li>
-            <li class="topmenu"><a class="nav-link">Tài khoản</a>
-              <ul class="dropdown-menu" style="margin-left: -65px; ">
-                <li><a class="nav-link" href="/edit-profile">Sửa thông tin</a>
-                <li><a class="nav-link" href="/edit-password">Đổi mật khẩu</a>
-                <li><a class="nav-link" href="/login">Đăng xuất</a>
+            <li class="topmenu"><a class="nav-link text-dark" href="/">TRANG CHỦ</a></li>
+            <li class="topmenu"><a class="nav-link text-dark" href="/about">GIỚI THIỆU</a></li>
+            <li class="topmenu"><a class="nav-link text-dark" href="/order">ĐẶT HÀNG</a></li>
+            <li class="topmenu"><a class="nav-link text-dark" href="/join">ỨNG TUYỂN</a></li>
+            <li class="topmenu"><a class="nav-link text-dark">TÀI KHOẢN</a>
+              <ul class="dropdown-menu" style="margin-left: -50px; ">
+                <li><a class="nav-link text-dark" href="/edit-profile">SỬA THÔNG TIN</a>
+                <li><a class="nav-link text-dark" href="/edit-password">ĐỔI MẬT KHẨU</a>
+                <li><a class="nav-link text-dark" href="/login">ĐĂNG XUẤT</a>
               </ul>
-                    
+
             </li>
-            
-  
+
+
           </ul>
-        </div>	
+        </div>
       </div>
     </nav>
   </header>
   <div></div>
-  <footer class="footer" th:fragment="home_footer" >
-        <div  class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h3>Giới thiệu</h3><br>
-              <p class="text-justify">Đây là bài tập đồ án môn OOP của nhóm 6</p>
-            </div>
-            <div class="col-md-3">
-              <h3>Đường dẫn</h3><br>
-              <ul class="footer-links">
-                <li><a href="/">Trang chủ</a></li>
-                <li><a href="/about">Giới thiệu</a></li>
-                <li><a href="/order">Đặt hàng</a></li>
-                <li><a href="/join">Ứng tuyển</a></li>
-              </ul>
-            </div>
-            <div class="col-md-3">
-              <h3>Liên hệ ngay!</h3><br>
-              <ul class="footer-links">
-                <li><span><u>Địa chỉ:</u> Trường Đại học Xây dựng Hà Nội, số 55 đường Giải Phóng, Hai Bà Trưng, Hà Nội</span></li>
-                <li><span><u>Điện thoại:</u> (024) 38 696 397</span></li>
-                <li><span><u>Email:</u> dhxaydung@huce.edu.vn</span></li>
-              </ul>
-            </div>
-          </div>
-          <hr>
+  <footer class="footer" th:fragment="home_footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Giới thiệu</h3><br>
+          DỊCH VỤ CHUYỂN PHÁT NHANH TẬN NHÀ S-Shipper<br/>
+          Việc giao và nhận hàng đã trở nên dễ dàng hơn bao giờ hết!<br/>
+          Tự do gửi và nhận hàng ngay mà không cần chờ đợi quá lâu.
+          <p>Đây là bài tập đồ án môn OOP của nhóm 6</p>
         </div>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-8">
-              <p class="copyright-text">©2023, From Group 6 - HUCE. All rights reserved</p>
-            </div>
-            <div class="col-md-4">
-              <ul class="social-icons">
-                <li><a href=""><i class="fab fa-youtube"></i></a></li>
-                <li><a href=""><i class="fab fa-facebook"></i></a></li>
-                <li><a href=""><i class="fab fa-twitter"></i></a></li>
-                <li><a href=""><i class="fab fa-linkedin"></i></a></li>   
-              </ul>
-            </div>
-          </div>
+        <div class="col-md-3">
+          <h3>Đường dẫn</h3><br>
+          <ul class="footer-links">
+            <li><a href="/">Trang chủ</a></li>
+            <li><a href="/about">Giới thiệu</a></li>
+            <li><a href="/order">Đặt hàng</a></li>
+            <li><a href="/join">Ứng tuyển</a></li>
+          </ul>
         </div>
+        <div class="col-md-3">
+          <h3>Liên hệ ngay!</h3><br>
+          <ul class="footer-links">
+            <li><span><u>Địa chỉ:</u> Trường Đại học Xây dựng Hà Nội, số 55 đường Giải Phóng, Hai Bà Trưng, Hà
+                Nội</span></li>
+            <li><span><u>Điện thoại:</u> (024) 38 696 397</span></li>
+            <li><span><u>Email:</u> dhxaydung@huce.edu.vn</span></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <p class="copyright-text">©2023, From Group 6 - HUCE. All rights reserved</p>
+        </div>
+        <div class="col-md-4">
+          <ul class="social-icons">
+            <li><a href=""><i class="fab fa-youtube"></i></a></li>
+            <li><a href=""><i class="fab fa-facebook"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-linkedin"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </footer>
 </body>
 

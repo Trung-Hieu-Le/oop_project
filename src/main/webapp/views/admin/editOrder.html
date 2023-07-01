@@ -12,7 +12,7 @@
 <div class = "container"><br/>
 	<div class = "row">
 		<div class ="col-lg-8 col-md-8 col-sm-8 container justify-content-center card">
-			<h1 class = "text-center">Cập nhập đơn hàng </h1>
+			<h1 class = "text-center">Cập nhật đơn hàng </h1>
 			<div class = "card-body">
 				<form th:action="@{/admin/order/update/{id} (id=${order.id})}" th:object = "${order}" method="POST">
 					<!-- <div class ="form-group">
@@ -130,9 +130,8 @@
 							/> -->
 							<select name = "status" class = "form-control" th:field = "*{status}">
 								<option value="Chờ xử lí">Chờ xử lí</option>
-								<option value="Chưa giao hàng">Chưa giao hàng</option>
 								<option value="Đang giao hàng">Đang giao hàng</option>
-								<option value="Đã giao hàng">Đã giao hàng</option>
+								<option value="Giao hàng xong">Giao hàng xong</option>
 								<option value="Hủy đơn hàng">Hủy đơn hàng</option>
 							</select>
 						</div>
@@ -149,7 +148,7 @@
 							/>
 						</div>
 					</div>	
-						<div class = "box-footer">
+						<div class = "box-footer d-flex justify-content-center">
 							<button type="submit" class = "btn btn-primary">
 								Hoàn thành
 							</button>

@@ -44,8 +44,8 @@
                             <label class="input-label">Email</label>
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
-                                <input name="email" placeholder="Nhập email..." class="form-control" type="text"
-                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]$" th:field="*{usernameValidated.email}">
+                                <input name="email" placeholder="Nhập email..." class="form-control" type="email"
+                                     th:field="*{usernameValidated.email}">
                             </div>
                         </div>
                     </div>
@@ -61,8 +61,10 @@
                         </div>
                     </div>
                 </div>
-                <h3 style="color:red;text-align: center;" th:text="${message}"></h3>
-                <input type="submit" value="Hoản thành" class="btn btn-primary btn-block">
+                <h5 style="color:red;text-align: center;" th:text="${message}"></h5>
+                <div class="container w-50">
+                    <input type="submit" value="Hoản thành" class="btn btn-primary btn-block">
+                </div>
         </div>
 
         <!-- Sửa ở đây -->

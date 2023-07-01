@@ -1,6 +1,7 @@
 var xValues = orderShipperCount.map(x => x[0]);
 var yValues = orderShipperCount.map(x => x[1]);
-var barColors = "lightblue";
+
+var barColors = "#87CEEB";
 
 new Chart("shipperChart", {
     type: "bar",
