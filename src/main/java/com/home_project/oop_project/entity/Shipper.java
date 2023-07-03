@@ -1,6 +1,7 @@
 package com.home_project.oop_project.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -31,6 +32,9 @@ public class Shipper {
 
     @Column(name = "cccd")
 	private String cccd;
+
+    @OneToMany(mappedBy = "shipper", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public Shipper(){}
 
@@ -97,6 +101,14 @@ public class Shipper {
 
     public void setCccd(String cccd) {
         this.cccd = cccd;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
 

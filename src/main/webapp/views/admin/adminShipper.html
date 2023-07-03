@@ -42,7 +42,7 @@
 						<a th:href="@{/admin/shipper/edit/{id}(id=${shipper.id})}" class="btn btn-primary"><i
 								class="fa fa-edit"></i></a>
 		
-						<a th:href="@{/admin/shipper/delete/{id}(id=${shipper.id})}" class="btn btn-danger"><i
+						<a th:href="@{/admin/shipper/delete/{id}(id=${shipper.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa shipper không?');"><i
 								class="fa fa-trash"></i></a>
 		
 					</td>

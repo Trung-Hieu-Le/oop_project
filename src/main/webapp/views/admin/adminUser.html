@@ -44,7 +44,7 @@
 						<a th:href="@{/admin/user/edit/{id}(id=${user.id})}" class="btn btn-primary"><i
 								class="fa fa-edit"></i></a>
 		
-						<a th:href="@{/admin/user/delete/{id}(id=${user.id})}" class="btn btn-danger"><i
+						<a th:href="@{/admin/user/delete/{id}(id=${user.id})}" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng không?');"><i
 								class="fa fa-trash"></i></a>
 		
 					</td>

@@ -1,6 +1,8 @@
 package com.home_project.oop_project.entity;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -27,6 +29,9 @@ public class User {
 
     @Column(name = "sdt")
 	private String sdt;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
 
     public User(){}
     
@@ -93,6 +98,14 @@ public class User {
 
     public void setSdt(String sdt) {
         this.sdt = sdt;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
     }
 
     
